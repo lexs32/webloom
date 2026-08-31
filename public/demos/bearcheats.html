@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BearCheats — Unleash the Power of Intuitive Software</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #06070a;
+      color: #f8fafc;
+      overflow-x: hidden;
+    }
+    .orange-glow {
+      box-shadow: 0 0 50px -10px rgba(249, 115, 22, 0.35);
+    }
+    .glass-panel {
+      background: rgba(15, 17, 23, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .star-bg {
+      background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 0);
+      background-size: 24px 24px;
+    }
+  </style>
+</head>
+<body class="star-bg selection:bg-orange-500 selection:text-white">
+
+  <!-- Nav -->
+  <nav class="w-full max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-2xl bg-orange-500 flex items-center justify-center font-black text-xl text-white shadow-lg shadow-orange-500/30">
+        🐻
+      </div>
+      <span class="text-xl font-extrabold tracking-tight text-white">Bear<span class="text-orange-500">Cheats</span></span>
+    </div>
+
+    <div class="hidden md:flex items-center gap-6 text-xs font-bold text-gray-300">
+      <a href="#products" class="hover:text-orange-400 transition">Products</a>
+      <a href="#status" class="hover:text-orange-400 transition">Status</a>
+      <a href="#downloads" class="hover:text-orange-400 transition">Downloads</a>
+      <a href="#why-us" class="hover:text-orange-400 transition">Why Us</a>
+      <a href="#faq" class="hover:text-orange-400 transition">FAQ</a>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <a href="https://discord.gg/webloom" target="_blank" class="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 text-xs font-bold text-white transition flex items-center gap-2">
+        Join Discord
+      </a>
+      <a href="#products" class="px-5 py-2.5 rounded-xl bg-white text-gray-900 font-extrabold text-xs shadow-xl hover:bg-orange-50 transition">
+        🛒 Cart
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="max-w-5xl mx-auto px-6 pt-16 pb-20 text-center">
+    <h1 class="text-5xl sm:text-6xl md:text-7xl font-black tracking-tight leading-[1.05] text-white mb-6">
+      Unleash the power of<br />intuitive software
+    </h1>
+
+    <p class="text-base sm:text-lg text-gray-400 font-medium max-w-2xl mx-auto mb-10 leading-relaxed">
+      Say goodbye to outdated, clunky tools. Every player, regardless of experience, can now dominate like a pro. Simple. Intuitive. And built to last.
+    </p>
+
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+      <a href="#products" class="w-full sm:w-auto px-8 py-4 rounded-full bg-white text-gray-900 font-extrabold text-sm shadow-xl hover:bg-orange-50 transition-all">
+        ⚡ View Products
+      </a>
+      <a href="https://discord.gg/webloom" class="w-full sm:w-auto px-8 py-4 rounded-full glass-panel font-bold text-sm text-white hover:bg-white/10 transition-all flex items-center justify-center gap-2">
+        <svg class="w-4 h-4 fill-current text-[#5865F2]" viewBox="0 0 127.14 96.36"><path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,45.91,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,45.91,96.12,53,91.08,65.69,84.69,65.69Z"/></svg>
+        Join Discord
+      </a>
+    </div>
+
+    <!-- Video Hero Showcase -->
+    <div class="relative max-w-4xl mx-auto rounded-3xl overflow-hidden glass-panel p-3 border border-white/20 orange-glow">
+      <div class="relative aspect-video rounded-2xl overflow-hidden bg-black flex items-center justify-center">
+        <img src="/assets/project_bearcheats.png" alt="BearCheats Video" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-black/30 flex items-center justify-center">
+          <div class="w-16 h-16 rounded-full bg-red-600 flex items-center justify-center shadow-2xl cursor-pointer hover:scale-110 transition">
+            <svg class="w-6 h-6 fill-white ml-1" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="w-full border-t border-white/10 py-12 text-center text-xs font-bold text-gray-500">
+    Designed by <a href="/" class="text-orange-400 hover:underline">Webloom Studio</a> • Invision Customizer Engine
+  </footer>
+
+</body>
+</html>
