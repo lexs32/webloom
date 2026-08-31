@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PHANTOM // Next-Gen Undetected Kernel Cheats & Storefront</title>
+  <meta name="description" content="Premium kernel-level gaming enhancements. Zero detection records, instant automated delivery, 24/7 dedicated support.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              pink: '#FF2A6D',
+              cyan: '#05D9E8',
+              purple: '#D100D1',
+              dark: '#08080C',
+              card: 'rgba(18, 18, 26, 0.75)',
+              border: 'rgba(255, 42, 109, 0.25)'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #08080C;
+      color: #E2E8F0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 15% 20%, rgba(255, 42, 109, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 60%, rgba(5, 217, 232, 0.08) 0%, transparent 40%),
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+    }
+
+    .glow-pink {
+      box-shadow: 0 0 25px rgba(255, 42, 109, 0.35);
+    }
+    .glow-cyan {
+      box-shadow: 0 0 25px rgba(5, 217, 232, 0.35);
+    }
+    .glow-border {
+      border: 1px solid rgba(255, 42, 109, 0.3);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .glow-border:hover {
+      border-color: rgba(255, 42, 109, 0.8);
+      box-shadow: 0 0 20px rgba(255, 42, 109, 0.3);
+    }
+
+    .glass-card {
+      background: rgba(14, 14, 22, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Range slider custom styling */
+    input[type=range] {
+      accent-color: #FF2A6D;
+    }
+
+    /* Target canvas */
+    #espCanvas {
+      background: radial-gradient(circle at center, #13141f 0%, #090a10 100%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- Top Announcement Bar -->
+  <div class="w-full bg-gradient-to-r from-brand-pink/20 via-brand-purple/20 to-brand-cyan/20 border-b border-white/10 py-2 px-4 text-center text-xs font-mono text-white/90 flex items-center justify-center gap-3">
+    <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+    <span><strong>STATUS:</strong> ALL CHEATS UNDETECTED FOR RECENT GAME PATCHES // KERNEL DRIVER V4.8.2 ACTIVE</span>
+    <a href="#status" class="underline hover:text-white ml-2 text-brand-cyan">View Live Status &rarr;</a>
+  </div>
+
+  <!-- Main Navigation -->
+  <header class="sticky top-0 z-50 glass-card border-b border-white/5 py-4 px-6 md:px-12 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-pink to-brand-purple flex items-center justify-center text-white font-black text-xl shadow-lg shadow-brand-pink/30">
+        P
+      </div>
+      <div>
+        <span class="font-black text-xl tracking-wider text-white">PHANTOM<span class="text-brand-pink">.GG</span></span>
+        <span class="block text-[10px] font-mono text-white/40 tracking-widest -mt-1">KERNEL SOLUTIONS</span>
+      </div>
+    </div>
+
+    <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-white/70">
+      <a href="#simulator" class="hover:text-white transition">3D Interactive Client</a>
+      <a href="#products" class="hover:text-white transition">Products & Pricing</a>
+      <a href="#status" class="hover:text-white transition">Live Status</a>
+      <a href="#reviews" class="hover:text-white transition">Vouches</a>
+      <a href="#faq" class="hover:text-white transition">FAQ</a>
+    </nav>
+
+    <div class="flex items-center gap-4">
+      <a href="https://discord.gg" target="_blank" class="hidden sm:flex items-center gap-2 px-4 py-2 rounded-xl bg-[#5865F2]/20 border border-[#5865F2]/40 text-[#5865F2] hover:bg-[#5865F2] hover:text-white transition text-xs font-bold font-mono">
+        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+        Discord
+      </a>
+      <a href="#products" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-pink to-brand-purple text-white text-xs font-bold tracking-wider uppercase glow-pink hover:scale-105 transition active:scale-95 shadow-lg">
+        Storefront &rarr;
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative pt-16 pb-20 px-6 max-w-6xl mx-auto text-center flex flex-col items-center">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card border border-brand-pink/30 text-xs font-mono text-brand-pink mb-6">
+      <span class="w-2 h-2 rounded-full bg-brand-pink animate-pulse"></span>
+      RING-0 KERNEL HYPERVISOR BYPASS // 2026 READY
+    </div>
+
+    <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white max-w-4xl leading-[1.05]">
+      Dominate Every Match. <br/>
+      <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-pink via-purple-400 to-brand-cyan">Never Get Detected.</span>
+    </h1>
+
+    <p class="mt-6 text-base sm:text-lg text-white/60 max-w-2xl font-medium">
+      Engineered with hypervisor memory isolation, zero input delay, customizable silent aimbot curves, and automated instant key delivery.
+    </p>
+
+    <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+      <a href="#products" class="px-8 py-4 rounded-xl bg-gradient-to-r from-brand-pink to-brand-purple text-white text-sm font-bold tracking-wider uppercase glow-pink hover:scale-105 transition shadow-xl flex items-center gap-2">
+        <span>Browse Products</span>
+        <span>🛒</span>
+      </a>
+      <a href="#simulator" class="px-8 py-4 rounded-xl glass-card border border-white/10 hover:border-brand-cyan text-white text-sm font-bold tracking-wider uppercase hover:glow-cyan transition flex items-center gap-2">
+        <span>Interactive Client UI</span>
+        <span>⚡</span>
+      </a>
+    </div>
+
+    <!-- Quick Stats Bento -->
+    <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 w-full">
+      <div class="glass-card p-5 rounded-2xl border border-white/5 text-left">
+        <div class="text-xs font-mono text-white/40 uppercase">Total Users</div>
+        <div class="text-2xl font-black text-white mt-1">24,800+</div>
+        <div class="text-[11px] text-emerald-400 font-mono mt-1">▲ Active Globally</div>
+      </div>
+      <div class="glass-card p-5 rounded-2xl border border-white/5 text-left">
+        <div class="text-xs font-mono text-white/40 uppercase">Detection Rate</div>
+        <div class="text-2xl font-black text-brand-pink mt-1">0.00%</div>
+        <div class="text-[11px] text-white/50 font-mono mt-1">Last 410 Days</div>
+      </div>
+      <div class="glass-card p-5 rounded-2xl border border-white/5 text-left">
+        <div class="text-xs font-mono text-white/40 uppercase">Delivery Time</div>
+        <div class="text-2xl font-black text-brand-cyan mt-1">&lt; 3 Sec</div>
+        <div class="text-[11px] text-white/50 font-mono mt-1">Instant Auto-Key</div>
+      </div>
+      <div class="glass-card p-5 rounded-2xl border border-white/5 text-left">
+        <div class="text-xs font-mono text-white/40 uppercase">Customer Rating</div>
+        <div class="text-2xl font-black text-amber-400 mt-1">4.9 / 5.0</div>
+        <div class="text-[11px] text-white/50 font-mono mt-1">5,200+ Discord Reviews</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive 3D / Client Simulator Section -->
+  <section id="simulator" class="py-20 px-6 max-w-6xl mx-auto w-full">
+    <div class="text-center mb-12">
+      <div class="inline-block text-xs font-mono text-brand-cyan tracking-widest uppercase mb-2">// IN-BROWSER SIMULATION</div>
+      <h2 class="text-3xl sm:text-5xl font-black text-white">Interactive Client Control Panel</h2>
+      <p class="mt-3 text-white/60 text-sm max-w-xl mx-auto">Test and customize your cheat parameters live. See the ESP bones and FOV radius react instantly on the target canvas below.</p>
+    </div>
+
+    <!-- The Interactive Simulator Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start glass-card p-6 md:p-8 rounded-3xl border border-brand-pink/30 shadow-2xl relative overflow-hidden">
+      <!-- Glow ambient light -->
+      <div class="absolute -top-32 -right-32 w-80 h-80 bg-brand-pink/15 rounded-full blur-3xl pointer-events-none"></div>
+
+      <!-- Controls Panel (Left Col) -->
+      <div class="lg:col-span-7 space-y-6">
+        <!-- Tabs Header -->
+        <div class="flex items-center gap-2 p-1.5 glass-card rounded-2xl border border-white/10 w-fit">
+          <button id="tabAimbotBtn" onclick="switchTab('aimbot')" class="px-5 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition bg-gradient-to-r from-brand-pink to-brand-purple text-white shadow">
+            Aimbot Tab
+          </button>
+          <button id="tabVisualsBtn" onclick="switchTab('visuals')" class="px-5 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition text-white/60 hover:text-white">
+            ESP & Visuals
+          </button>
+          <button id="tabMiscBtn" onclick="switchTab('misc')" class="px-5 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition text-white/60 hover:text-white">
+            Misc & Kernel
+          </button>
+        </div>
+
+        <!-- Tab 1: Aimbot Controls -->
+        <div id="tabAimbot" class="space-y-5">
+          <div class="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/5">
+            <div>
+              <div class="font-bold text-white text-sm">Silent Aimbot Enabled</div>
+              <div class="text-xs text-white/40">Vector memory redirection directly into game engine</div>
+            </div>
+            <input type="checkbox" id="aimbotEnabled" checked onchange="updateSim()" class="w-5 h-5 rounded cursor-pointer">
+          </div>
+
+          <div class="p-4 rounded-xl bg-white/5 border border-white/5 space-y-2">
+            <div class="flex justify-between text-xs font-mono">
+              <span class="text-white/70">Aimbot FOV Radius</span>
+              <span id="fovValue" class="text-brand-pink font-bold">140 px</span>
+            </div>
+            <input type="range" id="fovSlider" min="50" max="300" value="140" oninput="updateSim()" class="w-full cursor-pointer">
+          </div>
+
+          <div class="p-4 rounded-xl bg-white/5 border border-white/5 space-y-2">
+            <div class="flex justify-between text-xs font-mono">
+              <span class="text-white/70">Smoothness Factor (Humanizer)</span>
+              <span id="smoothValue" class="text-brand-cyan font-bold">1.8</span>
+            </div>
+            <input type="range" id="smoothSlider" min="1.0" max="10.0" step="0.1" value="1.8" oninput="updateSim()" class="w-full cursor-pointer">
+          </div>
+
+          <div class="p-4 rounded-xl bg-white/5 border border-white/5 flex items-center justify-between">
+            <span class="text-xs font-mono text-white/70">Target Bone</span>
+            <select id="boneSelect" onchange="updateSim()" class="bg-[#12121A] text-white text-xs font-mono px-3 py-2 rounded-lg border border-white/10 outline-none">
+              <option value="head">Head (Precision)</option>
+              <option value="neck">Neck (Safe)</option>
+              <option value="chest">Chest (Default)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Tab 2: Visuals Controls (Hidden by default) -->
+        <div id="tabVisuals" class="space-y-4 hidden">
+          <label class="flex items-center justify-between p-3.5 rounded-xl bg-white/5 border border-white/5 cursor-pointer">
+            <span class="text-xs font-mono text-white">2D / 3D Box ESP</span>
+            <input type="checkbox" id="espBox" checked onchange="updateSim()" class="w-4 h-4 cursor-pointer">
+          </label>
+          <label class="flex items-center justify-between p-3.5 rounded-xl bg-white/5 border border-white/5 cursor-pointer">
+            <span class="text-xs font-mono text-white">Skeleton Bone Tracking</span>
+            <input type="checkbox" id="espSkeleton" checked onchange="updateSim()" class="w-4 h-4 cursor-pointer">
+          </label>
+          <label class="flex items-center justify-between p-3.5 rounded-xl bg-white/5 border border-white/5 cursor-pointer">
+            <span class="text-xs font-mono text-white">Distance & Health Bar</span>
+            <input type="checkbox" id="espHealth" checked onchange="updateSim()" class="w-4 h-4 cursor-pointer">
+          </label>
+          <label class="flex items-center justify-between p-3.5 rounded-xl bg-white/5 border border-white/5 cursor-pointer">
+            <span class="text-xs font-mono text-white">Snaplines to Target</span>
+            <input type="checkbox" id="espLines" checked onchange="updateSim()" class="w-4 h-4 cursor-pointer">
+          </label>
+        </div>
+
+        <!-- Tab 3: Misc Controls (Hidden by default) -->
+        <div id="tabMisc" class="space-y-4 hidden">
+          <div class="p-4 rounded-xl bg-white/5 border border-white/5 flex items-center justify-between">
+            <div>
+              <div class="font-bold text-white text-xs">HWID Spoofer Included</div>
+              <div class="text-[11px] text-white/40">Clean NIC, BIOS, GPU serials on boot</div>
+            </div>
+            <span class="px-2.5 py-1 rounded bg-emerald-500/20 text-emerald-400 font-mono text-[10px] font-bold">ACTIVE</span>
+          </div>
+          <div class="p-4 rounded-xl bg-white/5 border border-white/5 flex items-center justify-between">
+            <div>
+              <div class="font-bold text-white text-xs">OBS / Discord Streamproof</div>
+              <div class="text-[11px] text-white/40">DirectX overlay hook is invisible to recordings</div>
+            </div>
+            <span class="px-2.5 py-1 rounded bg-emerald-500/20 text-emerald-400 font-mono text-[10px] font-bold">ENABLE</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Canvas Preview (Right Col) -->
+      <div class="lg:col-span-5 flex flex-col items-center justify-center">
+        <div class="w-full relative">
+          <div class="absolute top-3 left-3 text-[10px] font-mono text-white/50 bg-black/60 px-2.5 py-1 rounded-md border border-white/10 backdrop-blur z-10">
+            SIMULATED 3D ENGINE // 60 FPS
+          </div>
+          <canvas id="espCanvas" width="400" height="380" class="w-full max-w-[400px] mx-auto shadow-inner"></canvas>
+        </div>
+        <div class="mt-4 text-center">
+          <p class="text-xs font-mono text-white/40">Drag mouse or sliders to interact with live target simulation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Catalog Section -->
+  <section id="products" class="py-20 px-6 max-w-6xl mx-auto w-full">
+    <div class="text-center mb-12">
+      <div class="inline-block text-xs font-mono text-brand-pink tracking-widest uppercase mb-2">// PRODUCTS & TIERS</div>
+      <h2 class="text-3xl sm:text-5xl font-black text-white">Supported Game Enhancements</h2>
+      <p class="mt-3 text-white/60 text-sm max-w-xl mx-auto">Select your game below. Every license includes instant automated key delivery and built-in HWID spoofer.</p>
+      
+      <!-- Tier Selector Switch -->
+      <div class="mt-8 inline-flex items-center gap-2 p-1.5 glass-card rounded-2xl border border-white/10">
+        <button onclick="setTier('day')" id="tierDayBtn" class="px-4 py-2 rounded-xl text-xs font-bold font-mono transition bg-brand-pink text-white">1 DAY</button>
+        <button onclick="setTier('week')" id="tierWeekBtn" class="px-4 py-2 rounded-xl text-xs font-bold font-mono transition text-white/60 hover:text-white">1 WEEK</button>
+        <button onclick="setTier('month')" id="tierMonthBtn" class="px-4 py-2 rounded-xl text-xs font-bold font-mono transition text-white/60 hover:text-white">1 MONTH</button>
+        <button onclick="setTier('lifetime')" id="tierLifeBtn" class="px-4 py-2 rounded-xl text-xs font-bold font-mono transition text-white/60 hover:text-white">LIFETIME</button>
+      </div>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Product 1: MW3 / Warzone -->
+      <div class="glass-card rounded-3xl p-6 glow-border flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-mono text-emerald-400 bg-emerald-400/10 px-2.5 py-1 rounded-full border border-emerald-400/30">🟢 UNDETECTED</span>
+            <span class="text-xs font-mono text-white/40">RICOCHET KERNEL</span>
+          </div>
+          <h3 class="text-xl font-black text-white">MW3 & WARZONE</h3>
+          <p class="text-xs text-white/50 mt-1">Full Silent Aimbot, 2D/3D ESP, Loot Filter, No Recoil, Spoofer included.</p>
+          
+          <div class="my-6 p-4 rounded-2xl bg-white/5 border border-white/5">
+            <div class="text-xs text-white/40 font-mono">PRICE (<span id="mw3TierLabel">1 DAY</span>)</div>
+            <div class="text-3xl font-black text-white mt-1" id="mw3Price">$4.99</div>
+          </div>
+
+          <ul class="space-y-2 text-xs font-mono text-white/70">
+            <li class="flex items-center gap-2"><span class="text-brand-pink">✓</span> Instant Key Delivery</li>
+            <li class="flex items-center gap-2"><span class="text-brand-pink">✓</span> Streamproof Overlay</li>
+            <li class="flex items-center gap-2"><span class="text-brand-pink">✓</span> HWID Spoofer Included</li>
+          </ul>
+        </div>
+
+        <button onclick="openCheckout('MW3 & Warzone', '$4.99')" class="mt-6 w-full py-3.5 rounded-xl bg-gradient-to-r from-brand-pink to-brand-purple text-white text-xs font-bold font-mono tracking-wider uppercase glow-pink hover:scale-[1.02] transition active:scale-98">
+          Purchase Key &rarr;
+        </button>
+      </div>
+
+      <!-- Product 2: Apex Legends -->
+      <div class="glass-card rounded-3xl p-6 glow-border flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-mono text-emerald-400 bg-emerald-400/10 px-2.5 py-1 rounded-full border border-emerald-400/30">🟢 UNDETECTED</span>
+            <span class="text-xs font-mono text-white/40">EAC DRIVER</span>
+          </div>
+          <h3 class="text-xl font-black text-white">APEX LEGENDS</h3>
+          <p class="text-xs text-white/50 mt-1">Glow ESP, Prediction Aimbot, Superglide, Item Filter, Custom FOV.</p>
+          
+          <div class="my-6 p-4 rounded-2xl bg-white/5 border border-white/5">
+            <div class="text-xs text-white/40 font-mono">PRICE (<span id="apexTierLabel">1 DAY</span>)</div>
+            <div class="text-3xl font-black text-white mt-1" id="apexPrice">$5.99</div>
+          </div>
+
+          <ul class="space-y-2 text-xs font-mono text-white/70">
+            <li class="flex items-center gap-2"><span class="text-brand-cyan">✓</span> Instant Key Delivery</li>
+            <li class="flex items-center gap-2"><span class="text-brand-cyan">✓</span> Glow & Skeleton Box</li>
+            <li class="flex items-center gap-2"><span class="text-brand-cyan">✓</span> 24/7 Discord Setup Support</li>
+          </ul>
+        </div>
+
+        <button onclick="openCheckout('Apex Legends', '$5.99')" class="mt-6 w-full py-3.5 rounded-xl bg-gradient-to-r from-brand-cyan to-blue-600 text-white text-xs font-bold font-mono tracking-wider uppercase glow-cyan hover:scale-[1.02] transition active:scale-98">
+          Purchase Key &rarr;
+        </button>
+      </div>
+
+      <!-- Product 3: Rust -->
+      <div class="glass-card rounded-3xl p-6 glow-border flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-mono text-emerald-400 bg-emerald-400/10 px-2.5 py-1 rounded-full border border-emerald-400/30">🟢 UNDETECTED</span>
+            <span class="text-xs font-mono text-white/40">EAC & CERBERUS</span>
+          </div>
+          <h3 class="text-xl font-black text-white">RUST KERNEL</h3>
+          <p class="text-xs text-white/50 mt-1">Debug Camera, Silent Melee, Ore & Trap ESP, Automatic Recoil Control.</p>
+          
+          <div class="my-6 p-4 rounded-2xl bg-white/5 border border-white/5">
+            <div class="text-xs text-white/40 font-mono">PRICE (<span id="rustTierLabel">1 DAY</span>)</div>
+            <div class="text-3xl font-black text-white mt-1" id="rustPrice">$6.99</div>
+          </div>
+
+          <ul class="space-y-2 text-xs font-mono text-white/70">
+            <li class="flex items-center gap-2"><span class="text-brand-purple">✓</span> Instant Key Delivery</li>
+            <li class="flex items-center gap-2"><span class="text-brand-purple">✓</span> Silent Aim & Bullet Teleport</li>
+            <li class="flex items-center gap-2"><span class="text-brand-purple">✓</span> HWID Spoofer Included</li>
+          </ul>
+        </div>
+
+        <button onclick="openCheckout('Rust Kernel', '$6.99')" class="mt-6 w-full py-3.5 rounded-xl bg-gradient-to-r from-brand-purple to-pink-600 text-white text-xs font-bold font-mono tracking-wider uppercase glow-pink hover:scale-[1.02] transition active:scale-98">
+          Purchase Key &rarr;
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Live Anti-Cheat Status Section -->
+  <section id="status" class="py-16 px-6 max-w-6xl mx-auto w-full">
+    <div class="glass-card rounded-3xl p-8 border border-white/10">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-6 border-b border-white/10 gap-4">
+        <div>
+          <h3 class="text-2xl font-black text-white">Real-Time Anti-Cheat Monitor</h3>
+          <p class="text-xs text-white/50 font-mono mt-1">Automated probe checks every 60 seconds.</p>
+        </div>
+        <div class="flex items-center gap-2 text-xs font-mono text-emerald-400">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          <span>ALL SERVERS OPERATIONAL</span>
+        </div>
+      </div>
+
+      <div class="mt-6 overflow-x-auto">
+        <table class="w-full text-left text-xs font-mono">
+          <thead>
+            <tr class="text-white/40 border-b border-white/5">
+              <th class="pb-3">GAME</th>
+              <th class="pb-3">ANTI-CHEAT</th>
+              <th class="pb-3">VERSION</th>
+              <th class="pb-3">STATUS</th>
+              <th class="pb-3 text-right">LAST UPDATED</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-white/5 text-white/80">
+            <tr>
+              <td class="py-3.5 font-bold text-white">MW3 / Warzone</td>
+              <td class="py-3.5">Ricochet Kernel</td>
+              <td class="py-3.5 text-white/50">v4.8.1</td>
+              <td class="py-3.5 text-emerald-400 font-bold">● UNDETECTED</td>
+              <td class="py-3.5 text-right text-white/40">24 mins ago</td>
+            </tr>
+            <tr>
+              <td class="py-3.5 font-bold text-white">Apex Legends</td>
+              <td class="py-3.5">EasyAntiCheat (EAC)</td>
+              <td class="py-3.5 text-white/50">v3.2.0</td>
+              <td class="py-3.5 text-emerald-400 font-bold">● UNDETECTED</td>
+              <td class="py-3.5 text-right text-white/40">12 mins ago</td>
+            </tr>
+            <tr>
+              <td class="py-3.5 font-bold text-white">Rust</td>
+              <td class="py-3.5">EAC + Cerberus</td>
+              <td class="py-3.5 text-white/50">v5.1.2</td>
+              <td class="py-3.5 text-emerald-400 font-bold">● UNDETECTED</td>
+              <td class="py-3.5 text-right text-white/40">5 mins ago</td>
+            </tr>
+            <tr>
+              <td class="py-3.5 font-bold text-white">Valorant (DMA)</td>
+              <td class="py-3.5">Vanguard Ring-0</td>
+              <td class="py-3.5 text-white/50">DMA v1.4</td>
+              <td class="py-3.5 text-emerald-400 font-bold">● UNDETECTED</td>
+              <td class="py-3.5 text-right text-white/40">1 hr ago</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="py-16 px-6 max-w-4xl mx-auto w-full">
+    <div class="text-center mb-10">
+      <div class="inline-block text-xs font-mono text-brand-cyan tracking-widest uppercase mb-2">// QUESTIONS</div>
+      <h2 class="text-3xl font-black text-white">Frequently Asked Questions</h2>
+    </div>
+
+    <div class="space-y-4">
+      <div class="glass-card p-5 rounded-2xl border border-white/5 cursor-pointer" onclick="toggleFaq(this)">
+        <div class="flex items-center justify-between font-bold text-white text-sm">
+          <span>How does instant key delivery work?</span>
+          <span class="text-brand-pink text-lg">+</span>
+        </div>
+        <div class="faq-ans hidden text-xs text-white/60 mt-3 font-mono">
+          As soon as your payment confirms on SellAuth / Cryptomus, your license key and download loader instructions are delivered to your email and screen instantly.
+        </div>
+      </div>
+
+      <div class="glass-card p-5 rounded-2xl border border-white/5 cursor-pointer" onclick="toggleFaq(this)">
+        <div class="flex items-center justify-between font-bold text-white text-sm">
+          <span>Do I need a secondary PC for DMA cheats?</span>
+          <span class="text-brand-pink text-lg">+</span>
+        </div>
+        <div class="faq-ans hidden text-xs text-white/60 mt-3 font-mono">
+          Only for Valorant DMA. All other products (MW3, Apex, Rust) are 100% internal/external single-PC kernel hypervisor software.
+        </div>
+      </div>
+
+      <div class="glass-card p-5 rounded-2xl border border-white/5 cursor-pointer" onclick="toggleFaq(this)">
+        <div class="flex items-center justify-between font-bold text-white text-sm">
+          <span>Is the HWID Spoofer permanent?</span>
+          <span class="text-brand-pink text-lg">+</span>
+        </div>
+        <div class="faq-ans hidden text-xs text-white/60 mt-3 font-mono">
+          Our built-in kernel spoofer randomizes your motherboard UUID, NIC MAC address, and drive serials dynamically on every system reboot.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Checkout Modal Popup -->
+  <div id="checkoutModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 hidden">
+    <div class="glass-card rounded-3xl border border-brand-pink/40 p-8 max-w-md w-full relative glow-pink shadow-2xl">
+      <button onclick="closeCheckout()" class="absolute top-4 right-4 text-white/60 hover:text-white text-xl">&times;</button>
+      
+      <div class="text-xs font-mono text-brand-pink">// INSTANT CHECKOUT</div>
+      <h3 class="text-2xl font-black text-white mt-1" id="modalProductName">MW3 & Warzone</h3>
+      <div class="text-3xl font-black text-white mt-2" id="modalProductPrice">$4.99</div>
+
+      <div class="my-6 space-y-3">
+        <label class="block text-xs font-mono text-white/60">YOUR EMAIL (FOR KEY DELIVERY)</label>
+        <input type="email" placeholder="customer@domain.com" class="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white text-sm outline-none focus:border-brand-pink">
+      </div>
+
+      <div class="space-y-3">
+        <label class="block text-xs font-mono text-white/60">PAYMENT METHOD</label>
+        <div class="grid grid-cols-2 gap-3">
+          <button class="py-3 rounded-xl bg-white/5 border border-white/10 hover:border-brand-cyan text-xs font-bold text-white flex items-center justify-center gap-2">
+            <span>🪙 Crypto (BTC/LTC)</span>
+          </button>
+          <button class="py-3 rounded-xl bg-white/5 border border-white/10 hover:border-brand-pink text-xs font-bold text-white flex items-center justify-center gap-2">
+            <span>💳 Card / Stripe</span>
+          </button>
+        </div>
+      </div>
+
+      <button onclick="alert('Demo Storefront: In production this redirects to SellAuth / Cryptomus API.')" class="mt-6 w-full py-4 rounded-xl bg-gradient-to-r from-brand-pink to-brand-purple text-white text-xs font-bold font-mono tracking-wider uppercase glow-pink hover:scale-105 transition shadow-xl">
+        Complete Purchase &rarr;
+      </button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="mt-auto border-t border-white/5 py-8 px-6 text-center text-xs font-mono text-white/40">
+    <div>&copy; 2026 PHANTOM.GG // ALL RIGHTS RESERVED. FOR EDUCATIONAL USE ONLY.</div>
+    <div class="mt-2 text-white/20">Designed & Engineered by Webloom Studio</div>
+  </footer>
+
+  <!-- Script for Canvas Simulation & Interaction -->
+  <script>
+    // Tab switching
+    function switchTab(tab) {
+      document.getElementById('tabAimbot').classList.toggle('hidden', tab !== 'aimbot');
+      document.getElementById('tabVisuals').classList.toggle('hidden', tab !== 'visuals');
+      document.getElementById('tabMisc').classList.toggle('hidden', tab !== 'misc');
+
+      document.getElementById('tabAimbotBtn').className = tab === 'aimbot' 
+        ? 'px-5 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition bg-gradient-to-r from-brand-pink to-brand-purple text-white shadow'
+        : 'px-5 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition text-white/60 hover:text-white';
+      document.getElementById('tabVisualsBtn').className = tab === 'visuals'
+        ? 'px-5 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition bg-gradient-to-r from-brand-pink to-brand-purple text-white shadow'
+        : 'px-5 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition text-white/60 hover:text-white';
+      document.getElementById('tabMiscBtn').className = tab === 'misc'
+        ? 'px-5 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition bg-gradient-to-r from-brand-pink to-brand-purple text-white shadow'
+        : 'px-5 py-2 rounded-xl text-xs font-bold tracking-wider uppercase transition text-white/60 hover:text-white';
+    }
+
+    // Pricing Tiers
+    const pricing = {
+      day: { mw3: '$4.99', apex: '$5.99', rust: '$6.99', label: '1 DAY' },
+      week: { mw3: '$14.99', apex: '$16.99', rust: '$19.99', label: '1 WEEK' },
+      month: { mw3: '$34.99', apex: '$39.99', rust: '$44.99', label: '1 MONTH' },
+      lifetime: { mw3: '$119.99', apex: '$129.99', rust: '$149.99', label: 'LIFETIME' }
+    };
+
+    function setTier(tier) {
+      const data = pricing[tier];
+      document.getElementById('mw3Price').innerText = data.mw3;
+      document.getElementById('apexPrice').innerText = data.apex;
+      document.getElementById('rustPrice').innerText = data.rust;
+      
+      document.getElementById('mw3TierLabel').innerText = data.label;
+      document.getElementById('apexTierLabel').innerText = data.label;
+      document.getElementById('rustTierLabel').innerText = data.label;
+
+      ['tierDayBtn', 'tierWeekBtn', 'tierMonthBtn', 'tierLifeBtn'].forEach(id => {
+        document.getElementById(id).className = 'px-4 py-2 rounded-xl text-xs font-bold font-mono transition text-white/60 hover:text-white';
+      });
+      const activeBtn = tier === 'day' ? 'tierDayBtn' : tier === 'week' ? 'tierWeekBtn' : tier === 'month' ? 'tierMonthBtn' : 'tierLifeBtn';
+      document.getElementById(activeBtn).className = 'px-4 py-2 rounded-xl text-xs font-bold font-mono transition bg-brand-pink text-white';
+    }
+
+    // Modal
+    function openCheckout(name, price) {
+      document.getElementById('modalProductName').innerText = name;
+      document.getElementById('modalProductPrice').innerText = price;
+      document.getElementById('checkoutModal').classList.remove('hidden');
+    }
+    function closeCheckout() {
+      document.getElementById('checkoutModal').classList.add('hidden');
+    }
+
+    // FAQ
+    function toggleFaq(el) {
+      const ans = el.querySelector('.faq-ans');
+      const icon = el.querySelector('span:last-child');
+      if (ans.classList.contains('hidden')) {
+        ans.classList.remove('hidden');
+        icon.innerText = '−';
+      } else {
+        ans.classList.add('hidden');
+        icon.innerText = '+';
+      }
+    }
+
+    // Canvas Simulator Animation Loop
+    const canvas = document.getElementById('espCanvas');
+    const ctx = canvas.getContext('2d');
+
+    let targetX = 200, targetY = 190;
+    let angle = 0;
+
+    function renderCanvas() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      const fov = parseInt(document.getElementById('fovSlider').value);
+      const isAim = document.getElementById('aimbotEnabled').checked;
+      const isBox = document.getElementById('espBox') ? document.getElementById('espBox').checked : true;
+      const isSkel = document.getElementById('espSkeleton') ? document.getElementById('espSkeleton').checked : true;
+      const isHealth = document.getElementById('espHealth') ? document.getElementById('espHealth').checked : true;
+      const isLines = document.getElementById('espLines') ? document.getElementById('espLines').checked : true;
+
+      // Animate dummy target slightly
+      angle += 0.03;
+      const curX = targetX + Math.sin(angle) * 35;
+      const curY = targetY + Math.cos(angle * 0.7) * 15;
+
+      const centerX = canvas.width / 2;
+      const centerY = canvas.height / 2;
+
+      // 1. Draw FOV Circle
+      if (isAim) {
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, fov / 2, 0, Math.PI * 2);
+        ctx.strokeStyle = 'rgba(255, 42, 109, 0.4)';
+        ctx.lineWidth = 1.5;
+        ctx.stroke();
+      }
+
+      // 2. Crosshair Center
+      ctx.fillStyle = '#FF2A6D';
+      ctx.fillRect(centerX - 2, centerY - 2, 4, 4);
+
+      // 3. Snapline
+      if (isLines) {
+        ctx.beginPath();
+        ctx.moveTo(centerX, canvas.height);
+        ctx.lineTo(curX, curY + 40);
+        ctx.strokeStyle = 'rgba(5, 217, 232, 0.5)';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+
+      // 4. 2D Box ESP
+      if (isBox) {
+        ctx.strokeStyle = '#05D9E8';
+        ctx.lineWidth = 1.8;
+        ctx.strokeRect(curX - 25, curY - 50, 50, 100);
+      }
+
+      // 5. Health Bar
+      if (isHealth) {
+        ctx.fillStyle = 'rgba(0,0,0,0.5)';
+        ctx.fillRect(curX - 32, curY - 50, 4, 100);
+        ctx.fillStyle = '#34D399';
+        ctx.fillRect(curX - 32, curY - 50 + 20, 4, 80);
+
+        ctx.fillStyle = '#fff';
+        ctx.font = '10px "JetBrains Mono"';
+        ctx.fillText('ENEMY // 80HP', curX - 25, curY - 56);
+        ctx.fillStyle = '#FF2A6D';
+        ctx.fillText('24m', curX + 30, curY - 40);
+      }
+
+      // 6. Skeleton Tracking
+      if (isSkel) {
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = 1.5;
+        // Head
+        ctx.beginPath();
+        ctx.arc(curX, curY - 35, 7, 0, Math.PI * 2);
+        ctx.stroke();
+        // Spine
+        ctx.beginPath();
+        ctx.moveTo(curX, curY - 28);
+        ctx.lineTo(curX, curY + 15);
+        // Arms
+        ctx.moveTo(curX - 18, curY - 15);
+        ctx.lineTo(curX + 18, curY - 15);
+        // Legs
+        ctx.moveTo(curX, curY + 15);
+        ctx.lineTo(curX - 14, curY + 48);
+        ctx.moveTo(curX, curY + 15);
+        ctx.lineTo(curX + 14, curY + 48);
+        ctx.stroke();
+      }
+
+      requestAnimationFrame(renderCanvas);
+    }
+
+    function updateSim() {
+      const fov = document.getElementById('fovSlider').value;
+      const smooth = document.getElementById('smoothSlider').value;
+      document.getElementById('fovValue').innerText = fov + ' px';
+      document.getElementById('smoothValue').innerText = smooth;
+    }
+
+    renderCanvas();
+  </script>
+</body>
+</html>
