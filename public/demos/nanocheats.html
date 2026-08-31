@@ -79,40 +79,49 @@
       border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
 
-    /* Nav Link with Permanent & Hover Blue Capsule Highlight */
+    /* Smooth Sliding Highlight Pill Capsule */
     .nav-capsule {
-      background: rgba(13, 17, 26, 0.75);
+      position: relative;
+      background: rgba(13, 17, 26, 0.85);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 9999px;
       padding: 4px;
       display: flex;
       align-items: center;
-      gap: 4px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    }
+    .sliding-pill {
+      position: absolute;
+      top: 4px;
+      bottom: 4px;
+      border-radius: 9999px;
+      background: rgba(11, 99, 229, 0.22);
+      border: 1px solid rgba(11, 99, 229, 0.6);
+      box-shadow: 0 0 20px rgba(11, 99, 229, 0.45);
+      pointer-events: none;
+      transition: left 0.35s cubic-bezier(0.16, 1, 0.3, 1), width 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+      z-index: 1;
+      opacity: 0;
     }
     .nav-item {
       position: relative;
+      z-index: 2;
       color: #94A3B8;
       padding: 7px 18px;
       border-radius: 9999px;
       font-weight: 600;
       font-size: 0.875rem;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      border: 1px solid transparent;
+      transition: color 0.25s ease, text-shadow 0.25s ease;
+      text-decoration: none;
+      white-space: nowrap;
+      cursor: pointer;
     }
     .nav-item.active {
-      background: rgba(11, 99, 229, 0.18);
-      border-color: rgba(11, 99, 229, 0.5);
       color: #38BDF8;
-      box-shadow: 0 0 20px rgba(11, 99, 229, 0.35);
-      text-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+      text-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
     }
-    .nav-item:not(.active):hover {
-      background: rgba(11, 99, 229, 0.12);
-      border-color: rgba(11, 99, 229, 0.35);
-      color: #38BDF8;
-      transform: translateY(-1px);
-      box-shadow: 0 0 15px rgba(11, 99, 229, 0.25);
+    .nav-item:hover {
+      color: #FFFFFF;
     }
 
     /* Apple-grade Animated Button with Rich Blue Glow */
@@ -352,7 +361,7 @@
   <!-- Interactive Electricity Canvas Background (Pure Electricity - No Grids) -->
   <canvas id="nanoCanvas"></canvas>
 
-  <!-- Clean Centered Navbar with Permanent Highlight Capsule -->
+  <!-- Clean Centered Navbar with Permanent & Scroll-Following Highlight Capsule -->
   <header class="sticky top-0 z-50 nav-glass py-3 px-6 md:px-12 flex items-center justify-between">
     <!-- Left: Brand Logo & Matching Typography -->
     <a href="#" class="flex items-center gap-3 group">
@@ -362,9 +371,9 @@
       </span>
     </a>
 
-    <!-- Center: Perfectly Centered Capsule Nav with Permanent Active Highlight & Smooth Hover -->
+    <!-- Center: Perfectly Centered Capsule Nav with Scrollspy Following Indicator -->
     <nav class="hidden md:flex items-center justify-center flex-1 mx-8">
-      <div class="nav-capsule">
+      <div class="nav-capsule" id="navCapsule">
         <a href="#games" class="nav-item active">Games</a>
         <a href="#features" class="nav-item">Features</a>
         <a href="#streamproof" class="nav-item">Streamproof</a>
@@ -404,7 +413,7 @@
   </section>
 
   <!-- 3D Cylindrical Carousel (Longer & Taller Character Cards, No Undetected Pills) -->
-  <section id="games" class="relative py-12 px-4 max-w-7xl mx-auto w-full overflow-hidden">
+  <section id="games" class="relative py-12 px-4 max-w-7xl mx-auto w-full overflow-hidden scroll-mt-24">
     <div class="text-center mb-6">
       <h2 class="text-3xl sm:text-4xl font-bold text-white font-display">Your Cheats.</h2>
       <p class="mt-2 text-slate-400 text-sm">Beautifully simple. Unbelievably powerful.</p>
@@ -500,7 +509,7 @@
   </section>
 
   <!-- Exact DivisionCheats 6-Bento Features Grid ("You'll Choose Us") with Interactive Animated Cursor & Pulse Rings -->
-  <section id="features" class="py-24 px-6 max-w-7xl mx-auto w-full">
+  <section id="features" class="py-24 px-6 max-w-7xl mx-auto w-full scroll-mt-24">
     <div class="text-center mb-16">
       <h2 class="text-4xl sm:text-5xl font-bold text-white font-display">You'll Choose Us.</h2>
       <p class="mt-3 text-slate-400 text-base">Because your cheats should feel this good.</p>
@@ -595,7 +604,7 @@
             <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="m10 17l-4-4l1.41-1.41L10 14.17l6.59-6.59L18 9m-6-8L3 5v6c0 5.55 3.84 10.74 9 12c5.16-1.26 9-6.45 9-12V5z"/></svg> Safe
           </div>
           <div class="text-[#E03131] text-xs rounded-full flex items-center border gap-1.5 px-3 py-1 bg-[#E03131]/10 border-[#E03131]/30 font-semibold">
-            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M14 18v2h2v2H8v-2h2v-2H3a2 2 0 0 1-2-2V4L0 3l1.41-1.42l20.75 20.76l-1.41 1.41L15 18zM3 16h10L3 6zM21 2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-.34l-2-2H21V4H6.66l-2-2z"/></svg> Streamproof
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M14 18v2h2v2H8v-2h2v-2H3a2 2 0 0 1-2-2V4L0 3l1.41-1.42l20.75 20.76l-1.41 1.41L15 18zM3 16h10L3 6zM21 2a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-.34l-2-2H21V4H6.66l-2-2z"></path></svg> Streamproof
           </div>
           <div class="text-[#38BDF8] text-xs rounded-full hidden sm:flex items-center border gap-1.5 px-3 py-1 bg-[#38BDF8]/10 border-[#38BDF8]/30 font-semibold">
             <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M1 21h4V9H1zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57l.03-.32c0-.41-.17-.79-.44-1.06L14.17 1L7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73z"/></svg> Easy Use
@@ -612,7 +621,7 @@
   </section>
 
   <!-- Interactive Streamproof Comparison Slider -->
-  <section id="streamproof" class="py-20 px-6 max-w-6xl mx-auto w-full">
+  <section id="streamproof" class="py-20 px-6 max-w-6xl mx-auto w-full scroll-mt-24">
     <div class="text-center mb-12">
       <h2 class="text-3xl sm:text-4xl font-bold text-white font-display">100% Streamproof Architecture</h2>
       <p class="mt-2 text-slate-400 text-sm max-w-lg mx-auto">Completely invisible to Discord screenshare, OBS Studio, and recording software.</p>
@@ -643,7 +652,7 @@
   </section>
 
   <!-- Animated Reviews Section ("See What Players Love." - 20+ Seamless Cards Loop) -->
-  <section id="reviews" class="py-24 px-6 max-w-7xl mx-auto w-full overflow-hidden">
+  <section id="reviews" class="py-24 px-6 max-w-7xl mx-auto w-full overflow-hidden scroll-mt-24">
     <div class="text-center mb-16">
       <h2 class="text-4xl sm:text-5xl font-bold text-white font-display">See What Players Love.</h2>
       <p class="mt-3 text-slate-400 text-base">Because your cheats should just work.</p>
@@ -1388,7 +1397,7 @@
   </section>
 
   <!-- Discord Community CTA Banner with 3D Discord Mascot (Division-Style) -->
-  <section id="community" class="py-16 px-6 max-w-6xl mx-auto w-full">
+  <section id="community" class="py-16 px-6 max-w-6xl mx-auto w-full scroll-mt-24">
     <div class="relative overflow-hidden rounded-2xl border border-brand-borderHover bg-[#090D15] p-10 md:p-14 flex flex-col md:flex-row items-center justify-between shadow-2xl">
       <!-- Background Graphic Overlay -->
       <img src="https://division.b-cdn.net/discordbg.webp" alt="Discord BG" class="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none">
@@ -1428,7 +1437,7 @@
     </div>
   </footer>
 
-  <!-- Scripts: Canvas Pure Electricity (No Grid) + 3D Carousel + Split Slider -->
+  <!-- Scripts: Canvas Pure Electricity + 3D Carousel + Split Slider + Real-Time ScrollSpy Sliding Pill -->
   <script>
     // 1. Interactive Canvas: Pure Vertical Electricity Pulses (NO grids/dots)
     (function() {
@@ -1504,7 +1513,7 @@
       render();
     })();
 
-    // 2. 3D Cylindrical Carousel Implementation (Framer / Spector 3D Cylindrical Wheel with Longer Cards)
+    // 2. 3D Cylindrical Carousel Implementation
     (function() {
       const container = document.getElementById('carousel3D');
       const inner = document.getElementById('carouselInner');
@@ -1621,6 +1630,73 @@
       box.addEventListener('touchstart', onSlideStart, { passive: true });
       window.addEventListener('touchmove', onSlideMove, { passive: true });
       window.addEventListener('touchend', onSlideEnd);
+    })();
+
+    // 4. Real-Time ScrollSpy & Smooth Sliding Capsule Indicator Pill
+    (function() {
+      const capsule = document.getElementById('navCapsule');
+      if (!capsule) return;
+
+      const navItems = Array.from(capsule.querySelectorAll('.nav-item'));
+      
+      // Create sliding indicator element
+      const indicator = document.createElement('div');
+      indicator.className = 'sliding-pill';
+      capsule.prepend(indicator);
+
+      function moveTo(targetItem) {
+        if (!targetItem) return;
+        navItems.forEach(item => item.classList.remove('active'));
+        targetItem.classList.add('active');
+
+        const itemRect = targetItem.getBoundingClientRect();
+        const capsuleRect = capsule.getBoundingClientRect();
+
+        indicator.style.left = (targetItem.offsetLeft) + 'px';
+        indicator.style.width = (targetItem.offsetWidth) + 'px';
+        indicator.style.opacity = '1';
+      }
+
+      // Init on load
+      window.addEventListener('load', () => {
+        moveTo(navItems[0]);
+      });
+      setTimeout(() => {
+        moveTo(navItems[0]);
+      }, 50);
+
+      // Click to instantly move indicator
+      navItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+          moveTo(item);
+        });
+      });
+
+      // ScrollSpy implementation: tracking active section in viewport
+      const sectionIds = ['games', 'features', 'streamproof', 'reviews', 'community'];
+      const sectionElements = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+
+      let isScrollingTimer;
+      window.addEventListener('scroll', () => {
+        const scrollPosition = window.scrollY + 200;
+
+        for (let i = sectionElements.length - 1; i >= 0; i--) {
+          const sec = sectionElements[i];
+          if (sec.offsetTop <= scrollPosition) {
+            const activeId = sec.id;
+            const activeLink = navItems.find(item => item.getAttribute('href') === '#' + activeId);
+            if (activeLink && !activeLink.classList.contains('active')) {
+              moveTo(activeLink);
+            }
+            break;
+          }
+        }
+      }, { passive: true });
+
+      window.addEventListener('resize', () => {
+        const active = capsule.querySelector('.nav-item.active') || navItems[0];
+        moveTo(active);
+      });
     })();
   </script>
 </body>
