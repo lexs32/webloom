@@ -112,9 +112,10 @@
     .pulse-animate-three { animation: pulseRingExpand 3s ease-out infinite 1.2s; }
     .pulse-animate-four { animation: pulseRingExpand 3s ease-out infinite 1.8s; }
 
+    /* High-Definition 3D Carousel (ZERO CSS BLUR, RAZOR SHARP) */
     .mr-container {
       width: 100%;
-      height: 380px;
+      height: 400px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -144,11 +145,14 @@
       align-items: center;
       justify-content: center;
       pointer-events: none;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
     }
     .mr-item-content {
-      will-change: filter, opacity, transform;
       pointer-events: auto;
-      transition: opacity 0.2s ease, filter 0.2s ease, transform 0.3s ease;
+      transition: opacity 0.2s ease, transform 0.3s ease;
+      transform: translateZ(0);
+      will-change: transform, opacity;
     }
     .mr-grab { cursor: grab; cursor: -webkit-grab; }
     .mr-grabbing { cursor: grabbing; cursor: -webkit-grabbing; }
@@ -329,7 +333,7 @@
   </header>
   
 
-  <!-- Hero Section (Clean, Open & Elegant without in-hero search bar) -->
+  <!-- Hero Section -->
   <section class="relative pt-28 pb-16 px-6 max-w-6xl mx-auto text-center flex flex-col items-center justify-center min-h-[540px]">
     <div class="hero-characters-bg"></div>
 
@@ -355,7 +359,7 @@
     </div>
   </section>
 
-  <!-- 3D Cylindrical Carousel (Pure Clean Videos) -->
+  <!-- 3D Cylindrical Carousel (Ultra-Crisp Studio Retina Cards, ZERO BLUR) -->
   <section id="games" class="relative py-12 px-4 max-w-7xl mx-auto w-full overflow-hidden scroll-mt-24">
     <div class="text-center mb-6">
       <h2 class="text-3xl sm:text-4xl font-bold text-white font-display">Your Cheats.</h2>
@@ -366,110 +370,70 @@
       <div id="carousel3D" class="mr-container mr-grab">
         <div id="carouselInner" class="mr-inner">
           
-          <!-- Card 1: RUST -->
           <div class="mr-item" data-index="0">
             <div class="mr-item-content">
-              <a href="product.html?game=rust" class="block w-[210px] h-[300px] rounded-2xl bg-[#090D15] border border-white/10 overflow-hidden relative shadow-2xl flex flex-col justify-end p-4 group hover:border-[#2DC6FF]/60 transition">
-                <video src="https://division.b-cdn.net/cardvideos/Rust.webm" poster="https://division.b-cdn.net/card1.webp" autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-300 pointer-events-none"></video>
-                <div class="absolute inset-0 bg-gradient-to-t from-[#040608]/90 via-transparent to-transparent pointer-events-none"></div>
-                <div class="relative z-10 opacity-0 group-hover:opacity-100 transition duration-200">
-                  <span class="text-xs font-bold text-black bg-[#2DC6FF] px-3 py-1 rounded-full">View Cheats →</span>
-                </div>
+              <a href="product.html?game=rust" class="block w-[205px] sm:w-[220px] h-[295px] sm:h-[315px] rounded-2xl overflow-hidden relative shadow-2xl border border-white/15 hover:border-[#2DC6FF]/70 transition-all duration-300 group">
+                <img src="https://division.b-cdn.net/card1.webp" alt="Nano Rust" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" style="image-rendering: -webkit-optimize-contrast;">
               </a>
             </div>
           </div>
-
-          <!-- Card 2: FORTNITE -->
+    
           <div class="mr-item" data-index="1">
             <div class="mr-item-content">
-              <a href="product.html?game=fortnite" class="block w-[210px] h-[300px] rounded-2xl bg-[#090D15] border border-white/10 overflow-hidden relative shadow-2xl flex flex-col justify-end p-4 group hover:border-[#2DC6FF]/60 transition">
-                <video src="https://division.b-cdn.net/cardvideos/Fortnite.webm" poster="https://division.b-cdn.net/card4.webp" autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-300 pointer-events-none"></video>
-                <div class="absolute inset-0 bg-gradient-to-t from-[#040608]/90 via-transparent to-transparent pointer-events-none"></div>
-                <div class="relative z-10 opacity-0 group-hover:opacity-100 transition duration-200">
-                  <span class="text-xs font-bold text-black bg-[#2DC6FF] px-3 py-1 rounded-full">View Cheats →</span>
-                </div>
+              <a href="product.html?game=fortnite" class="block w-[205px] sm:w-[220px] h-[295px] sm:h-[315px] rounded-2xl overflow-hidden relative shadow-2xl border border-white/15 hover:border-[#2DC6FF]/70 transition-all duration-300 group">
+                <img src="https://division.b-cdn.net/card4.webp" alt="Nano Fortnite" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" style="image-rendering: -webkit-optimize-contrast;">
               </a>
             </div>
           </div>
-
-          <!-- Card 3: ARC RAIDERS -->
+    
           <div class="mr-item" data-index="2">
             <div class="mr-item-content">
-              <a href="product.html?game=arc-raiders" class="block w-[210px] h-[300px] rounded-2xl bg-[#090D15] border border-white/10 overflow-hidden relative shadow-2xl flex flex-col justify-end p-4 group hover:border-[#2DC6FF]/60 transition">
-                <video src="https://division.b-cdn.net/cardvideos/arcraiders.webm" poster="https://division.b-cdn.net/card3.webp" autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-300 pointer-events-none"></video>
-                <div class="absolute inset-0 bg-gradient-to-t from-[#040608]/90 via-transparent to-transparent pointer-events-none"></div>
-                <div class="relative z-10 opacity-0 group-hover:opacity-100 transition duration-200">
-                  <span class="text-xs font-bold text-black bg-[#2DC6FF] px-3 py-1 rounded-full">View Cheats →</span>
-                </div>
+              <a href="product.html?game=arc-raiders" class="block w-[205px] sm:w-[220px] h-[295px] sm:h-[315px] rounded-2xl overflow-hidden relative shadow-2xl border border-white/15 hover:border-[#2DC6FF]/70 transition-all duration-300 group">
+                <img src="https://division.b-cdn.net/card3.webp" alt="Nano Arc Raiders" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" style="image-rendering: -webkit-optimize-contrast;">
               </a>
             </div>
           </div>
-
-          <!-- Card 4: RAINBOW SIX -->
+    
           <div class="mr-item" data-index="3">
             <div class="mr-item-content">
-              <a href="product.html?game=rainbow-six" class="block w-[210px] h-[300px] rounded-2xl bg-[#090D15] border border-white/10 overflow-hidden relative shadow-2xl flex flex-col justify-end p-4 group hover:border-[#2DC6FF]/60 transition">
-                <video src="https://division.b-cdn.net/cardvideos/Rainbow.webm" poster="https://division.b-cdn.net/card8.webp" autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-300 pointer-events-none"></video>
-                <div class="absolute inset-0 bg-gradient-to-t from-[#040608]/90 via-transparent to-transparent pointer-events-none"></div>
-                <div class="relative z-10 opacity-0 group-hover:opacity-100 transition duration-200">
-                  <span class="text-xs font-bold text-black bg-[#2DC6FF] px-3 py-1 rounded-full">View Cheats →</span>
-                </div>
+              <a href="product.html?game=rainbow-six" class="block w-[205px] sm:w-[220px] h-[295px] sm:h-[315px] rounded-2xl overflow-hidden relative shadow-2xl border border-white/15 hover:border-[#2DC6FF]/70 transition-all duration-300 group">
+                <img src="https://division.b-cdn.net/card8.webp" alt="Nano Rainbow Six" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" style="image-rendering: -webkit-optimize-contrast;">
               </a>
             </div>
           </div>
-
-          <!-- Card 5: APEX LEGENDS -->
+    
           <div class="mr-item" data-index="4">
             <div class="mr-item-content">
-              <a href="product.html?game=apex-legends" class="block w-[210px] h-[300px] rounded-2xl bg-[#090D15] border border-white/10 overflow-hidden relative shadow-2xl flex flex-col justify-end p-4 group hover:border-[#2DC6FF]/60 transition">
-                <video src="https://division.b-cdn.net/cardvideos/Apex.webm" poster="https://division.b-cdn.net/card7.webp" autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-300 pointer-events-none"></video>
-                <div class="absolute inset-0 bg-gradient-to-t from-[#040608]/90 via-transparent to-transparent pointer-events-none"></div>
-                <div class="relative z-10 opacity-0 group-hover:opacity-100 transition duration-200">
-                  <span class="text-xs font-bold text-black bg-[#2DC6FF] px-3 py-1 rounded-full">View Cheats →</span>
-                </div>
+              <a href="product.html?game=apex-legends" class="block w-[205px] sm:w-[220px] h-[295px] sm:h-[315px] rounded-2xl overflow-hidden relative shadow-2xl border border-white/15 hover:border-[#2DC6FF]/70 transition-all duration-300 group">
+                <img src="https://division.b-cdn.net/card7.webp" alt="Nano Apex Legends" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" style="image-rendering: -webkit-optimize-contrast;">
               </a>
             </div>
           </div>
-
-          <!-- Card 6: MARVEL RIVALS -->
+    
           <div class="mr-item" data-index="5">
             <div class="mr-item-content">
-              <a href="product.html?game=marvel-rivals" class="block w-[210px] h-[300px] rounded-2xl bg-[#090D15] border border-white/10 overflow-hidden relative shadow-2xl flex flex-col justify-end p-4 group hover:border-[#2DC6FF]/60 transition">
-                <video src="https://division.b-cdn.net/cardvideos/Rivals.webm" poster="https://division.b-cdn.net/card5.webp" autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-300 pointer-events-none"></video>
-                <div class="absolute inset-0 bg-gradient-to-t from-[#040608]/90 via-transparent to-transparent pointer-events-none"></div>
-                <div class="relative z-10 opacity-0 group-hover:opacity-100 transition duration-200">
-                  <span class="text-xs font-bold text-black bg-[#2DC6FF] px-3 py-1 rounded-full">View Cheats →</span>
-                </div>
+              <a href="product.html?game=marvel-rivals" class="block w-[205px] sm:w-[220px] h-[295px] sm:h-[315px] rounded-2xl overflow-hidden relative shadow-2xl border border-white/15 hover:border-[#2DC6FF]/70 transition-all duration-300 group">
+                <img src="https://division.b-cdn.net/card5.webp" alt="Nano Marvel Rivals" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" style="image-rendering: -webkit-optimize-contrast;">
               </a>
             </div>
           </div>
-
-          <!-- Card 7: HELL LET LOOSE -->
+    
           <div class="mr-item" data-index="6">
             <div class="mr-item-content">
-              <a href="product.html?game=hell-let-loose" class="block w-[210px] h-[300px] rounded-2xl bg-[#090D15] border border-white/10 overflow-hidden relative shadow-2xl flex flex-col justify-end p-4 group hover:border-[#2DC6FF]/60 transition">
-                <video src="https://division.b-cdn.net/cardvideos/HLL.webm" poster="https://division.b-cdn.net/hellcard.webp" autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-300 pointer-events-none"></video>
-                <div class="absolute inset-0 bg-gradient-to-t from-[#040608]/90 via-transparent to-transparent pointer-events-none"></div>
-                <div class="relative z-10 opacity-0 group-hover:opacity-100 transition duration-200">
-                  <span class="text-xs font-bold text-black bg-[#2DC6FF] px-3 py-1 rounded-full">View Cheats →</span>
-                </div>
+              <a href="product.html?game=hell-let-loose" class="block w-[205px] sm:w-[220px] h-[295px] sm:h-[315px] rounded-2xl overflow-hidden relative shadow-2xl border border-white/15 hover:border-[#2DC6FF]/70 transition-all duration-300 group">
+                <img src="https://division.b-cdn.net/hellcard.webp" alt="Nano Hell Let Loose" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" style="image-rendering: -webkit-optimize-contrast;">
               </a>
             </div>
           </div>
-
-          <!-- Card 8: DELTA FORCE -->
+    
           <div class="mr-item" data-index="7">
             <div class="mr-item-content">
-              <a href="product.html?game=delta-force" class="block w-[210px] h-[300px] rounded-2xl bg-[#090D15] border border-white/10 overflow-hidden relative shadow-2xl flex flex-col justify-end p-4 group hover:border-[#2DC6FF]/60 transition">
-                <video src="https://division.b-cdn.net/cardvideos/Delta.webm" poster="https://division.b-cdn.net/deltacard.webp" autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-300 pointer-events-none"></video>
-                <div class="absolute inset-0 bg-gradient-to-t from-[#040608]/90 via-transparent to-transparent pointer-events-none"></div>
-                <div class="relative z-10 opacity-0 group-hover:opacity-100 transition duration-200">
-                  <span class="text-xs font-bold text-black bg-[#2DC6FF] px-3 py-1 rounded-full">View Cheats →</span>
-                </div>
+              <a href="product.html?game=delta-force" class="block w-[205px] sm:w-[220px] h-[295px] sm:h-[315px] rounded-2xl overflow-hidden relative shadow-2xl border border-white/15 hover:border-[#2DC6FF]/70 transition-all duration-300 group">
+                <img src="https://division.b-cdn.net/deltacard.webp" alt="Nano Delta Force" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" style="image-rendering: -webkit-optimize-contrast;">
               </a>
             </div>
           </div>
-
+    
         </div>
       </div>
     </div>
@@ -1690,13 +1654,13 @@
       setInterval(showNextToast, 22000);
     }, 4000);
 
-    // 3D Cylindrical Carousel Implementation
+    // 3D Cylindrical Carousel (ZERO BLUR, 100% SHARP)
     (function() {
       const container = document.getElementById('carousel3D');
       const inner = document.getElementById('carouselInner');
       const items = Array.from(document.querySelectorAll('.mr-item'));
       const numItems = items.length;
-      const radius = 450;
+      const radius = 480;
 
       let currentRotation = 0;
       let isDragging = false;
@@ -1716,13 +1680,12 @@
           const diffFromFront = relativeAngle > 180 ? 360 - relativeAngle : relativeAngle;
 
           const t = diffFromFront / 180;
-          const blur = t * 5;
-          const opacity = 1 - t * 0.65;
+          const opacity = Math.max(0.45, 1 - t * 0.55);
           const zIndex = Math.round((1 - t) * 100);
 
           const content = item.querySelector('.mr-item-content');
           if (content) {
-            content.style.filter = `blur(${blur.toFixed(2)}px)`;
+            // ZERO BLUR APPLIED - ALWAYS 100% RETINA SHARP
             content.style.opacity = opacity.toFixed(2);
           }
           item.style.zIndex = zIndex;
