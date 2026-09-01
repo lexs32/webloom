@@ -1491,10 +1491,10 @@
     </nav>
   </div>
 
-  <!-- Feature 7: Minimalist Live Purchase Toast with Real Country Flags -->
+  <!-- Feature 7: Minimalist Live Purchase Toast with Real High-Res Country Flags -->
   <div id="purchaseToast" class="fixed bottom-6 left-6 z-40 hidden sm:flex items-center gap-3 bg-[#0D111A]/95 border border-white/10 backdrop-blur-xl px-4 py-3 rounded-2xl shadow-2xl toast-enter max-w-md">
-    <div id="toastFlag" class="text-2xl flex-shrink-0 leading-none select-none">
-      🇺🇸
+    <div class="w-7 h-5 rounded overflow-hidden flex-shrink-0 border border-white/10 shadow-sm flex items-center justify-center bg-black/40">
+      <img id="toastFlagImg" src="https://flagcdn.com/w40/us.png" alt="Country Flag" class="w-full h-full object-cover">
     </div>
     <div class="flex-1 min-w-0 pr-2">
       <p id="toastText" class="text-xs text-slate-200 font-medium whitespace-nowrap">Someone from United States bought <span class="text-[#2DC6FF] font-bold">Nano Rust (30 Days)</span></p>
@@ -1646,28 +1646,28 @@
       }
     }
 
-    // Live Social Proof Purchase Toasts with Real Country Flags
+    // Live Social Proof Purchase Toasts with High-Res CDN Country Flags
     const fakePurchases = [
-      { flag: "🇺🇸", loc: "United States", game: "Nano Rust (30 Days)", time: "1m ago" },
-      { flag: "🇩🇪", loc: "Germany", game: "Nano Arc Raiders (1 Week)", time: "3m ago" },
-      { flag: "🇬🇧", loc: "United Kingdom", game: "Nano Fortnite (30 Days)", time: "2m ago" },
-      { flag: "🇨🇦", loc: "Canada", game: "Nano Apex Legends (1 Day)", time: "4m ago" },
-      { flag: "🇫🇷", loc: "France", game: "Nano Delta Force (1 Month)", time: "6m ago" },
-      { flag: "🇦🇺", loc: "Australia", game: "Nano Marvel Rivals (1 Week)", time: "5m ago" },
-      { flag: "🇳🇱", loc: "Netherlands", game: "Nano Rainbow Six (30 Days)", time: "2m ago" },
-      { flag: "🇸🇪", loc: "Sweden", game: "Nano Rust (1 Week)", time: "7m ago" }
+      { code: "us", loc: "United States", game: "Nano Rust (30 Days)", time: "1m ago" },
+      { code: "de", loc: "Germany", game: "Nano Arc Raiders (1 Week)", time: "3m ago" },
+      { code: "gb", loc: "United Kingdom", game: "Nano Fortnite (30 Days)", time: "2m ago" },
+      { code: "ca", loc: "Canada", game: "Nano Apex Legends (1 Day)", time: "4m ago" },
+      { code: "fr", loc: "France", game: "Nano Delta Force (1 Month)", time: "6m ago" },
+      { code: "au", loc: "Australia", game: "Nano Marvel Rivals (1 Week)", time: "5m ago" },
+      { code: "nl", loc: "Netherlands", game: "Nano Rainbow Six (30 Days)", time: "2m ago" },
+      { code: "se", loc: "Sweden", game: "Nano Rust (1 Week)", time: "7m ago" }
     ];
 
     let toastIndex = 0;
     const toast = document.getElementById('purchaseToast');
-    const toastFlag = document.getElementById('toastFlag');
+    const toastFlagImg = document.getElementById('toastFlagImg');
     const toastText = document.getElementById('toastText');
     const toastTime = document.getElementById('toastTime');
 
     function showNextToast() {
       const p = fakePurchases[toastIndex % fakePurchases.length];
       toastIndex++;
-      toastFlag.textContent = p.flag;
+      toastFlagImg.src = `https://flagcdn.com/w40/${p.code}.png`;
       toastText.innerHTML = `Someone from <b>${p.loc}</b> bought <span class="text-[#2DC6FF] font-bold">${p.game}</span>`;
       toastTime.textContent = p.time;
 
