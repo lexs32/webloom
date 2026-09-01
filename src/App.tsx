@@ -44,12 +44,35 @@ interface FAQItem {
 // 1. Projects
 const PROJECTS: Project[] = [
   {
+    id: 'salix',
+    title: 'Salix AI Sales & ROI Platform',
+    category: 'Framer SaaS Landing & Interactive UI',
+    tool: 'Framer Motion / React',
+    year: '2026',
+    image: '/assets/project_salix.png',
+    link: '/salix.html',
+    rotate: 'rotate-[-1.5deg]',
+    description: 'Ultra-modern SaaS marketing page with interactive dashboards, spring physics, dynamic CRM automation flows, and clean pricing architecture.'
+  },
+  {
+    id: 'nanocheats',
+    title: 'NanoCheats Gaming Storefront',
+    category: 'Cyberpunk 3D Store & Realtime UI',
+    tool: 'HTML5 Canvas / Tailwind / 3D CSS',
+    year: '2026',
+    image: '/assets/project_riftcheats.png',
+    link: '/nanocheats.html',
+    rotate: 'rotate-[1.5deg]',
+    description: 'Electric OLED storefront with 3D cylindrical product carousel, streamproof split-slider comparison, live country purchase toasts, and interactive particle canvas.'
+  },
+  {
     id: 'riftcheats',
     title: 'RiftCheats Storefront',
     category: 'SellAuth Theme & 3D UI Client',
     tool: 'Tailwind / React',
     year: '2026',
     image: '/assets/project_riftcheats.png',
+    link: '/demos/riftcheats.html',
     rotate: 'rotate-[-2deg]',
     description: 'Neon cyberpunk storefront experience featuring interactive 3D tilted cheat client controls, instant checkout, and pink ambient glows.'
   },
