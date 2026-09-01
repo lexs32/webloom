@@ -1437,7 +1437,7 @@
     </div>
   </footer>
 
-  <!-- Scripts: Canvas Pure Electricity + 3D Carousel + Split Slider + Ultra-Smooth Glitch-Free Capsule -->
+  <!-- Scripts: Canvas Pure Electricity + 3D Carousel + Split Slider + Rock-Solid ScrollSpy & Manual Click Lock -->
   <script>
     // 1. Interactive Canvas: Pure Vertical Electricity Pulses (NO grids/dots)
     (function() {
@@ -1630,20 +1630,21 @@
       window.addEventListener('touchend', onSlideEnd);
     })();
 
-    // 4. Glitch-Free Frosted Capsule Pill & ScrollSpy (Linear / Apple style)
+    // 4. Glitch-Free Frosted Capsule Pill with Smooth Click Navigation & Scroll Lock
     (function() {
       const capsule = document.getElementById('navCapsule');
       if (!capsule) return;
 
       const navItems = Array.from(capsule.querySelectorAll('.nav-item'));
-      
-      // Create sliding indicator element
       let pill = capsule.querySelector('.sliding-pill');
       if (!pill) {
         pill = document.createElement('div');
         pill.className = 'sliding-pill';
         capsule.prepend(pill);
       }
+
+      let isManualScrolling = false;
+      let manualTimer = null;
 
       function setPillPosition(target) {
         if (!target) return;
@@ -1670,23 +1671,49 @@
       window.addEventListener('load', init);
       setTimeout(init, 50);
 
-      // Click to scroll
+      // Smooth click navigation with scroll listener lock
       navItems.forEach(item => {
         item.addEventListener('click', (e) => {
+          e.preventDefault();
+          const targetId = item.getAttribute('href').substring(1);
+          const targetSection = document.getElementById(targetId);
+
+          isManualScrolling = true;
+          clearTimeout(manualTimer);
           setPillPosition(item);
+
+          if (targetSection) {
+            const navHeight = document.querySelector('header').offsetHeight || 80;
+            const targetTop = targetSection.getBoundingClientRect().top + window.pageYOffset - navHeight - 10;
+            window.scrollTo({
+              top: targetTop,
+              behavior: 'smooth'
+            });
+          }
+
+          manualTimer = setTimeout(() => {
+            isManualScrolling = false;
+          }, 950);
         });
       });
 
-      // Glitch-Free ScrollSpy using requestAnimationFrame
+      // ScrollSpy: Only updates when freely scrolling (NOT during click transit)
       const sections = ['games', 'features', 'streamproof', 'reviews', 'community']
         .map(id => document.getElementById(id))
         .filter(Boolean);
 
       let ticking = false;
       window.addEventListener('scroll', () => {
+        if (isManualScrolling) return; // Disregard scroll events triggered during smooth click transit
+
         if (!ticking) {
           window.requestAnimationFrame(() => {
-            const scrollMiddle = window.scrollY + (window.innerHeight * 0.35);
+            if (isManualScrolling) {
+              ticking = false;
+              return;
+            }
+
+            const scrollMiddle = window.scrollY + 220;
 
             for (let i = sections.length - 1; i >= 0; i--) {
               const sec = sections[i];
