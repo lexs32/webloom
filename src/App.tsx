@@ -44,6 +44,17 @@ interface FAQItem {
 // 1. Projects
 const PROJECTS: Project[] = [
   {
+    id: 'essentia',
+    title: 'Essentia™ Luxury Skincare',
+    category: 'Framer 3D Product & Kinetic Scroll',
+    tool: 'Framer / GSAP / Kinetic Physics',
+    year: '2026',
+    image: '/assets/essentia_thumb.jpg',
+    link: '/essentia.html',
+    rotate: 'rotate-[-1deg]',
+    description: 'Award-winning Framer interactive skincare showcase featuring scroll-pinned 3D product cradling, dynamic camera zooms, ingredient accordions, and tactile micro-interactions.'
+  },
+  {
     id: 'studypro',
     title: 'Study Pro 3D Educational Store',
     category: 'E-Commerce / 3D Books & Flashcards',
