@@ -185,7 +185,7 @@
       </div>
     </nav>
 
-    <!-- Right: Quick Game Switcher & Back to Home -->
+    <!-- Right: Quick Game Switcher & Back to Storefront -->
     <div class="flex items-center gap-3">
       <select id="gameSelector" class="bg-[#0D111A] text-xs text-slate-200 border border-white/10 rounded-full px-3 py-1.5 outline-none focus:border-[#0B63E5] cursor-pointer">
       </select>
@@ -205,30 +205,25 @@
       <span id="breadcrumbGame" class="text-white font-medium">Rust</span>
     </div>
 
-    <!-- Product Top Section (2 Column: Left Media Gallery, Right Buy Box) -->
+    <!-- Product Top Section (Large Preview on Left, Buy Box on Right) -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
       
-      <!-- Left: Interactive Media Gallery -->
+      <!-- Left: Generous Big Media Gallery (Expanded height so full character/gameplay is visible) -->
       <div class="lg:col-span-7 flex flex-col gap-4">
-        <!-- Main Media Player / Preview -->
-        <div class="relative w-full aspect-video rounded-2xl bg-[#090D15] border border-white/10 overflow-hidden shadow-2xl flex items-center justify-center group" id="mainMediaContainer">
-          <!-- Dynamically Injected Main Video or Image -->
-          <div id="mainMediaWrapper" class="w-full h-full"></div>
+        <!-- Big Media Viewport -->
+        <div class="relative w-full h-[380px] sm:h-[460px] md:h-[520px] lg:h-[560px] rounded-2xl bg-[#080C14] border border-white/10 overflow-hidden shadow-2xl flex items-center justify-center group" id="mainMediaContainer">
+          <div id="mainMediaWrapper" class="w-full h-full flex items-center justify-center"></div>
         </div>
 
-        <!-- Thumbnail Carousel -->
+        <!-- Thumbnail Row -->
         <div class="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-none" id="thumbnailsContainer"></div>
       </div>
 
       <!-- Right: Product Purchase Box -->
       <div class="lg:col-span-5 bg-[#0D111A] border border-white/10 rounded-2xl p-6 sm:p-8 shadow-2xl flex flex-col gap-6">
-        <!-- Header: Logo, Title & Status -->
+        <!-- Header: Clean Title & Game Logo (Pill removed) -->
         <div class="flex items-start justify-between gap-4">
           <div>
-            <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold mb-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-              <span>Undetected & Safe</span>
-            </div>
             <h1 id="productTitle" class="text-2xl sm:text-3xl font-extrabold text-white font-display">Nano Rust Cheat</h1>
             
             <!-- Star Rating -->
@@ -253,7 +248,7 @@
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5" id="variantsContainer"></div>
         </div>
 
-        <!-- Selected Price & Savings Summary -->
+        <!-- Selected Price Summary -->
         <div class="flex items-baseline justify-between border-t border-b border-white/10 py-4">
           <div>
             <span class="text-xs text-slate-400 block">Total Price</span>
@@ -262,7 +257,7 @@
               <span id="activeRealPrice" class="text-sm text-slate-500 line-through">€12.95</span>
             </div>
           </div>
-          <span id="instantDeliveryBadge" class="text-xs text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-md border border-emerald-500/20 font-medium">Instant Delivery</span>
+          <span class="text-xs text-slate-300 bg-white/5 px-2.5 py-1 rounded-md border border-white/10 font-medium">Auto-Delivery</span>
         </div>
 
         <!-- System Requirements Matrix -->
@@ -283,29 +278,29 @@
           </div>
         </div>
 
-        <!-- Purchase Action Buttons -->
+        <!-- Purchase Action Buttons (Redirect to discord.gg/nanocheats) -->
         <div class="flex flex-col gap-3">
-          <button id="purchaseBtn" class="w-full py-4 rounded-xl btn-nano text-sm sm:text-base font-bold tracking-wide flex items-center justify-center gap-2 shadow-lg">
+          <a href="https://discord.gg/nanocheats" target="_blank" id="purchaseBtn" class="w-full py-4 rounded-xl btn-nano text-sm sm:text-base font-bold tracking-wide flex items-center justify-center gap-2 shadow-lg">
             <span>Purchase Key (Instant Access)</span>
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </button>
+          </a>
           
-          <a href="https://discord.gg" target="_blank" class="w-full py-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 text-xs font-semibold text-slate-300 flex items-center justify-center gap-2 transition">
+          <a href="https://discord.gg/nanocheats" target="_blank" class="w-full py-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 text-xs font-semibold text-slate-300 flex items-center justify-center gap-2 transition">
             <svg class="w-4 h-4 fill-current text-[#5865F2]" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.894a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"/></svg>
-            <span>Need Help? Ask in Discord Support</span>
+            <span>Need Help? Join discord.gg/nanocheats</span>
           </a>
         </div>
 
-        <!-- Trust Badges -->
+        <!-- Trust Features -->
         <div class="flex items-center justify-between text-[11px] text-slate-400 border-t border-white/5 pt-4">
-          <span class="flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-emerald-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg> Automatic Key Delivery</span>
+          <span class="flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-emerald-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg> Instant Key Delivery</span>
           <span class="flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-emerald-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg> 24/7 Setup Assistance</span>
-          <span class="flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-emerald-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg> HWID Spoofer Friendly</span>
+          <span class="flex items-center gap-1.5"><svg class="w-3.5 h-3.5 text-emerald-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg> Clean Architecture</span>
         </div>
       </div>
     </div>
 
-    <!-- Section: The Nano Difference (Stats Matrix) -->
+    <!-- Section: The Nano Difference -->
     <section class="my-20">
       <h2 class="text-3xl font-bold text-center text-white font-display mb-10">The Nano Difference</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -316,13 +311,13 @@
         </div>
         <div class="bg-[#0D111A] border border-white/10 rounded-2xl p-6 text-center hover:border-[#0B63E5]/40 transition">
           <p class="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#2DC6FF] to-[#0B63E5]">99.9%</p>
-          <p class="text-white font-bold text-base mt-2">Server & Loader Uptime</p>
+          <p class="text-white font-bold text-base mt-2">Infrastructure Uptime</p>
           <p class="text-slate-400 text-xs mt-1">High-speed globally distributed cloud infrastructure.</p>
         </div>
         <div class="bg-[#0D111A] border border-white/10 rounded-2xl p-6 text-center hover:border-[#0B63E5]/40 transition">
           <p class="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#2DC6FF] to-[#0B63E5]">&lt; 2 min</p>
-          <p class="text-white font-bold text-base mt-2">Average Setup Time</p>
-          <p class="text-slate-400 text-xs mt-1">One-click loader without complex bios tweaks.</p>
+          <p class="text-white font-bold text-base mt-2">Instant Setup</p>
+          <p class="text-slate-400 text-xs mt-1">Direct streamlined injection without complex tweaking.</p>
         </div>
         <div class="bg-[#0D111A] border border-white/10 rounded-2xl p-6 text-center hover:border-[#0B63E5]/40 transition">
           <p class="text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-[#2DC6FF] to-[#0B63E5]">100%</p>
@@ -332,7 +327,7 @@
       </div>
     </section>
 
-    <!-- Section: How It Works -->
+    <!-- Section: How It Works (Cleaned from loader references) -->
     <section id="how-it-works" class="my-20 scroll-mt-24">
       <h2 class="text-3xl font-bold text-center text-white font-display mb-12">How It Works</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -342,15 +337,15 @@
             <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
           </div>
           <h3 class="text-xl font-bold text-white mb-2">1. Secure Your Key</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">Choose your duration and check out instantly. Your license key is sent immediately to your email.</p>
+          <p class="text-slate-400 text-sm leading-relaxed">Choose your subscription tier and get instant access via our automated system.</p>
         </div>
         <div class="bg-[#0D111A] border border-white/10 rounded-2xl p-8 relative">
           <span class="text-5xl font-black text-white/10 absolute top-6 right-6">02</span>
           <div class="w-12 h-12 rounded-xl bg-[#0B63E5]/20 border border-[#0B63E5]/40 flex items-center justify-center text-[#38BDF8] mb-6">
             <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           </div>
-          <h3 class="text-xl font-bold text-white mb-2">2. Download Loader</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">Download our lightweight, undetectable loader and enter your key. Setup completes in 60 seconds.</p>
+          <h3 class="text-xl font-bold text-white mb-2">2. Claim on Discord</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">Join discord.gg/nanocheats to verify your key and access the customer hub instantly.</p>
         </div>
         <div class="bg-[#0D111A] border border-white/10 rounded-2xl p-8 relative">
           <span class="text-5xl font-black text-white/10 absolute top-6 right-6">03</span>
@@ -358,7 +353,7 @@
             <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           </div>
           <h3 class="text-xl font-bold text-white mb-2">3. Launch & Dominate</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">Open your game, customize your preferences via the clean in-game overlay menu, and enjoy total supremacy.</p>
+          <p class="text-slate-400 text-sm leading-relaxed">Open your game, customize your preferences via the clean in-game overlay, and dominate.</p>
         </div>
       </div>
     </section>
@@ -370,7 +365,6 @@
           <h2 class="text-3xl sm:text-4xl font-bold text-white font-display">Cheat Features</h2>
           <p class="text-slate-400 text-sm mt-1">Explore all module capabilities and customizable settings.</p>
         </div>
-        <!-- Search within features -->
         <input type="text" id="featureSearch" placeholder="Search features (e.g. Aimbot, ESP, Recoil)..." class="bg-[#0D111A] border border-white/10 rounded-full px-4 py-2 text-xs text-white placeholder-slate-500 w-full sm:w-72 outline-none focus:border-[#0B63E5]">
       </div>
 
@@ -474,11 +468,11 @@
 
         <div class="bg-[#0D111A] border border-white/10 rounded-xl overflow-hidden">
           <button class="w-full px-6 py-4 text-left flex items-center justify-between font-semibold text-white text-sm faq-toggle">
-            <span>Where do I get my access key and loader after purchase?</span>
+            <span>Where do I get my access key after purchase?</span>
             <span class="text-slate-400 text-lg transition-transform faq-icon">+</span>
           </button>
           <div class="px-6 pb-4 text-slate-400 text-xs leading-relaxed hidden faq-content">
-            Upon successful checkout, your unique license key and private loader download instructions are automatically emailed to you instantly. You can also redeem it directly in our Discord ticket system.
+            Upon successful checkout, your unique license key and instructions are automatically emailed to you instantly. You can also claim it directly in our Discord at discord.gg/nanocheats.
           </div>
         </div>
 
@@ -516,14 +510,11 @@
   <script>
     const allProducts = [{"id": "45364ece-75e7-49bd-b274-7a46cb7ca34d", "gameId": 16, "slug": "division-arc-raiders-cheat", "title": "Nano Arc Raiders Cheat", "imageURL": "https://division.b-cdn.net/card3.webp", "logoURL": "https://division.b-cdn.net/logos/arcraiderslogo%202.webp", "videoURL": "https://division.b-cdn.net/cardvideos/arcraiders.webm", "media": ["https://division.b-cdn.net/updatedarc.webp", "https://division.b-cdn.net/ArcRaiders_C2.webp", "https://division.b-cdn.net/arc1.webp", "https://division.b-cdn.net/updatedarc2.webp", "https://division.b-cdn.net/arc2.webp", "[object Object]"], "features": [{"title": "Aimbot", "icon": "mdi:crosshairs-gps", "items": ["Enabled", "Field of View", "Max Distance", "Smoothness", "Bone Selection", "Target Knocked Players", "Prediction (Arc / Players)", "Vischeck for Arcs", "Arc Weakpoint Targeting", "Ignore Invisible", "Ignore Arcs", "Add/Remove Friend"]}, {"title": "Player ESP", "icon": "mdi:account-search", "items": ["Name", "Distance", "Box [ 2d / Corner ]", "Skeleton", "Health", "Shield", "Team ID", "Out of FOV Arrows", "Max Distance", "Visible Check [ Always On ]", "Show Corpse", "Show Downed", "Ignore Friendly", "Size", "Arcs"]}, {"title": "Entity ESP", "icon": "mdi:vector-square", "items": ["Arcs", "Containers", "Arc Corpse", "Max Distance", "Items", "Traps", "World"]}, {"title": "Arcs", "icon": "mdi:robot-industrial", "items": ["Bastion", "Bombardier", "Dummy Drone", "Fireball", "Hornet", "Leaper", "Matriarch", "Pop", "Queen", "Rocketeer", "Sentinel", "Shredder", "Snitch", "Spotter", "Surveyor", "Tick", "Turret", "Wasp"]}, {"title": "Containers", "icon": "mdi:treasure-chest", "items": ["Ammo Box", "Arc Probe", "Backpack", "Baron Husk", "Bin", "Cabinet", "Computer", "Containers", "Crate", "Desk", "Drawer", "Fruit Basket", "FuseBox", "Locker", "Machine", "Medical Bag", "Raider Cache", "Rocketeer Husk", "Server", "Supply Drop", "Trolley", "Wall Panel", "Wasp Husk", "Weapon Case", "Weapons Rack"]}, {"title": "World", "icon": "mdi:earth", "items": ["Barricade", "Carryable", "Corpse", "Flare", "Ladder", "Raider Hatch", "Supply Call Station", "Zipline"]}, {"title": "Items", "icon": "mdi:package-variant-closed", "items": ["Armor", "Augment", "Backpack", "Consumable", "Crafting Part", "Crafting Reagent", "Currency", "Deployable", "Gadget", "Generator", "Launcher", "Launcher Payload", "Launcher Universal Payload", "Melee Weapon", "Meta Item", "Misc", "Modification", "Recipe", "Rifle", "Rifle Payload", "Throwable", "Unarmed"]}, {"title": "Traps", "icon": "mdi:alert-octagon", "items": ["Blaze Grenade", "Camera", "Deadline Mine", "Explosive Mine", "Gas Grenade", "Gas Mine", "Jolt Mine", "Lure Grenade", "Metal Detector", "Pulse Mine", "Smoke Grenade"]}, {"title": "Exploits", "icon": "mdi:alert-decagram", "items": ["Flashlight Color Changer"]}], "requirements": [{"title": "Supported OS", "info": "Windows 10/11", "icon": "mdi:windows"}, {"title": "Supported CPU", "info": "AMD / Intel", "icon": "proicons:motherboard"}, {"title": "Supported Platforms", "info": "Steam / Epic / Xbox App Supported", "icon": "famicons:game-controller"}], "variants": [{"title": "3 Days", "price": "12.95", "realPrice": "13.55", "days": 3, "shopifyId": "56895464276355"}, {"title": "7 Days", "price": "24.95", "realPrice": "25.95", "days": 7, "shopifyId": "56895464309123"}, {"title": "30 Days", "price": "49.95", "realPrice": "51.95", "days": 30, "shopifyId": "56895464341891"}, {"title": "Lifetime", "price": "399.95", "realPrice": "399.95", "days": 9999, "shopifyId": "56895464374659"}], "productPosition": 0, "hidden": false, "isNew": false, "key": "arc-raiders"}, {"id": "67db62599986042083796c89", "gameId": 1, "slug": "division-rust-cheat", "title": "Nano Rust Cheat", "imageURL": "https://division.b-cdn.net/card1.webp", "logoURL": "https://division.b-cdn.net/logos/rustlogo%202.webp", "videoURL": "https://division.b-cdn.net/cardvideos/Rust.webm", "media": ["https://division.b-cdn.net/Rust_C1.webp", "https://division.b-cdn.net/Rust_C2.webp", "https://division.b-cdn.net/mpu3avy28fhpp1bpgmk7.webp", "https://division.b-cdn.net/bzyqkj7uq0ypjfctwovb.webp", "https://division.b-cdn.net/1Rust_C3.webp", "https://division.b-cdn.net/v6mfndlgawijogu4htrb.webp"], "features": [{"title": "Aimbot", "icon": "mdi:crosshairs-gps", "items": ["Silent Aim", "Field of View (AIMBOT)", "Smoothing", "Hit Chance", "Bone Selection (Head, Chest, etc.)", "Target Friendly", "Target NPC", "Target Heli", "Terrain Check", "Lock Aim Target", "FOV Circle", "Aim Line"]}, {"title": "Weapons", "icon": "game-icons:pistol-gun", "items": ["Recoil Changer", "Spread Changer", "No Shotgun Spread", "No Sway", "Automatic Weapons", "Instant Eoka", "Instant Bow", "Instant Compound Bow", "Hitbox Override [ Head / Body / Random ]", "Heli Hitbox Override [ Main Rotor / Tail Rotor ]", "Hitbox Override Cycle Key"]}, {"title": "Player ESP", "icon": "mdi:account-search", "items": ["Box Type (Box, Corner)", "Show Skeleton", "Show Name", "Show Distance", "Show Weapon", "Show Hotbar", "Show Clothing", "Out Of FOV Info", "Aim Target", "Look Direction", "Show Friendly", "Show Team ID", "Show Sleepers", "Show NPC", "Show Ghosts", "Show Looking at Me", "Show Raids", "Chams (Player/Hand/Weapon)", "Pink", "White ZTest", "Black ZTest", "Red Weave", "Blue Weave", "Aqua Weave", "Green Weave", "Yellow Weave", "Orange Weave", "Pink Weave", "Purple Weave", "White Weave", "Orange Reflect", "Lime Reflect", "Sun", "Lightning Bolt", "Fire Animated", "Censored", "Red Glow", "Green Glow", "Yellow Glow", "Bubble", "America", "Spark", "Smoke Animated", "Parachute Animated", "Slime Animated", "Slime", "Glass"]}, {"title": "Radar", "icon": "mdi:radar", "items": ["Radar Features", "Show Players", "Show Entities", "Radar Size Adjustment", "Max Radar Distance"]}, {"title": "Entity ESP", "icon": "mdi:paw", "items": ["Bear", "Boar", "Chicken", "Deer", "Polar Bear", "Shark", "Horse", "Wolf"]}, {"title": "Resource ESP", "icon": "mdi:pickaxe", "items": ["Hemp Collectable", "Metal Collectable", "Metal Ore", "Stone Collectable", "Stone Ore", "Sulfur Collectable", "Sulfur Ore", "Wood Collectable", "Tree Marker", "Hotspot Marker"]}, {"title": "Loot ESP", "icon": "mdi:treasure-chest", "items": ["Advanced Underwater Crate", "Backpack", "Basic Underwater Crate", "Bradley Crate", "Diesel Barrel", "Elite Crate", "Event Collectable", "Fuel Barrel", "Hackable Crate", "Helicopter Crate", "Normal Crate", "Loot Barrel", "Medical Crate", "Military Crate", "Player Corpse", "Scientist Corpse", "Supply Drop", "Tool Crate"]}, {"title": "Vehicle ESP", "icon": "mdi:car-search", "items": ["Attack Heli", "Bradley", "Hot Air Balloon", "Kayak", "Minicopter", "Modular Car", "Patrol Heli", "RHIB", "Scrap Heli", "Submarine", "Train Car", "Tug Boat"]}, {"title": "Food ESP", "icon": "mdi:food-apple", "items": ["Corn", "Mushroom", "Potato", "Pumpkin", "Black Berries", "Blue Berries", "Green Berries", "Red Berries", "White Berries", "Yellow Berries"]}, {"title": "Trap ESP", "icon": "mdi:alert-octagon", "items": ["Auto Turret", "Bear Trap", "Flame Turret", "Landmine", "SAM Site (Surface-to-Air Missile)", "Shotgun Trap"]}, {"title": "Item ESP", "icon": "mdi:package-variant-closed", "items": ["Weapons", "Placeables", "Items", "Resources", "Attire", "Tool", "Medical", "Food", "Ammunition", "Traps", "Misc", "Component", "Electrical", "Fun"]}, {"title": "Player Exploits", "icon": "mdi:account-wrench", "items": ["Instant Loot", "Instant Revive", "Instant Untie", "Instant Pickup", "Instand Rack Reload", "Remove World Layers", "Third Person", "Zoom", "FOV Changer (player fov)", "Aspect Ratio Changer", "Full Bright", "Starry Night", "Time Changer", "Thick Bullet", "Extend Melee Range", "Melee Hit Assist", "Suicide", "Hit Sound", "Hit Tracer", "Custom Hit Material", "Custom Hit Material"]}, {"title": "Movement", "icon": "mdi:run-fast", "items": ["Spiderman", "Infinite Jump", "Fake Lag", "Anti Aim", "Always Shoot", "No Block Sprint", "No Collision", "Airstuck", "Fly Hack", "Interactive Debug"]}, {"title": "Configs", "icon": "mdi:cog-outline", "items": ["PlayerList", "PlayerList Search", "Name", "Relation", "SteamID", "Show Base"]}, {"title": "Settings", "icon": "mdi:tune-vertical", "items": ["Custom ESP Font", "Custom Crosshair", "Custom Menu Key", "Combat Mode", "Prefab ESP (Debug)", "Cheat Indicators", "Unique Builds for Every User!"]}], "requirements": [{"title": "Supported OS", "info": "Windows 10/11", "icon": "mdi:windows"}, {"title": "Supported CPU", "info": "AMD / Intel", "icon": "proicons:motherboard"}], "variants": [{"title": "3 Days", "price": "11.95", "realPrice": "12.95", "days": 3, "shopifyId": "55175649755523"}, {"title": "7 Days", "price": "24.95", "realPrice": "25.95", "days": 7, "shopifyId": "55175649788291"}, {"title": "30 Days", "price": "49.95", "realPrice": "51.95", "days": 30, "shopifyId": "55175649821059"}, {"title": "Lifetime", "price": "299.95", "realPrice": "299.95", "days": 9999, "shopifyId": "55175649853827"}], "productPosition": 1, "hidden": false, "isNew": false, "key": "rust"}, {"id": "d1f85a08-74fa-4f8e-9723-6b5ac3994076", "gameId": 11, "slug": "division-fortnite-cheat", "title": "Nano Fortnite Cheat", "imageURL": "https://division.b-cdn.net/card4.webp", "logoURL": "https://division.b-cdn.net/logos/fortnitelogo%202.webp", "videoURL": "https://division.b-cdn.net/cardvideos/Fortnite.webm", "media": ["https://division.b-cdn.net/Fortnite_C1.webp", "https://division.b-cdn.net/Fortnite_C2.webp", "https://division.b-cdn.net/dfzjrpyuktlmg1nzafxi%20(1).webp", "https://division.b-cdn.net/o4kbnwxffp3okv01bsta.webp", "https://division.b-cdn.net/1Fortnite_C3.webp", "https://division.b-cdn.net/hiders1c5hjrh98kzuq4.webp"], "features": [{"title": "Aimbot", "icon": "mdi:crosshairs-gps", "items": ["Memory Aimbot", "Silent Aimbot", "Smoothness", "FOV Circle", "Aimbone Selection [Head, Neck, Chest, Pelvis]"]}, {"title": "Player ESP", "icon": "mdi:account-search", "items": ["Box", "Skeleton", "Name", "Weapon"]}, {"title": "Loot ESP", "icon": "mdi:treasure-chest", "items": ["Common", "Uncommon", "Rare", "Legendary", "Mythic", "Ammo Crate", "Airdrop", "Llama", "Chest"]}, {"title": "World ESP", "icon": "mdi:earth", "items": ["Vehicles"]}], "requirements": [{"title": "Supported OS", "info": "Windows 10/11", "icon": "mdi:windows"}, {"title": "Supported CPU", "info": "AMD / Intel", "icon": "proicons:motherboard"}], "variants": [{"title": "3 Days", "price": "11.95", "realPrice": "12.95", "days": 3, "shopifyId": "55707501691267"}, {"title": "7 Days", "price": "24.95", "realPrice": "25.95", "days": 7, "shopifyId": "55707501724035"}, {"title": "30 Days", "price": "49.95", "realPrice": "51.95", "days": 30, "shopifyId": "55707501756803"}, {"title": "Lifetime", "price": "199.95", "realPrice": "199.95", "days": 9999, "shopifyId": "55707501789571"}], "productPosition": 2, "hidden": false, "isNew": false, "key": "fortnite"}, {"id": "345364ece-7xe7-49bd-b274-7a46cb7ca34d", "gameId": 21, "slug": "division-rainbow-six-cheat", "title": "Nano Rainbow Six Cheat", "imageURL": "https://division.b-cdn.net/card8.webp", "logoURL": "https://division.b-cdn.net/logos/rainbowlogo%202.webp", "videoURL": "https://division.b-cdn.net/cardvideos/Rainbow.webm", "media": ["https://division.b-cdn.net/Rainbow%20Six_C1.webp", "https://division.b-cdn.net/Rainbow%20Six_C2.webp", "https://division.b-cdn.net/r61.webp", "https://division.b-cdn.net/r62.webp", "https://division.b-cdn.net/1Rainbow%20Six_C3.webp", "https://division.b-cdn.net/r63.webp"], "features": [{"title": "Aimbot", "icon": "mdi:crosshairs", "items": ["Field Of View", "Smoothness", "Bone: Head", "Bone: Upper Chest", "Bone: Lower Chest", "Bone: Pelvis", "Bone: Closest", "Max Distance", "Fov Circle", "Aim Line", "Aim Cross"]}, {"title": "Player ESP", "icon": "mdi:account-eye", "items": ["Name", "Distance", "Box", "Box Type: Full", "Box Type: Corner", "Skeleton", "Health", "OOF Arrow", "Max Distance", "Ignore Friendly", "Radar"]}, {"title": "Settings", "icon": "mdi:cog", "items": ["Configs", "Menu Scale", "Crosshair"]}], "requirements": [{"title": "Supported OS", "info": "Windows 10/11", "icon": "mdi:windows"}, {"title": "Supported CPU", "info": "AMD / Intel", "icon": "proicons:motherboard"}], "variants": [{"title": "3 Days", "price": "12.95", "realPrice": "13.55", "days": 3, "shopifyId": "58038903374211"}, {"title": "7 Days", "price": "24.95", "realPrice": "25.95", "days": 7, "shopifyId": "58038903406979"}, {"title": "30 Days", "price": "49.95", "realPrice": "51.95", "days": 30, "shopifyId": "58038903439747"}, {"title": "Lifetime", "price": "399.95", "realPrice": "399.95", "days": 9999, "shopifyId": "58038903472515"}], "productPosition": 3, "hidden": false, "isNew": false, "key": "rainbow-six"}, {"id": "56fcd0ca-f160-4c4a-865b-676bf7d72aa6", "gameId": 13, "slug": "division-apex-legends-cheat", "title": "Nano Apex Legends Cheat", "imageURL": "https://division.b-cdn.net/card7.webp", "logoURL": "https://division.b-cdn.net/logos/apexlogo%202.webp", "videoURL": "https://division.b-cdn.net/cardvideos/Apex.webm", "media": ["https://division.b-cdn.net/Apex%20Legends_C1.webp", "https://division.b-cdn.net/Apex%20Legends_C2.webp", "https://division.b-cdn.net/ancxwhyi2dzseueutadx.webp", "https://division.b-cdn.net/x6phj0p1ns251snbk3bj.webp", "https://division.b-cdn.net/1Apex%20Legends_C3.webp", "https://division.b-cdn.net/k4jwyjfh5qklaganud07.webp"], "features": [{"title": "Aimbot", "icon": "mdi:crosshairs-gps", "items": ["Enabled", "Field of View", "Max Distance", "Smoothness", "Bone Selection", "Target Knocked Players"]}, {"title": "Player ESP", "icon": "mdi:account-search", "items": ["Name", "Distance", "Boxes [Regular / Cornered]", "Skeleton", "Health Bars", "Shield Bars", "Snap Lines", "Max Distance"]}, {"title": "Loot ESP", "icon": "mdi:treasure-chest", "items": ["Weapons", "Ammo", "Armor", "Attachments", "Meds", "Other"]}, {"title": "Miscellaneous", "icon": "mdi:dots-horizontal-circle", "items": ["Spectator List", "Player Glow"]}, {"title": "Movement", "icon": "mdi:run-fast", "items": ["Automatic Bunny Hop"]}], "requirements": [{"title": "Supported OS", "info": "Windows 10/11", "icon": "mdi:windows"}, {"title": "Supported CPU", "info": "AMD / Intel", "icon": "proicons:motherboard"}], "variants": [{"title": "3 Days", "price": "8.95", "realPrice": "9.95", "days": 3, "shopifyId": "56658232410499"}, {"title": "7 Days", "price": "14.95", "realPrice": "15.95", "days": 7, "shopifyId": "56658232443267"}, {"title": "30 Days", "price": "19.95", "realPrice": "21.95", "days": 30, "shopifyId": "56658232476035"}, {"title": "Lifetime", "price": "129.95", "realPrice": "144.95", "days": 9999, "shopifyId": "56658243715459"}], "productPosition": 4, "hidden": false, "isNew": false, "key": "apex-legends"}, {"id": "2oi1hj2n30ca-f160-4c4a-1231235b-676bf7d72aa6", "gameId": 32, "slug": "division-hell-let-loose-vietnam-cheat", "title": "Nano Hell Let Loose Vietnam Cheat", "imageURL": "https://division.b-cdn.net/card12.webp", "logoURL": "", "videoURL": "", "media": ["https://division.b-cdn.net/nam1.webp", "https://division.b-cdn.net/nam2.webp", "https://division.b-cdn.net/nam3.webp"], "features": [{"title": "Aimbot", "icon": "mdi:crosshairs-gps", "items": []}, {"title": "Player ESP", "icon": "mdi:account-search", "items": []}, {"title": "Entity ESP", "icon": "mdi:vector-square", "items": []}, {"title": "Miscellaneous", "icon": "mdi:dots-horizontal-circle", "items": []}, {"title": "Settings", "icon": "mdi:cog-outline", "items": []}], "requirements": [{"title": "Supported OS", "info": "Windows 10/11", "icon": "mdi:windows"}, {"title": "Supported CPU", "info": "AMD / Intel", "icon": "proicons:motherboard"}, {"title": "Supported Platforms", "info": "Steam / Epic / Xbox App Supported", "icon": "famicons:game-controller"}], "variants": [{"title": "7 Days", "price": "14.95", "realPrice": "17.95", "days": 7, "shopifyId": "62445775651203"}, {"title": "30 Days", "price": "24.95", "realPrice": "26.95", "days": 30, "shopifyId": "62383092760963"}, {"title": "Lifetime", "price": "89.95", "realPrice": "109.95", "days": 9999, "shopifyId": "62445775683971"}], "productPosition": 5, "hidden": false, "isNew": true, "key": "hell-let-loose-vietnam"}, {"id": "5671uh2a-f160-4c4a-1jh1b23b-6oisa1y2gh3a6", "gameId": 14, "slug": "division-pubg-cheat", "title": "Nano PUBG Cheat", "imageURL": "https://division.b-cdn.net/card13.webp", "logoURL": "", "videoURL": "", "media": ["https://division.b-cdn.net/pubg1.webp", "https://division.b-cdn.net/pubg2.webp", "https://division.b-cdn.net/pubg3.webp"], "features": [{"title": "Aimbot", "icon": "mdi:crosshairs-gps", "items": []}, {"title": "Player ESP", "icon": "mdi:account-search", "items": []}, {"title": "Entity ESP", "icon": "mdi:vector-square", "items": []}, {"title": "Miscellaneous", "icon": "mdi:dots-horizontal-circle", "items": []}, {"title": "Settings", "icon": "mdi:cog-outline", "items": []}], "requirements": [{"title": "Supported OS", "info": "Windows 10/11", "icon": "mdi:windows"}, {"title": "Supported CPU", "info": "AMD / Intel", "icon": "proicons:motherboard"}], "variants": [{"title": "7 Days", "price": "14.95", "realPrice": "17.95", "days": 7, "shopifyId": "62445777256835"}, {"title": "30 Days", "price": "24.95", "realPrice": "26.95", "days": 30, "shopifyId": "62383093514627"}, {"title": "Lifetime", "price": "109.95", "realPrice": "113.95", "days": 9999, "shopifyId": "62445777289603"}], "productPosition": 6, "hidden": false, "isNew": true, "key": "pubg"}, {"id": "7231uh2a-f160-4c4a-1jh1b23b-6xsa1y2gh3a6", "gameId": 34, "slug": "division-call-of-duty-black-ops-7-cheat", "title": "Nano Call of Duty: Black Ops 7 Cheat", "imageURL": "https://division.b-cdn.net/card1415.webp", "logoURL": "", "videoURL": "", "media": ["https://division.b-cdn.net/bo1.webp", "https://division.b-cdn.net/bo2.webp", "https://division.b-cdn.net/bo3.webp"], "features": [{"title": "Aimbot", "icon": "mdi:crosshairs-gps", "items": []}, {"title": "Player ESP", "icon": "mdi:account-search", "items": []}, {"title": "Entity ESP", "icon": "mdi:vector-square", "items": []}, {"title": "Miscellaneous", "icon": "mdi:dots-horizontal-circle", "items": []}, {"title": "Settings", "icon": "mdi:cog-outline", "items": []}], "requirements": [{"title": "Supported OS", "info": "Windows 10/11", "icon": "mdi:windows"}, {"title": "Supported CPU", "info": "AMD / Intel", "icon": "proicons:motherboard"}], "variants": [{"title": "30 Days", "price": "19.95", "realPrice": "21.95", "days": 30, "shopifyId": "62383092564355"}], "productPosition": 7, "hidden": false, "isNew": true, "key": "call-of-duty-black-ops-7"}, {"id": "manhsdfuh2a-f160-4c4a-1jh1b23b-6xsa1y2gh3a6", "gameId": 40, "slug": "division-dark-and-darker-cheat", "title": "Nano Dark and Darker Cheat", "imageURL": "https://division.b-cdn.net/card15.webp", "logoURL": "", "videoURL": "", "media": ["https://division.b-cdn.net/dark1.webp", "https://division.b-cdn.net/dark2.webp", "https://division.b-cdn.net/dark3.webp"], "features": [{"title": "Aimbot", "icon": "mdi:crosshairs-gps", "items": []}, {"title": "Player ESP", "icon": "mdi:account-search", "items": []}, {"title": "Entity ESP", "icon": "mdi:vector-square", "items": []}, {"title": "Exploits", "icon": "mdi:alert-decagram", "items": []}, {"title": "Miscellaneous", "icon": "mdi:dots-horizontal-circle", "items": []}, {"title": "Settings", "icon": "mdi:cog-outline", "items": []}], "requirements": [{"title": "Supported OS", "info": "Windows 10/11", "icon": "mdi:windows"}, {"title": "Supported CPU", "info": "AMD / Intel", "icon": "proicons:motherboard"}], "variants": [{"title": "7 Days", "price": "14.95", "realPrice": "17.95", "days": 7, "shopifyId": "62445778403715"}, {"title": "30 Days", "price": "24.95", "realPrice": "26.95", "days": 30, "shopifyId": "62383429943683"}, {"title": "Lifetime", "price": "109.95", "realPrice": "113.95", "days": 9999, "shopifyId": "62445778436483"}], "productPosition": 8, "hidden": false, "isNew": true, "key": "dark-and-darker"}, {"id": "fq8Ay51fCRaa8Qh580Qy8peuIA0X2bJo", "gameId": 23, "slug": "division-delta-force-cheat", "title": "Nano Delta Force Cheat", "imageURL": "https://division.b-cdn.net/deltacard.webp", "logoURL": "https://division.b-cdn.net/logos/ec2b6d4976bf4ede29ec1732a9de36fd%201.webp", "videoURL": "https://division.b-cdn.net/cardvideos/Delta.webm", "media": ["https://division.b-cdn.net/delta1.webp", "https://division.b-cdn.net/delta2.webp", "https://division.b-cdn.net/delta3.webp"], "features": [{"title": "Aimbot", "icon": "mdi:crosshairs", "items": []}, {"title": "Player ESP", "icon": "mdi:account-eye", "items": []}, {"title": "Entity ESP", "icon": "mdi:eye", "items": []}, {"title": "Exploits", "icon": "mdi:alert", "items": []}, {"title": "Settings", "icon": "mdi:cog", "items": []}], "requirements": [{"title": "Supported OS", "info": "Windows 10/11", "icon": "mdi:windows"}, {"title": "Supported CPU", "info": "AMD / Intel", "icon": "proicons:motherboard"}], "variants": [{"title": "7 Days", "price": "14.95", "realPrice": "17.95", "days": 7, "shopifyId": "62445774504323"}, {"title": "30 Days", "price": "24.95", "realPrice": "26.95", "days": 30, "shopifyId": "58207889064323"}, {"title": "Lifetime", "price": "109.95", "realPrice": "113.95", "days": 9999, "shopifyId": "62445774537091"}], "productPosition": 9, "hidden": false, "isNew": false, "key": "delta-force"}, {"id": "7819u23ca-21230-4123a-8asd5b-6123bf1231a6", "gameId": 31, "slug": "division-hell-let-loose-cheat", "title": "Nano Hell Let Loose Cheat", "imageURL": "https://division.b-cdn.net/hellcard.webp", "logoURL": "https://division.b-cdn.net/logos/Group%201171276450.webp", "videoURL": "https://division.b-cdn.net/cardvideos/HLL.webm", "media": ["https://division.b-cdn.net/hell1.webp", "https://division.b-cdn.net/hell2.webp", "https://division.b-cdn.net/hell3.webp"], "features": [{"title": "Magic Bullet", "icon": "mdi:sparkles", "items": []}, {"title": "Aimbot", "icon": "mdi:crosshairs-gps", "items": []}, {"title": "Player ESP", "icon": "mdi:account-search", "items": []}, {"title": "Entity ESP", "icon": "mdi:vector-square", "items": []}, {"title": "Misc", "icon": "mdi:dots-horizontal-circle", "items": []}, {"title": "Settings", "icon": "mdi:cog-outline", "items": []}], "requirements": [{"title": "Supported OS", "info": "Windows 10/11", "icon": "mdi:windows"}, {"title": "Supported CPU", "info": "AMD / Intel", "icon": "proicons:motherboard"}], "variants": [{"title": "7 Days", "price": "14.95", "realPrice": "17.95", "days": 7, "shopifyId": "62445774176643"}, {"title": "30 Days", "price": "24.95", "realPrice": "26.95", "days": 30, "shopifyId": "58172305998211"}, {"title": "Lifetime", "price": "89.95", "realPrice": "109.95", "days": 9999, "shopifyId": "62445774209411"}], "productPosition": 10, "hidden": false, "isNew": false, "key": "hell-let-loose"}, {"id": "123cd0ca-f320-41234a-325b-676bf7d72aa6", "gameId": 20, "slug": "division-marvel-rivals-cheat", "title": "Nano Marvel Rivals Cheat", "imageURL": "https://division.b-cdn.net/card5.webp", "logoURL": "https://division.b-cdn.net/logos/rivalslogo%202.webp", "videoURL": "https://division.b-cdn.net/cardvideos/Rivals.webm", "media": ["https://division.b-cdn.net/Marvel%20Rivals_C1.webp", "https://division.b-cdn.net/Marvel%20Rivals_C2.webp", "https://division.b-cdn.net/mr2.webp", "https://division.b-cdn.net/mr4.webp", "https://division.b-cdn.net/1Marvel%20Rivals_C3.webp", "https://division.b-cdn.net/mr3.webp"], "features": [{"title": "Aimbot", "icon": "mdi:crosshairs-gps", "items": ["Perfect Prediction", "Field of View", "Bone: Head", "Bone: Upper Chest", "Bone: Lower Chest", "Bone: Pelvis", "Bone: Closest", "Max Distance", "FOV Circle", "Ignore Invisible", "Aim Line", "Aim Cross"]}, {"title": "Player ESP", "icon": "mdi:account-search", "items": ["Name", "Distance", "Box Full", "Box Corner", "Skeleton", "Health", "Shield", "OOF Arrow", "Look Direction", "Max Distance", "Ignore Friendly", "Radar"]}, {"title": "Entity ESP", "icon": "mdi:vector-square", "items": ["Health Packs"]}, {"title": "Misc", "icon": "mdi:dots-horizontal-circle", "items": ["Fov Changer", "Zoom", "Fullbright"]}, {"title": "Settings", "icon": "mdi:cog-outline", "items": ["Configs", "Crosshair"]}], "requirements": [{"title": "Supported OS", "info": "Windows 10/11", "icon": "mdi:windows"}, {"title": "Supported CPU", "info": "AMD / Intel", "icon": "proicons:motherboard"}], "variants": [{"title": "7 Days", "price": "14.95", "realPrice": "17.95", "days": 7, "shopifyId": "62445773816195"}, {"title": "30 Days", "price": "24.95", "realPrice": "26.95", "days": 30, "shopifyId": "58172305670531"}, {"title": "Lifetime", "price": "109.95", "realPrice": "113.95", "days": 9999, "shopifyId": "62445773848963"}], "productPosition": 11, "hidden": false, "isNew": false, "key": "marvel-rivals"}, {"id": "654310ca-2310-4c4a-865b-676bf1231a6", "gameId": 22, "slug": "division-squad-cheat", "title": "Nano Squad Cheat", "imageURL": "https://division.b-cdn.net/card10.webp", "logoURL": "https://division.b-cdn.net/logos/squadlogo%202.webp", "videoURL": "https://division.b-cdn.net/cardvideos/Squad.webm", "media": ["https://division.b-cdn.net/Squad_C1.webp", "https://division.b-cdn.net/Squad_C2.webp", "https://division.b-cdn.net/squad2.webp", "https://division.b-cdn.net/squad3.webp", "https://division.b-cdn.net/1Squad_C3.webp", "https://division.b-cdn.net/squad4.webp"], "features": [{"title": "Aimbot", "icon": "mdi:crosshairs-gps", "items": ["Perfect Prediction", "Field Of View", "Bone: Head", "Bone: Upper Chest", "Bone: Lower Chest", "Bone: Pelvis", "Bone: Closest", "Max Distance", "FOV Circle", "Ignore Invisible", "Aim Line", "Aim Cross", "Magic Bullet"]}, {"title": "Player ESP", "icon": "mdi:account-search", "items": ["Name", "Distance", "Box Full", "Box Corner", "Skeleton", "Health", "OOF Arrow", "Look Direction", "Max Distance", "Ignore Friendly", "Radar"]}, {"title": "Entity ESP", "icon": "mdi:vector-square", "items": ["Deployables", "Vehicles"]}, {"title": "Misc", "icon": "mdi:dots-horizontal-circle", "items": ["Infinite Ammo", "Fov Changer", "Zoom", "Full Bright", "Rapid Fire", "Speed Hack"]}, {"title": "Settings", "icon": "mdi:cog-outline", "items": ["Configs", "Crosshair"]}], "requirements": [{"title": "Supported OS", "info": "Windows 10/11", "icon": "mdi:windows"}, {"title": "Supported CPU", "info": "AMD / Intel", "icon": "proicons:motherboard"}], "variants": [{"title": "30 Days", "price": "19.95", "realPrice": "21.95", "days": 30, "shopifyId": "58172305441155"}], "productPosition": 12, "hidden": false, "isNew": false, "key": "squad"}, {"id": "0da4d6b8-b143-4de7-bd16-985fa91132e5", "gameId": 12, "slug": "division-dead-by-daylight-cheat", "title": "Nano Dead by Daylight Cheat", "imageURL": "https://division.b-cdn.net/card6.webp", "logoURL": "https://division.b-cdn.net/logos/dbdlogo%202.webp", "videoURL": "https://division.b-cdn.net/cardvideos/Dead%20By%20Daylight.webm", "media": ["https://division.b-cdn.net/Dead%20by%20Daylight_C1.webp", "https://division.b-cdn.net/Dead%20by%20Daylight_C2.webp", "https://division.b-cdn.net/wxh4jkwjlmc7yz0eqhnt.webp", "https://division.b-cdn.net/kchpzixaexsowdzlig0p.webp", "https://division.b-cdn.net/1Dead%20by%20Daylight_C3.webp", "https://division.b-cdn.net/c5ojsendrdpptjaw3k2v.webp"], "features": [{"title": "Player ESP", "icon": "mdi:account-search", "items": ["Player Name", "Player Skeletons"]}, {"title": "World ESP", "icon": "mdi:earth", "items": ["Generator (Percentage)", "Pallet (With Pallet State)", "Hook", "Hatch (Hidden/Open)", "Escape Gate", "Totem (Seprate colors for hex/dull)", "Window", "Chest", "Locker"]}, {"title": "Chams", "icon": "mdi:palette", "items": ["Generator", "Pallet", "Hook", "Exit Gate", "Chest", "Locker", "Window", "Survivor", "Killer", "Dull totem", "Hex totem", "Boon Totem"]}, {"title": "Miscellaneous", "icon": "mdi:dots-horizontal-circle", "items": ["Auto Skill Check", "FOV Changer"]}], "requirements": [{"title": "Supported OS", "info": "Windows 10/11", "icon": "mdi:windows"}, {"title": "Supported CPU", "info": "AMD / Intel", "icon": "proicons:motherboard"}], "variants": [{"title": "7 Days", "price": "14.95", "realPrice": "17.95", "days": 7, "shopifyId": "62445773357443"}, {"title": "30 Days", "price": "24.95", "realPrice": "26.95", "days": 30, "shopifyId": "58172305310083"}, {"title": "Lifetime", "price": "109.95", "realPrice": "113.95", "days": 9999, "shopifyId": "62445773390211"}], "productPosition": 13, "hidden": false, "isNew": false, "key": "dead-by-daylight"}, {"id": "i1uoh23cd0ca-f123-4h12b3-865b-912yuh3nk1", "gameId": 28, "slug": "division-deadlock-cheat", "title": "Nano Deadlock Cheat", "imageURL": "https://division.b-cdn.net/card9.webp", "logoURL": "https://division.b-cdn.net/logos/deadlocklogo%201.webp", "videoURL": "https://division.b-cdn.net/cardvideos/Deadlock.webm", "media": ["https://division.b-cdn.net/Deadlock_C1.webp", "https://division.b-cdn.net/Deadlock_C2.webp", "https://division.b-cdn.net/deadlock2.webp", "https://division.b-cdn.net/deadlock3.webp", "https://division.b-cdn.net/1Deadlock_C3.webp"], "features": [{"title": "Aimbot", "icon": "mdi:crosshairs", "items": ["FOV Circle", "Smoothness", "Field Of View", "Aim Line", "Aim Cross", "Max Distance"]}, {"title": "Player ESP", "icon": "mdi:account-eye", "items": ["Name", "Distance", "Box [Corner / Full]", "Skeleton", "Health", "OOF Arrow", "Look Direction", "Max Distance", "Ignore Friendly"]}, {"title": "Radar", "icon": "mdi:radar", "items": ["Distance", "Size"]}, {"title": "Settings", "icon": "mdi:cog", "items": ["Configs", "Menu Scale", "Crosshair", "Schema Dumper"]}], "requirements": [{"title": "Supported OS", "info": "Windows 10/11", "icon": "mdi:windows"}, {"title": "Supported CPU", "info": "AMD / Intel", "icon": "proicons:motherboard"}], "variants": [{"title": "7 Days", "price": "14.95", "realPrice": "17.95", "days": 7, "shopifyId": "62445771030915"}, {"title": "30 Days", "price": "24.95", "realPrice": "26.95", "days": 30, "shopifyId": "57480525152643"}, {"title": "Lifetime", "price": "109.95", "realPrice": "113.95", "days": 9999, "shopifyId": "62445771063683"}], "productPosition": 14, "hidden": false, "isNew": false, "key": "deadlock"}];
 
-    // Parse URL parameter e.g. ?game=rust or ?game=fortnite
     const urlParams = new URLSearchParams(window.location.search);
     let requestedGame = urlParams.get('game') || 'rust';
 
-    // Match product
-    let currentProduct = allProducts.find(p => p.key === requestedGame || p.slug.includes(requestedGame)) || allProducts[1]; // default rust
+    let currentProduct = allProducts.find(p => p.key === requestedGame || p.slug.includes(requestedGame)) || allProducts[1];
 
-    // Populate Game Selector Dropdown
     const selector = document.getElementById('gameSelector');
     allProducts.forEach(p => {
       const opt = document.createElement('option');
@@ -537,7 +528,6 @@
       window.location.href = `product.html?game=${e.target.value}`;
     });
 
-    // Render Product Data
     function renderProduct(p) {
       document.title = `${p.title} — NanoCheats`;
       document.getElementById('breadcrumbGame').textContent = p.title.replace('Nano ', '').replace(' Cheat', '');
@@ -551,7 +541,6 @@
         logoEl.style.display = 'none';
       }
 
-      // Media items (Video first if available, then images)
       const mediaList = [];
       if (p.videoURL) {
         mediaList.push({ type: 'video', src: p.videoURL, poster: p.imageURL });
@@ -562,26 +551,23 @@
         mediaList.push({ type: 'image', src: p.imageURL });
       }
 
-      // Render Active Media
       let activeMediaIndex = 0;
       function showMedia(index) {
         activeMediaIndex = index;
         const item = mediaList[index];
         const wrapper = document.getElementById('mainMediaWrapper');
         if (item.type === 'video') {
-          wrapper.innerHTML = `<video src="${item.src}" poster="${item.poster || ''}" class="w-full h-full object-cover" autoplay loop muted playsinline controls></video>`;
+          wrapper.innerHTML = `<video src="${item.src}" poster="${item.poster || ''}" class="w-full h-full object-contain bg-black/40" autoplay loop muted playsinline controls></video>`;
         } else {
-          wrapper.innerHTML = `<img src="${item.src}" alt="Screenshot" class="w-full h-full object-cover">`;
+          wrapper.innerHTML = `<img src="${item.src}" alt="Screenshot" class="w-full h-full object-contain bg-black/40">`;
         }
 
-        // update thumbnails active state
         document.querySelectorAll('.thumb-item').forEach((el, idx) => {
           if (idx === index) el.classList.add('active');
           else el.classList.remove('active');
         });
       }
 
-      // Render Thumbnails
       const thumbContainer = document.getElementById('thumbnailsContainer');
       thumbContainer.innerHTML = '';
       mediaList.forEach((item, idx) => {
@@ -595,7 +581,6 @@
 
       showMedia(0);
 
-      // Render Variants
       const variantsContainer = document.getElementById('variantsContainer');
       variantsContainer.innerHTML = '';
       
@@ -625,7 +610,6 @@
         if (idx === 0) selectVariant(v, card);
       });
 
-      // Render Features
       const featureTabsContainer = document.getElementById('featureTabsContainer');
       const featureCardsContainer = document.getElementById('featureCardsContainer');
       featureTabsContainer.innerHTML = '';
@@ -633,7 +617,6 @@
 
       const features = p.features || [];
 
-      // All Tab
       const allTab = document.createElement('button');
       allTab.className = 'feature-tab active';
       allTab.textContent = 'All Categories';
@@ -666,7 +649,7 @@
                 <svg class="w-3.5 h-3.5 text-[#38BDF8]" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
                 ${item}
               </span>
-              <span class="text-[10px] text-emerald-400 font-mono">ENABLED</span>
+              <span class="text-[10px] text-emerald-400 font-mono">AVAILABLE</span>
             </div>
           `).join('');
 
@@ -681,7 +664,6 @@
         });
       }
 
-      // Feature Tabs Click Event
       featureTabsContainer.querySelectorAll('.feature-tab').forEach(t => {
         t.addEventListener('click', () => {
           featureTabsContainer.querySelectorAll('.feature-tab').forEach(b => b.classList.remove('active'));
@@ -690,7 +672,6 @@
         });
       });
 
-      // Feature Search
       document.getElementById('featureSearch').addEventListener('input', (e) => {
         const activeTab = featureTabsContainer.querySelector('.feature-tab.active');
         renderFeatureCards(activeTab ? activeTab.textContent : 'All Categories', e.target.value);
@@ -701,7 +682,6 @@
 
     renderProduct(currentProduct);
 
-    // FAQ Accordion Toggle
     document.querySelectorAll('.faq-toggle').forEach(btn => {
       btn.addEventListener('click', () => {
         const content = btn.nextElementSibling;
@@ -710,11 +690,6 @@
         content.classList.toggle('hidden');
         icon.textContent = isHidden ? '−' : '+';
       });
-    });
-
-    // Purchase Button Action
-    document.getElementById('purchaseBtn').addEventListener('click', () => {
-      alert(`Redirecting to secure checkout for ${currentProduct.title}...`);
     });
 
     // Interactive Electricity Canvas
