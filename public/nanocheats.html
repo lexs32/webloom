@@ -254,26 +254,37 @@
     .mr-grab { cursor: grab; cursor: -webkit-grab; }
     .mr-grabbing { cursor: grabbing; cursor: -webkit-grabbing; }
 
-    /* Streamproof Split Comparison */
+    /* Streamproof 100% Pixel-Matched Split Slider */
     .split-slider-container {
       position: relative;
       overflow: hidden;
       border-radius: 20px;
       user-select: none;
+      -webkit-user-select: none;
     }
     .split-overlay {
       position: absolute;
       top: 0;
       left: 0;
-      width: 50%;
       height: 100%;
       overflow: hidden;
-      border-right: 2px solid #0B63E5;
+      pointer-events: none;
+      z-index: 10;
+    }
+    .split-divider {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #0B63E5;
+      box-shadow: 0 0 15px #0B63E5;
+      transform: translateX(-50%);
+      pointer-events: none;
+      z-index: 25;
     }
     .split-handle {
       position: absolute;
       top: 50%;
-      left: 50%;
       transform: translate(-50%, -50%);
       width: 38px;
       height: 38px;
@@ -286,6 +297,7 @@
       color: #FFF;
       cursor: ew-resize;
       z-index: 30;
+      touch-action: none;
     }
 
     /* Circular Progress Bar Animation */
@@ -637,7 +649,7 @@
     </div>
   </section>
 
-  <!-- Interactive Streamproof Comparison Slider -->
+  <!-- Interactive Streamproof Comparison Slider (100% Pixel-Matched Dynamic Scaling) -->
   <section id="streamproof" class="py-20 px-6 max-w-6xl mx-auto w-full scroll-mt-24">
     <div class="text-center mb-12">
       <h2 class="text-3xl sm:text-4xl font-bold text-white font-display">100% Streamproof Architecture</h2>
@@ -645,24 +657,27 @@
     </div>
 
     <!-- The Interactive Split View Container -->
-    <div class="relative w-full aspect-[16/9] max-h-[480px] split-slider-container border border-white/10 shadow-2xl" id="splitBox">
-      <!-- Background: Cheat ESP Showing -->
-      <img src="https://arcticcheats.wtf/images/site/espshowing.webp" alt="With Cheat Overlay" class="w-full h-full object-cover">
+    <div class="relative w-full aspect-[16/9] max-h-[520px] split-slider-container border border-white/10 shadow-2xl rounded-2xl overflow-hidden" id="splitBox">
+      <!-- Background: Cheat ESP Showing (Full Base Image) -->
+      <img id="bgImg" src="https://arcticcheats.wtf/images/site/espshowing.webp" alt="Monitor View (ESP Active)" class="absolute inset-0 w-full h-full object-cover select-none pointer-events-none">
 
-      <!-- Foreground: Clean Stream (Clipped with width) -->
-      <div class="split-overlay" id="splitOverlay">
-        <img src="https://arcticcheats.wtf/images/site/espnotshowing.webp" alt="Clean Stream" class="w-full h-full object-cover max-w-none" style="width: 1152px; height: 480px;">
-        <div class="absolute top-4 left-4 bg-black/80 backdrop-blur-md px-3 py-1 rounded-lg text-xs font-semibold text-slate-300 border border-white/10">
+      <!-- Foreground: Clean Stream (Clipped with percentage width, inner image sized to splitBox) -->
+      <div class="split-overlay" id="splitOverlay" style="width: 50%;">
+        <img id="overlayImg" src="https://arcticcheats.wtf/images/site/espnotshowing.webp" alt="Stream View (Clean)" class="absolute top-0 left-0 h-full object-cover select-none pointer-events-none">
+        <div class="absolute top-4 left-4 bg-black/80 backdrop-blur-md px-3.5 py-1.5 rounded-lg text-xs font-semibold text-slate-300 border border-white/10 z-20">
           Stream View (Clean)
         </div>
       </div>
 
-      <div class="absolute top-4 right-4 bg-black/80 backdrop-blur-md px-3 py-1 rounded-lg text-xs font-semibold text-brand-lightBlue border border-brand-blue/40">
+      <div class="absolute top-4 right-4 bg-black/80 backdrop-blur-md px-3.5 py-1.5 rounded-lg text-xs font-semibold text-brand-lightBlue border border-brand-blue/40 z-20">
         Monitor View (ESP Active)
       </div>
 
+      <!-- Vertical Dividing Line -->
+      <div class="split-divider" id="splitDivider" style="left: 50%;"></div>
+
       <!-- Drag Handle -->
-      <div class="split-handle" id="splitHandle">
+      <div class="split-handle" id="splitHandle" style="left: 50%;">
         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg>
       </div>
     </div>
@@ -1451,7 +1466,7 @@
     </div>
   </footer>
 
-  <!-- Scripts: Canvas Pure Electricity + 3D Carousel + Split Slider + Rock-Solid ScrollSpy & Manual Click Lock -->
+  <!-- Scripts: Canvas Pure Electricity + 3D Carousel + Pixel-Perfect Split Slider + Rock-Solid ScrollSpy & Manual Click Lock -->
   <script>
     // 1. Interactive Canvas: Pure Vertical Electricity Pulses (NO grids/dots)
     (function() {
@@ -1606,23 +1621,41 @@
       requestAnimationFrame(autoSpin);
     })();
 
-    // 3. Streamproof Split Comparison Slider
+    // 3. Streamproof 100% Pixel-Matched Split Slider Implementation
     (function() {
       const box = document.getElementById('splitBox');
       const overlay = document.getElementById('splitOverlay');
+      const overlayImg = document.getElementById('overlayImg');
       const handle = document.getElementById('splitHandle');
+      const divider = document.getElementById('splitDivider');
       let isSliding = false;
+
+      // Keep overlay image width synchronized with container width
+      function syncWidth() {
+        if (!box || !overlayImg) return;
+        const boxWidth = box.offsetWidth;
+        overlayImg.style.width = boxWidth + 'px';
+        overlayImg.style.minWidth = boxWidth + 'px';
+        overlayImg.style.maxWidth = boxWidth + 'px';
+      }
+
+      window.addEventListener('resize', syncWidth);
+      window.addEventListener('load', syncWidth);
+      setTimeout(syncWidth, 50);
 
       function updateSplit(clientX) {
         const rect = box.getBoundingClientRect();
         let pos = (clientX - rect.left) / rect.width;
-        pos = Math.max(0.05, Math.min(0.95, pos));
-        overlay.style.width = (pos * 100) + '%';
-        handle.style.left = (pos * 100) + '%';
+        pos = Math.max(0.01, Math.min(0.99, pos));
+        const percent = (pos * 100).toFixed(2) + '%';
+        overlay.style.width = percent;
+        divider.style.left = percent;
+        handle.style.left = percent;
       }
 
       function onSlideStart(e) {
         isSliding = true;
+        syncWidth();
         updateSplit(e.clientX || (e.touches && e.touches[0].clientX));
       }
 
@@ -1676,7 +1709,6 @@
         pill.style.opacity = '1';
       }
 
-      // Init on load
       function init() {
         const initial = capsule.querySelector('.nav-item.active') || navItems[0];
         setPillPosition(initial);
@@ -1685,7 +1717,6 @@
       window.addEventListener('load', init);
       setTimeout(init, 50);
 
-      // Smooth click navigation with scroll listener lock
       navItems.forEach(item => {
         item.addEventListener('click', (e) => {
           e.preventDefault();
@@ -1711,7 +1742,6 @@
         });
       });
 
-      // ScrollSpy: Only updates when freely scrolling (NOT during click transit)
       const sections = ['games', 'features', 'streamproof', 'reviews', 'community']
         .map(id => document.getElementById(id))
         .filter(Boolean);
