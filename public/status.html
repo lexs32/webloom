@@ -63,9 +63,86 @@
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
     }
+  
+    /* Global Selection Highlight Fix (Never cuts off, sleek electric glow) */
+    ::selection {
+      background: rgba(45, 198, 255, 0.28);
+      color: #FFFFFF;
+      text-shadow: 0 0 8px rgba(45, 198, 255, 0.5);
+    }
+    ::-moz-selection {
+      background: rgba(45, 198, 255, 0.28);
+      color: #FFFFFF;
+      text-shadow: 0 0 8px rgba(45, 198, 255, 0.5);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      body, a, button, input {
+        cursor: none !important;
+      }
+    }
+
+    /* Custom Animated Nano Tech Cursor */
+    #nanoCursorDot {
+      pointer-events: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 7px;
+      height: 7px;
+      background: #2DC6FF;
+      border-radius: 50%;
+      z-index: 99999;
+      box-shadow: 0 0 10px #2DC6FF, 0 0 20px #2DC6FF;
+      transition: opacity 0.2s ease, transform 0.04s ease-out;
+      transform: translate(-50%, -50%);
+    }
+
+    #nanoCursorRing {
+      pointer-events: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 32px;
+      height: 32px;
+      border: 1.5px solid rgba(45, 198, 255, 0.5);
+      border-radius: 50%;
+      z-index: 99998;
+      transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 14px rgba(45, 198, 255, 0.2);
+    }
+
+    #nanoCursorRing::before, #nanoCursorRing::after {
+      content: '';
+      position: absolute;
+      background: #2DC6FF;
+      opacity: 0.6;
+    }
+    #nanoCursorRing::before {
+      top: -4px;
+      left: 50%;
+      width: 1.5px;
+      height: 4px;
+      transform: translateX(-50%);
+    }
+    #nanoCursorRing::after {
+      bottom: -4px;
+      left: 50%;
+      width: 1.5px;
+      height: 4px;
+      transform: translateX(-50%);
+    }
+
   </style>
 </head>
-<body class="min-h-screen flex flex-col antialiased">
+<body class="select-none" class="min-h-screen flex flex-col antialiased">
+
+  <!-- Custom Animated Cursor Elements -->
+  <div id="nanoCursorDot"></div>
+  <div id="nanoCursorRing"></div>
+
+
 
   <canvas id="nanoCanvas"></canvas>
 
@@ -485,5 +562,67 @@
     </nav>
   </div>
 
+<script>
+    // 1. Anti-Inspect & Right Click Protection
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('keydown', e => {
+      if (
+        e.key === 'F12' ||
+        (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) ||
+        (e.ctrlKey && (e.key === 'U' || e.key === 'u'))
+      ) {
+        e.preventDefault();
+        return false;
+      }
+    });
+
+    // 2. Animated Custom Nano Tech Cursor
+    (function() {
+      if (window.matchMedia('(pointer: coarse)').matches) return;
+
+      const cursorDot = document.getElementById('nanoCursorDot');
+      const cursorRing = document.getElementById('nanoCursorRing');
+      if (!cursorDot || !cursorRing) return;
+
+      let mouseX = -100, mouseY = -100;
+      let ringX = -100, ringY = -100;
+      let isHovering = false;
+      let isClicking = false;
+
+      window.addEventListener('mousemove', e => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        cursorDot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+      });
+
+      function animateCursor() {
+        ringX += (mouseX - ringX) * 0.18;
+        ringY += (mouseY - ringY) * 0.18;
+
+        const scale = isClicking ? 0.75 : (isHovering ? 1.6 : 1);
+        const ringBorder = isHovering ? 'rgba(45, 198, 255, 0.9)' : 'rgba(45, 198, 255, 0.45)';
+        const ringBg = isHovering ? 'rgba(45, 198, 255, 0.12)' : 'transparent';
+
+        cursorRing.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%) scale(${scale})`;
+        cursorRing.style.borderColor = ringBorder;
+        cursorRing.style.backgroundColor = ringBg;
+
+        requestAnimationFrame(animateCursor);
+      }
+      requestAnimationFrame(animateCursor);
+
+      window.addEventListener('mousedown', () => { isClicking = true; });
+      window.addEventListener('mouseup', () => { isClicking = false; });
+
+      function updateHoverables() {
+        document.querySelectorAll('a, button, input, [role="button"], .interactive, .bento-card-exact, .review-card, .faq-item, .bg-slate-900\/50').forEach(el => {
+          el.addEventListener('mouseenter', () => { isHovering = true; });
+          el.addEventListener('mouseleave', () => { isHovering = false; });
+        });
+      }
+      updateHoverables();
+      window.addEventListener('load', updateHoverables);
+    })();
+</script>
 </body>
 </html>
