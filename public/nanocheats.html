@@ -329,8 +329,8 @@
   </header>
   
 
-  <!-- Hero Section -->
-  <section class="relative pt-28 pb-14 px-6 max-w-6xl mx-auto text-center flex flex-col items-center justify-center min-h-[520px]">
+  <!-- Hero Section (Clean, Open & Elegant without in-hero search bar) -->
+  <section class="relative pt-28 pb-16 px-6 max-w-6xl mx-auto text-center flex flex-col items-center justify-center min-h-[540px]">
     <div class="hero-characters-bg"></div>
 
     <div class="relative z-10 w-full flex flex-col items-center">
@@ -352,18 +352,6 @@
           <span>View Status</span>
         </a>
       </div>
-
-      <!-- Feature 1: Spotlight Quick-Search Bar -->
-      <div class="mt-12 w-full max-w-md">
-        <div onclick="openSearchModal()" class="cursor-pointer group flex items-center justify-between px-5 py-3 rounded-2xl bg-[#0D111A]/90 border border-white/10 hover:border-[#2DC6FF]/40 backdrop-blur-md transition shadow-xl">
-          <div class="flex items-center gap-3 text-slate-400 group-hover:text-slate-200 transition">
-            <svg class="w-4 h-4 text-[#2DC6FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-            <span class="text-xs sm:text-sm font-medium">Quick search games (Rust, Fortnite, Arc Raiders...)</span>
-          </div>
-          <kbd class="hidden sm:inline-block text-[11px] bg-white/10 px-2 py-0.5 rounded text-slate-300 font-mono border border-white/10">⌘K</kbd>
-        </div>
-      </div>
-
     </div>
   </section>
 
@@ -1503,21 +1491,21 @@
     </nav>
   </div>
 
-  <!-- Feature 7: Minimalist Live Purchase Toast (Social Proof) -->
-  <div id="purchaseToast" class="fixed bottom-6 left-6 z-40 hidden sm:flex items-center gap-3 bg-[#0D111A]/95 border border-white/10 backdrop-blur-xl px-4 py-3 rounded-2xl shadow-2xl toast-enter max-w-sm">
-    <div class="size-8 rounded-full bg-[#2DC6FF]/15 border border-[#2DC6FF]/30 flex items-center justify-center text-[#2DC6FF] flex-shrink-0">
-      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+  <!-- Feature 7: Minimalist Live Purchase Toast with Real Country Flags -->
+  <div id="purchaseToast" class="fixed bottom-6 left-6 z-40 hidden sm:flex items-center gap-3 bg-[#0D111A]/95 border border-white/10 backdrop-blur-xl px-4 py-3 rounded-2xl shadow-2xl toast-enter max-w-md">
+    <div id="toastFlag" class="text-2xl flex-shrink-0 leading-none select-none">
+      🇺🇸
     </div>
-    <div class="flex-1 min-w-0">
-      <p id="toastText" class="text-xs text-slate-200 font-medium truncate">Someone from USA bought <span class="text-[#2DC6FF] font-bold">Nano Rust (30 Days)</span></p>
+    <div class="flex-1 min-w-0 pr-2">
+      <p id="toastText" class="text-xs text-slate-200 font-medium whitespace-nowrap">Someone from United States bought <span class="text-[#2DC6FF] font-bold">Nano Rust (30 Days)</span></p>
       <p id="toastTime" class="text-[10px] text-slate-500 font-mono mt-0.5">2 minutes ago</p>
     </div>
-    <button onclick="dismissToast()" class="text-slate-500 hover:text-white transition p-1">
+    <button onclick="dismissToast()" class="text-slate-500 hover:text-white transition p-1 flex-shrink-0">
       <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
     </button>
   </div>
 
-  <!-- Feature 1: Spotlight Search Modal -->
+  <!-- Feature 1: Spotlight Search Modal (accessible via header & Cmd+K) -->
   <div id="searchModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-start justify-center pt-24 px-4" onclick="if(event.target===this) closeSearchModal()">
     <div class="bg-[#090D15] border border-white/15 rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden">
       <div class="flex items-center gap-3 px-5 py-4 border-b border-white/10">
@@ -1658,25 +1646,28 @@
       }
     }
 
-    // Live Social Proof Purchase Toasts
+    // Live Social Proof Purchase Toasts with Real Country Flags
     const fakePurchases = [
-      { loc: "United States", game: "Nano Rust (30 Days)", time: "1m ago" },
-      { loc: "Germany", game: "Nano Arc Raiders (1 Week)", time: "3m ago" },
-      { loc: "United Kingdom", game: "Nano Fortnite (30 Days)", time: "2m ago" },
-      { loc: "Canada", game: "Nano Apex Legends (1 Day)", time: "4m ago" },
-      { loc: "France", game: "Nano Delta Force (1 Month)", time: "6m ago" },
-      { loc: "Australia", game: "Nano Marvel Rivals (1 Week)", time: "5m ago" },
-      { loc: "Netherlands", game: "Nano Rainbow Six (30 Days)", time: "2m ago" }
+      { flag: "🇺🇸", loc: "United States", game: "Nano Rust (30 Days)", time: "1m ago" },
+      { flag: "🇩🇪", loc: "Germany", game: "Nano Arc Raiders (1 Week)", time: "3m ago" },
+      { flag: "🇬🇧", loc: "United Kingdom", game: "Nano Fortnite (30 Days)", time: "2m ago" },
+      { flag: "🇨🇦", loc: "Canada", game: "Nano Apex Legends (1 Day)", time: "4m ago" },
+      { flag: "🇫🇷", loc: "France", game: "Nano Delta Force (1 Month)", time: "6m ago" },
+      { flag: "🇦🇺", loc: "Australia", game: "Nano Marvel Rivals (1 Week)", time: "5m ago" },
+      { flag: "🇳🇱", loc: "Netherlands", game: "Nano Rainbow Six (30 Days)", time: "2m ago" },
+      { flag: "🇸🇪", loc: "Sweden", game: "Nano Rust (1 Week)", time: "7m ago" }
     ];
 
     let toastIndex = 0;
     const toast = document.getElementById('purchaseToast');
+    const toastFlag = document.getElementById('toastFlag');
     const toastText = document.getElementById('toastText');
     const toastTime = document.getElementById('toastTime');
 
     function showNextToast() {
       const p = fakePurchases[toastIndex % fakePurchases.length];
       toastIndex++;
+      toastFlag.textContent = p.flag;
       toastText.innerHTML = `Someone from <b>${p.loc}</b> bought <span class="text-[#2DC6FF] font-bold">${p.game}</span>`;
       toastTime.textContent = p.time;
 
