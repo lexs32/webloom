@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURA™ — Elite Kernel Enhancements & Streamproof Architecture</title>
+  <meta name="description" content="Next-generation gaming enhancements engineered with Ring-0 kernel hypervisors, DMA hardware compatibility, and 100% streamproof overlays.">
+
+  <!-- Exact Framer Fonts: Space Grotesk, Plus Jakarta Sans, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Space+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <style>
+    :root {
+      color-scheme: dark;
+      --cyan: #2DC6FF;
+      --cyan-glow: rgba(45, 198, 255, 0.25);
+      --bg-dark: #03060B;
+      --card-dark: #0A0F19;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-cyan: rgba(45, 198, 255, 0.4);
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: #E2E8F0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+      cursor: default;
+    }
+
+    .font-display { font-family: 'Space Grotesk', sans-serif; }
+    .font-mono-code { font-family: 'JetBrains Mono', monospace; }
+
+    ::selection {
+      background: rgba(45, 198, 255, 0.3);
+      color: #FFFFFF;
+      text-shadow: 0 0 10px rgba(45, 198, 255, 0.8);
+    }
+
+    /* Custom Nano Tech Cursor */
+    @media (hover: hover) and (pointer: fine) {
+      body, a, button, input { cursor: none !important; }
+    }
+
+    #nanoCursorDot {
+      pointer-events: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 6px;
+      height: 6px;
+      background: var(--cyan);
+      border-radius: 50%;
+      z-index: 99999;
+      box-shadow: 0 0 12px var(--cyan);
+      transform: translate(-50%, -50%);
+      transition: transform 0.04s ease-out;
+    }
+
+    #nanoCursorRing {
+      pointer-events: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 34px;
+      height: 34px;
+      border: 1.5px solid rgba(45, 198, 255, 0.5);
+      border-radius: 50%;
+      z-index: 99998;
+      transform: translate(-50%, -50%);
+      transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+      box-shadow: 0 0 16px rgba(45, 198, 255, 0.2);
+    }
+
+    /* 1. FRAMER COMPONENT: Liquid Glass Floating Pill Nav with Morphing Tracker */
+    .framer-liquid-nav {
+      background: rgba(10, 15, 25, 0.72);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+    }
+
+    .framer-pill-active {
+      position: absolute;
+      top: 4px;
+      bottom: 4px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 9999px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 1;
+      pointer-events: none;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    /* Dropdown menu animation */
+    .framer-dropdown {
+      opacity: 0;
+      transform: translateY(10px) scale(0.96);
+      pointer-events: none;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .group:hover .framer-dropdown {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+
+    /* 2. FRAMER COMPONENT: Line Menu - Table of Contents (Right Edge Track) */
+    .framer-line-menu {
+      position: fixed;
+      right: 28px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 40;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: flex-end;
+    }
+
+    .framer-toc-line {
+      width: 16px;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 2px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+    }
+
+    .framer-toc-line:hover, .framer-toc-line.active {
+      width: 32px;
+      background: #2DC6FF;
+      box-shadow: 0 0 10px #2DC6FF;
+    }
+
+    /* 3. FRAMER COMPONENT: MercuryOS Floating Dock */
+    .framer-mercury-dock {
+      background: rgba(12, 18, 30, 0.85);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 25px rgba(45, 198, 255, 0.15);
+    }
+
+    /* 4. FRAMER COMPONENT: Kinetic Bento Cards with Cursor Follow Glow */
+    .framer-bento-card {
+      position: relative;
+      background: #080D17;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      overflow: hidden;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease;
+    }
+
+    .framer-bento-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(45, 198, 255, 0.4);
+    }
+
+    .framer-bento-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(450px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(45, 198, 255, 0.1), transparent 80%);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .framer-bento-card:hover::before { opacity: 1; }
+
+    /* 5. FRAMER COMPONENT: Velocity & Arc Focus Carousel */
+    @keyframes marqueeScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marqueeScroll 40s linear infinite;
+    }
+
+    .marquee-track:hover { animation-play-state: paused; }
+
+    .game-vault-card {
+      width: 230px;
+      height: 330px;
+      flex-shrink: 0;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      background: #0D1322;
+      position: relative;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .game-vault-card:hover {
+      transform: translateY(-10px) scale(1.04);
+      border-color: rgba(45, 198, 255, 0.6);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(45, 198, 255, 0.3);
+    }
+
+    .game-vault-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* 6. FRAMER COMPONENT: Streamproof Split Slider */
+    .split-slider-stage {
+      position: relative;
+      width: 100%;
+      height: 480px;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      user-select: none;
+    }
+
+    .split-handle {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: #2DC6FF;
+      cursor: ew-resize;
+      z-index: 30;
+      box-shadow: 0 0 20px #2DC6FF;
+    }
+
+    .split-handle-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 44px;
+      height: 44px;
+      background: #080D17;
+      border: 2px solid #2DC6FF;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 25px rgba(45, 198, 255, 0.5);
+    }
+  </style>
+</head>
+<body class="selection:bg-cyan-500/20 selection:text-white">
+
+  <!-- Custom Cursor -->
+  <div id="nanoCursorDot"></div>
+  <div id="nanoCursorRing"></div>
+
+  <!-- Background Animated Canvas -->
+  <canvas id="nanoCanvas" class="fixed inset-0 pointer-events-none -z-10"></canvas>
+  <div class="fixed inset-0 pointer-events-none -z-10 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#07243B]/30 via-transparent to-transparent"></div>
+
+  <!-- ------------------------------------------------------------------ -->
+  <!-- 1. FRAMER COMPONENT: LINE MENU - TOC (RIGHT EDGE NAVIGATION) -->
+  <!-- ------------------------------------------------------------------ -->
+  <div class="hidden lg:flex framer-line-menu">
+    <a href="#hero" class="group flex items-center gap-3">
+      <span class="text-[10px] font-mono-code text-neutral-400 opacity-0 group-hover:opacity-100 transition">01 / HERO</span>
+      <div class="framer-toc-line active" id="toc-hero"></div>
+    </a>
+    <a href="#vault" class="group flex items-center gap-3">
+      <span class="text-[10px] font-mono-code text-neutral-400 opacity-0 group-hover:opacity-100 transition">02 / VAULT</span>
+      <div class="framer-toc-line" id="toc-vault"></div>
+    </a>
+    <a href="#architecture" class="group flex items-center gap-3">
+      <span class="text-[10px] font-mono-code text-neutral-400 opacity-0 group-hover:opacity-100 transition">03 / ARCHITECTURE</span>
+      <div class="framer-toc-line" id="toc-architecture"></div>
+    </a>
+    <a href="#streamproof" class="group flex items-center gap-3">
+      <span class="text-[10px] font-mono-code text-neutral-400 opacity-0 group-hover:opacity-100 transition">04 / STREAMPROOF</span>
+      <div class="framer-toc-line" id="toc-streamproof"></div>
+    </a>
+    <a href="#pricing" class="group flex items-center gap-3">
+      <span class="text-[10px] font-mono-code text-neutral-400 opacity-0 group-hover:opacity-100 transition">05 / ACCESS</span>
+      <div class="framer-toc-line" id="toc-pricing"></div>
+    </a>
+  </div>
+
+  <!-- ------------------------------------------------------------------ -->
+  <!-- 2. FRAMER COMPONENT: LIQUID GLASS FLOATING PILL NAVBAR WITH DROPDOWN -->
+  <!-- ------------------------------------------------------------------ -->
+  <header class="fixed top-6 inset-x-0 z-50 flex justify-center px-4 pointer-events-none">
+    <nav class="framer-liquid-nav rounded-full px-5 py-2.5 flex items-center gap-8 pointer-events-auto max-w-4xl w-full justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-xl bg-gradient-to-br from-[#2DC6FF] to-[#0B63E5] flex items-center justify-center shadow-[0_0_20px_rgba(45,198,255,0.4)]">
+          <svg class="w-4 h-4 text-black font-black" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <span class="font-display font-black text-lg text-white tracking-wide">AURA<span class="text-[#2DC6FF]">.</span></span>
+      </a>
+
+      <!-- Center Links (Framer Pill Navigation with Dropdown Menu) -->
+      <div class="hidden md:flex items-center gap-1 bg-black/40 p-1 rounded-full border border-white/5 text-xs font-semibold text-neutral-300 relative">
+        <div class="framer-pill-active" id="navPill" style="left: 4px; width: 62px;"></div>
+
+        <a href="#hero" class="relative z-10 px-4 py-1.5 rounded-full hover:text-white transition" onmouseenter="movePill(this)">Home</a>
+        <a href="#vault" class="relative z-10 px-4 py-1.5 rounded-full hover:text-white transition" onmouseenter="movePill(this)">Vault</a>
+        
+        <!-- Pill Dropdown Component (Matt - Free) -->
+        <div class="relative group">
+          <a href="#architecture" class="relative z-10 px-4 py-1.5 rounded-full hover:text-white transition flex items-center gap-1" onmouseenter="movePill(this)">
+            <span>Tech</span>
+            <svg class="w-3 h-3 text-neutral-400 group-hover:rotate-180 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </a>
+          <!-- Framer Dropdown Submenu -->
+          <div class="framer-dropdown absolute top-full left-1/2 -translate-x-1/2 mt-3 w-56 p-2 rounded-2xl bg-[#0B101D] border border-white/10 shadow-2xl backdrop-blur-xl">
+            <a href="#architecture" class="block p-2.5 rounded-xl hover:bg-white/5 transition">
+              <span class="font-display font-bold text-xs text-white block">Ring-0 Hypervisor</span>
+              <span class="text-[10px] text-neutral-400">Windows kernel memory isolation</span>
+            </a>
+            <a href="#streamproof" class="block p-2.5 rounded-xl hover:bg-white/5 transition">
+              <span class="font-display font-bold text-xs text-white block">DirectX Overlay</span>
+              <span class="text-[10px] text-neutral-400">100% OBS & Discord invisible</span>
+            </a>
+            <a href="#status" class="block p-2.5 rounded-xl hover:bg-white/5 transition">
+              <span class="font-display font-bold text-xs text-white block">Telemetry Status</span>
+              <span class="text-[10px] text-emerald-400">Undetected status board</span>
+            </a>
+          </div>
+        </div>
+
+        <a href="#streamproof" class="relative z-10 px-4 py-1.5 rounded-full hover:text-white transition" onmouseenter="movePill(this)">Streamproof</a>
+        <a href="#pricing" class="relative z-10 px-4 py-1.5 rounded-full hover:text-white transition" onmouseenter="movePill(this)">Access</a>
+      </div>
+
+      <!-- Right Action CTA -->
+      <div class="flex items-center gap-3">
+        <button onclick="openCheckout('Instant Key Access', '$29.99')" class="px-4 py-1.5 rounded-full bg-[#2DC6FF] text-black font-display font-bold text-xs hover:bg-cyan-300 transition shadow-[0_0_20px_rgba(45,198,255,0.35)]">
+          Get Access
+        </button>
+      </div>
+
+    </nav>
+  </header>
+
+  <!-- ------------------------------------------------------------------ -->
+  <!-- 3. HERO SECTION WITH ANNOUNCEMENT PILL & GROWING NAVIGATION -->
+  <!-- ------------------------------------------------------------------ -->
+  <section id="hero" class="relative pt-44 pb-28 px-6 text-center max-w-5xl mx-auto flex flex-col items-center">
+    
+    <!-- Announcement Nav Pill Component (Matt - $9) -->
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono-code text-neutral-300 mb-8 backdrop-blur-md hover:border-cyan-400/40 transition">
+      <span class="px-2 py-0.5 rounded-full bg-[#2DC6FF]/20 text-[#2DC6FF] font-bold text-[10px]">KERNEL v4.2</span>
+      <span>Hypervisor Ring-0 & DMA Passthrough Active</span>
+    </div>
+
+    <!-- Wide Kinetic Display Headline -->
+    <h1 class="font-display text-5xl sm:text-7xl md:text-8xl font-black text-white tracking-tight leading-[0.95] mb-6">
+      Precision Meets<br>
+      <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#2DC6FF] via-[#70E1FF] to-[#38BDF8]">Undetected Power.</span>
+    </h1>
+
+    <p class="text-neutral-400 text-base sm:text-lg max-w-2xl leading-relaxed mb-10">
+      The gold standard in competitive gaming enhancements. Ultra-low latency memory hooks, external streamproof ESP, and instant automated cloud activation.
+    </p>
+
+    <!-- Hero CTA Buttons -->
+    <div class="flex flex-wrap items-center justify-center gap-4">
+      <a href="#vault" class="px-8 py-3.5 rounded-full bg-[#2DC6FF] hover:bg-cyan-300 text-black font-display font-bold text-sm transition shadow-[0_0_30px_rgba(45,198,255,0.4)] flex items-center gap-2">
+        <span>Explore Game Vault</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+      </a>
+
+      <a href="#status" class="px-6 py-3.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-white font-medium text-sm transition flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+        <span>Check Live Status</span>
+      </a>
+    </div>
+
+    <!-- Telemetry Stats -->
+    <div class="grid grid-cols-3 gap-6 sm:gap-12 mt-16 pt-10 border-t border-white/10 w-full max-w-2xl text-center">
+      <div>
+        <div class="font-display font-bold text-2xl sm:text-3xl text-white">99.98%</div>
+        <div class="text-[11px] text-neutral-400 font-mono-code uppercase tracking-wider mt-1">Uptime Record</div>
+      </div>
+      <div>
+        <div class="font-display font-bold text-2xl sm:text-3xl text-[#2DC6FF]">0.12ms</div>
+        <div class="text-[11px] text-neutral-400 font-mono-code uppercase tracking-wider mt-1">Render Latency</div>
+      </div>
+      <div>
+        <div class="font-display font-bold text-2xl sm:text-3xl text-white">42,000+</div>
+        <div class="text-[11px] text-neutral-400 font-mono-code uppercase tracking-wider mt-1">Active Users</div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ------------------------------------------------------------------ -->
+  <!-- 4. FRAMER COMPONENT: VELOCITY & ARC FOCUS CAROUSEL (GAME VAULT) -->
+  <!-- ------------------------------------------------------------------ -->
+  <section id="vault" class="py-24 border-y border-white/5 relative overflow-hidden">
+    
+    <div class="text-center mb-12 px-6">
+      <span class="text-xs font-mono-code text-[#2DC6FF] uppercase tracking-widest font-bold">GAME ENHANCEMENT VAULT</span>
+      <h2 class="font-display text-3xl sm:text-5xl font-bold text-white mt-2">Engineered For Every Battlefield</h2>
+      <p class="text-neutral-400 text-sm max-w-md mx-auto mt-2">Featuring memory-safe drivers and stream-ready overlays for top competitive titles.</p>
+    </div>
+
+    <!-- Velocity Infinite Marquee Track -->
+    <div class="overflow-hidden mb-6">
+      <div class="marquee-track gap-6">
+        
+        <!-- Rust -->
+        <div class="game-vault-card group">
+          <img src="https://division.b-cdn.net/card3.webp" alt="Rust Cheat">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent p-5 flex flex-col justify-end">
+            <span class="text-[10px] font-mono-code text-[#2DC6FF] font-bold uppercase">UNDETECTED</span>
+            <h4 class="font-display font-bold text-lg text-white">Rust Enhanced</h4>
+            <div class="flex justify-between items-center mt-2 text-xs text-neutral-400">
+              <span>Silent Aim • ESP</span>
+              <span class="font-bold text-white">$6.99</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Arc Raiders -->
+        <div class="game-vault-card group">
+          <img src="https://division.b-cdn.net/card5.webp" alt="Arc Raiders Cheat">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent p-5 flex flex-col justify-end">
+            <span class="text-[10px] font-mono-code text-[#2DC6FF] font-bold uppercase">NEW RELEASE</span>
+            <h4 class="font-display font-bold text-lg text-white">Arc Raiders</h4>
+            <div class="flex justify-between items-center mt-2 text-xs text-neutral-400">
+              <span>Loot Radar • Recoil</span>
+              <span class="font-bold text-white">$7.99</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Apex Legends -->
+        <div class="game-vault-card group">
+          <img src="https://division.b-cdn.net/card1.webp" alt="Apex Cheat">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent p-5 flex flex-col justify-end">
+            <span class="text-[10px] font-mono-code text-emerald-400 font-bold uppercase">UNDETECTED</span>
+            <h4 class="font-display font-bold text-lg text-white">Apex Legends</h4>
+            <div class="flex justify-between items-center mt-2 text-xs text-neutral-400">
+              <span>Glow • Prediction</span>
+              <span class="font-bold text-white">$5.99</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fortnite -->
+        <div class="game-vault-card group">
+          <img src="https://division.b-cdn.net/card4.webp" alt="Fortnite Cheat">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent p-5 flex flex-col justify-end">
+            <span class="text-[10px] font-mono-code text-emerald-400 font-bold uppercase">TOURNAMENT</span>
+            <h4 class="font-display font-bold text-lg text-white">Fortnite Pro</h4>
+            <div class="flex justify-between items-center mt-2 text-xs text-neutral-400">
+              <span>Memory Aim • FOV</span>
+              <span class="font-bold text-white">$6.99</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Rainbow Six -->
+        <div class="game-vault-card group">
+          <img src="https://division.b-cdn.net/card8.webp" alt="R6 Cheat">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent p-5 flex flex-col justify-end">
+            <span class="text-[10px] font-mono-code text-emerald-400 font-bold uppercase">STREAMPROOF</span>
+            <h4 class="font-display font-bold text-lg text-white">Rainbow Six</h4>
+            <div class="flex justify-between items-center mt-2 text-xs text-neutral-400">
+              <span>Caveira ESP • Spread</span>
+              <span class="font-bold text-white">$5.99</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Valorant DMA -->
+        <div class="game-vault-card group">
+          <img src="https://division.b-cdn.net/card7.webp" alt="Valorant Cheat">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent p-5 flex flex-col justify-end">
+            <span class="text-[10px] font-mono-code text-amber-400 font-bold uppercase">DMA HARDWARE</span>
+            <h4 class="font-display font-bold text-lg text-white">Valorant DMA</h4>
+            <div class="flex justify-between items-center mt-2 text-xs text-neutral-400">
+              <span>Dual-PC • Radar</span>
+              <span class="font-bold text-white">$14.99</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tarkov -->
+        <div class="game-vault-card group">
+          <img src="https://division.b-cdn.net/card13.webp" alt="Tarkov Cheat">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent p-5 flex flex-col justify-end">
+            <span class="text-[10px] font-mono-code text-emerald-400 font-bold uppercase">EXTRACT RADAR</span>
+            <h4 class="font-display font-bold text-lg text-white">Tarkov Elite</h4>
+            <div class="flex justify-between items-center mt-2 text-xs text-neutral-400">
+              <span>Price Filter • Chams</span>
+              <span class="font-bold text-white">$8.99</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ------------------------------------------------------------------ -->
+  <!-- 5. FRAMER COMPONENT: KINETIC BENTO GRID WITH CURSOR TRACERS -->
+  <!-- ------------------------------------------------------------------ -->
+  <section id="architecture" class="py-28 px-6 max-w-7xl mx-auto">
+    <div class="text-center mb-16">
+      <span class="text-xs font-mono-code text-[#2DC6FF] uppercase tracking-widest font-bold">SYSTEM ARCHITECTURE</span>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold text-white mt-2">Why Champions Choose Aura</h2>
+      <p class="text-neutral-400 text-sm max-w-lg mx-auto mt-3">Engineered beneath Windows security rings for absolute zero detection trace.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <!-- Bento 1: Ring-0 Kernel Isolation -->
+      <div class="framer-bento-card p-8 flex flex-col justify-between">
+        <div>
+          <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-[#2DC6FF] mb-6 shadow-[0_0_15px_rgba(45,198,255,0.2)]">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <h3 class="font-display text-xl font-bold text-white mb-2">Ring-0 Kernel Isolation</h3>
+          <p class="text-neutral-400 text-xs leading-relaxed">
+            Our custom hypervisor runs beneath Windows security rings, cloaking memory allocations from signature detection.
+          </p>
+        </div>
+        <div class="mt-8 pt-4 border-t border-white/5 font-mono-code text-[11px] text-cyan-400 flex items-center justify-between">
+          <span>HYPERVISOR: SECURE</span>
+          <span>RING-0</span>
+        </div>
+      </div>
+
+      <!-- Bento 2: Streamproof Hook -->
+      <div class="framer-bento-card p-8 flex flex-col justify-between md:col-span-2">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center">
+          <div>
+            <div class="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400 mb-6 shadow-[0_0_15px_rgba(168,85,247,0.2)]">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+            </div>
+            <h3 class="font-display text-2xl font-bold text-white mb-2">100% Streamproof Hook</h3>
+            <p class="text-neutral-400 text-xs leading-relaxed">
+              Overlay visuals render directly to your display hardware buffer without touching OBS, Discord screen capture, or Twitch streams.
+            </p>
+          </div>
+          <div class="rounded-2xl overflow-hidden border border-white/10 shadow-xl bg-black/40">
+            <img src="https://division.b-cdn.net/bento1.webp" alt="Streamproof" class="w-full h-auto object-cover">
+          </div>
+        </div>
+      </div>
+
+      <!-- Bento 3: Realtime Cloud Synced Configs -->
+      <div class="framer-bento-card p-8 flex flex-col justify-between md:col-span-2">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center">
+          <div class="rounded-2xl overflow-hidden border border-white/10 shadow-xl bg-black/40 order-2 sm:order-1">
+            <img src="https://division.b-cdn.net/bento6.webp" alt="Cloud Configs" class="w-full h-auto object-cover">
+          </div>
+          <div class="order-1 sm:order-2">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 mb-6 shadow-[0_0_15px_rgba(16,185,129,0.2)]">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+            </div>
+            <h3 class="font-display text-2xl font-bold text-white mb-2">Cloud-Synced Configs</h3>
+            <p class="text-neutral-400 text-xs leading-relaxed">
+              Import pro smoothing presets, customize FOV curves, and sync configurations across devices with 1-click cloud share codes.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bento 4: Instant Automated Delivery -->
+      <div class="framer-bento-card p-8 flex flex-col justify-between">
+        <div>
+          <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 mb-6 shadow-[0_0_15px_rgba(245,158,11,0.2)]">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3 class="font-display text-xl font-bold text-white mb-2">Instant Key Dispatch</h3>
+          <p class="text-neutral-400 text-xs leading-relaxed">
+            Automated backend issues your activation license and one-click loader download in under 5 seconds.
+          </p>
+        </div>
+        <div class="mt-8 pt-4 border-t border-white/5 font-mono-code text-[11px] text-amber-400 flex items-center justify-between">
+          <span>LATENCY: &lt; 3s</span>
+          <span>AUTOMATED</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------------------ -->
+  <!-- 6. FRAMER COMPONENT: STREAMPROOF BEFORE / AFTER SPLIT SLIDER -->
+  <!-- ------------------------------------------------------------------ -->
+  <section id="streamproof" class="py-24 px-6 max-w-5xl mx-auto">
+    <div class="text-center mb-12">
+      <span class="text-xs font-mono-code text-[#2DC6FF] uppercase tracking-widest font-bold">STREAMPROOF COMPARISON</span>
+      <h2 class="font-display text-3xl sm:text-4xl font-bold text-white mt-2">See What Your Streamers See</h2>
+      <p class="text-neutral-400 text-sm max-w-md mx-auto mt-2">Drag the interactive slider to compare your in-game visual overlay vs the clean stream output.</p>
+    </div>
+
+    <div class="split-slider-stage relative" id="splitSlider">
+      
+      <!-- Right Image: What Stream Sees (Clean Game) -->
+      <div class="absolute inset-0 bg-[#060A14] p-8 flex items-center justify-center">
+        <div class="w-full h-full rounded-2xl bg-[#090E1A] border border-white/5 flex items-center justify-center relative overflow-hidden">
+          <div class="text-center">
+            <div class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center mx-auto mb-3 text-neutral-500">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+            </div>
+            <span class="font-display font-bold text-sm text-neutral-400">OBS & STREAM BROADCAST</span>
+            <p class="text-[11px] text-neutral-600 mt-1">100% Clean Gameplay Output (Zero Visual Trace)</p>
+          </div>
+        </div>
+        <div class="absolute top-6 right-6 px-3 py-1 rounded-full bg-black/60 border border-white/10 text-xs font-mono-code text-neutral-300 backdrop-blur-md">
+          BROADCAST VIEW (CLEAN)
+        </div>
+      </div>
+
+      <!-- Left Image: What You See (ESP Overlay) -->
+      <div id="sliderOverlay" class="absolute inset-0 bg-[#071120] overflow-hidden" style="width: 50%;">
+        <div class="absolute inset-0 p-8 flex items-center justify-center bg-[#07152B]">
+          <div class="w-full h-full rounded-2xl bg-[#09172E] border border-cyan-500/20 flex items-center justify-center relative overflow-hidden">
+            <!-- Simulated In-Game ESP HUD -->
+            <div class="absolute top-1/4 left-1/3 w-36 h-56 border-2 border-emerald-400 rounded-lg bg-emerald-400/10 p-3 font-mono-code text-[11px] text-emerald-300 shadow-[0_0_20px_rgba(52,211,153,0.3)]">
+              <div class="font-bold text-white">ENEMY [84m]</div>
+              <div class="text-[10px] text-emerald-400 mt-1">HP: 100/100</div>
+              <div class="text-[10px] text-amber-300 mt-0.5">WEAPON: AK-47</div>
+              <div class="text-[9px] text-cyan-300 mt-1">SKELETON: VISIBLE</div>
+            </div>
+          </div>
+        </div>
+        <div class="absolute top-6 left-6 px-3 py-1 rounded-full bg-[#2DC6FF]/20 border border-[#2DC6FF]/40 text-xs font-mono-code text-[#2DC6FF] backdrop-blur-md">
+          YOUR DIRECT MONITOR (CHAMS + ESP)
+        </div>
+      </div>
+
+      <!-- Drag Handle -->
+      <div id="sliderHandle" class="split-handle" style="left: 50%;">
+        <div class="split-handle-btn">
+          <svg class="w-4 h-4 text-[#2DC6FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4"/></svg>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------------------ -->
+  <!-- 7. PRICING & ACCESS TIERS -->
+  <!-- ------------------------------------------------------------------ -->
+  <section id="pricing" class="py-28 px-6 max-w-6xl mx-auto border-t border-white/5">
+    <div class="text-center mb-16">
+      <span class="text-xs font-mono-code text-[#2DC6FF] uppercase tracking-widest font-bold">INSTANT ACCESS PLANS</span>
+      <h2 class="font-display text-4xl sm:text-5xl font-bold text-white mt-2">Choose Your Arsenal</h2>
+      <p class="text-neutral-400 text-sm mt-3">All keys include automated loader updates, streamproof hooks, and 24/7 priority Discord assistance.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <!-- Day Pass -->
+      <div class="p-8 rounded-3xl bg-[#0A0E18] border border-white/10 flex flex-col justify-between hover:border-white/20 transition">
+        <div>
+          <div class="flex justify-between items-center mb-4">
+            <span class="text-xs font-mono-code text-neutral-400 font-bold uppercase">DAY PASS</span>
+            <span class="text-xs text-neutral-500 font-mono-code">24 HOURS</span>
+          </div>
+          <h3 class="font-display text-2xl font-bold text-white mb-2">Tactical 24H</h3>
+          <p class="text-xs text-neutral-400 mb-6">Ideal for testing tournament compatibility and private scrims.</p>
+
+          <div class="flex items-baseline gap-1 mb-8">
+            <span class="font-display text-4xl font-black text-white">$6.99</span>
+            <span class="text-xs text-neutral-500">/ day</span>
+          </div>
+
+          <ul class="space-y-3 text-xs text-neutral-300 mb-8 font-medium">
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span> Full Feature Set Unlocked</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span> Streamproof Overlay</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span> Instant Key Delivery</li>
+          </ul>
+        </div>
+
+        <button onclick="openCheckout('Tactical 24H Pass', '$6.99')" class="w-full py-3.5 rounded-full bg-white/10 hover:bg-white/15 text-white font-display font-bold text-xs transition border border-white/10">
+          Purchase 24H Key
+        </button>
+      </div>
+
+      <!-- Monthly Pro (Featured) -->
+      <div class="p-8 rounded-3xl bg-[#0C1322] border-2 border-[#2DC6FF] flex flex-col justify-between relative shadow-[0_0_40px_rgba(45,198,255,0.15)]">
+        <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-[#2DC6FF] text-black text-[10px] font-display font-black uppercase tracking-wider">
+          MOST POPULAR
+        </div>
+
+        <div>
+          <div class="flex justify-between items-center mb-4">
+            <span class="text-xs font-mono-code text-[#2DC6FF] font-bold uppercase">PRO MONTHLY</span>
+            <span class="text-xs text-neutral-400 font-mono-code">30 DAYS</span>
+          </div>
+          <h3 class="font-display text-2xl font-bold text-white mb-2">Combat Master</h3>
+          <p class="text-xs text-neutral-400 mb-6">Unrestricted monthly dominance with automated HWID reset slot.</p>
+
+          <div class="flex items-baseline gap-1 mb-8">
+            <span class="font-display text-4xl font-black text-[#2DC6FF]">$29.99</span>
+            <span class="text-xs text-neutral-500">/ month</span>
+          </div>
+
+          <ul class="space-y-3 text-xs text-neutral-200 mb-8 font-medium">
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span> All Game Enhancements Included</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span> DMA & Dual-PC Support Mode</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span> Cloud Config Preset Library</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span> Priority Discord Support Role</li>
+          </ul>
+        </div>
+
+        <button onclick="openCheckout('Combat Master Monthly', '$29.99')" class="w-full py-3.5 rounded-full bg-[#2DC6FF] hover:bg-cyan-300 text-black font-display font-black text-xs transition shadow-[0_0_20px_rgba(45,198,255,0.3)]">
+          Claim Monthly Access
+        </button>
+      </div>
+
+      <!-- Lifetime Access -->
+      <div class="p-8 rounded-3xl bg-[#0A0E18] border border-white/10 flex flex-col justify-between hover:border-white/20 transition">
+        <div>
+          <div class="flex justify-between items-center mb-4">
+            <span class="text-xs font-mono-code text-purple-400 font-bold uppercase">LIFETIME</span>
+            <span class="text-xs text-neutral-500 font-mono-code">PERMANENT</span>
+          </div>
+          <h3 class="font-display text-2xl font-bold text-white mb-2">Aura Lifetime</h3>
+          <p class="text-xs text-neutral-400 mb-6">One-time payment for lifetime loader access and future updates.</p>
+
+          <div class="flex items-baseline gap-1 mb-8">
+            <span class="font-display text-4xl font-black text-white">$89.99</span>
+            <span class="text-xs text-neutral-500">/ one-time</span>
+          </div>
+
+          <ul class="space-y-3 text-xs text-neutral-300 mb-8 font-medium">
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span> Lifetime Loader Access</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span> Free Major Engine Upgrades</li>
+            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span> VIP Private Discord Lounge</li>
+          </ul>
+        </div>
+
+        <button onclick="openCheckout('Aura Lifetime Access', '$89.99')" class="w-full py-3.5 rounded-full bg-white/10 hover:bg-white/15 text-white font-display font-bold text-xs transition border border-white/10">
+          Get Lifetime Key
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------------------ -->
+  <!-- 8. TELEMETRY STATUS MONITOR -->
+  <!-- ------------------------------------------------------------------ -->
+  <section id="status" class="py-20 px-6 max-w-5xl mx-auto border-t border-white/5">
+    <div class="text-center mb-12">
+      <span class="text-xs font-mono-code text-emerald-400 uppercase tracking-widest font-bold">TELEMETRY MONITOR</span>
+      <h2 class="font-display text-3xl font-bold text-white mt-2">Live Kernel Status</h2>
+    </div>
+
+    <div class="bg-[#090D15] rounded-3xl border border-white/10 overflow-hidden">
+      <div class="px-6 py-4 border-b border-white/5 flex items-center justify-between text-xs font-mono-code text-neutral-400">
+        <span>GAME MODULE</span>
+        <span>SECURITY VERSION</span>
+        <span>STATUS</span>
+      </div>
+
+      <div class="divide-y divide-white/5 text-xs">
+        <div class="px-6 py-4 flex items-center justify-between">
+          <span class="font-bold text-white flex items-center gap-2.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            Rust Enhanced Ring-0
+          </span>
+          <span class="font-mono-code text-neutral-400">v4.8.1 (EAC Bypass)</span>
+          <span class="px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-400 font-mono-code font-bold text-[10px]">UNDETECTED</span>
+        </div>
+
+        <div class="px-6 py-4 flex items-center justify-between">
+          <span class="font-bold text-white flex items-center gap-2.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            Arc Raiders Tactical
+          </span>
+          <span class="font-mono-code text-neutral-400">v1.0.4 (Hypervisor)</span>
+          <span class="px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-400 font-mono-code font-bold text-[10px]">UNDETECTED</span>
+        </div>
+
+        <div class="px-6 py-4 flex items-center justify-between">
+          <span class="font-bold text-white flex items-center gap-2.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            Apex Legends Hyper
+          </span>
+          <span class="font-mono-code text-neutral-400">v3.9.0 (Kernel Driver)</span>
+          <span class="px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-400 font-mono-code font-bold text-[10px]">UNDETECTED</span>
+        </div>
+
+        <div class="px-6 py-4 flex items-center justify-between">
+          <span class="font-bold text-white flex items-center gap-2.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            Valorant DMA Hardware
+          </span>
+          <span class="font-mono-code text-neutral-400">v2.1.0 (Dual PC Direct)</span>
+          <span class="px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-400 font-mono-code font-bold text-[10px]">UNDETECTED</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------------------ -->
+  <!-- 9. FRAMER COMPONENT: MERCURYOS FLOATING ACTION DOCK (BOTTOM) -->
+  <!-- ------------------------------------------------------------------ -->
+  <div class="fixed bottom-6 inset-x-0 z-40 flex justify-center px-4 pointer-events-none">
+    <div class="framer-mercury-dock rounded-2xl p-2 flex items-center gap-3 pointer-events-auto shadow-2xl">
+      <a href="#vault" class="px-3.5 py-2 rounded-xl hover:bg-white/10 text-xs font-semibold text-white transition flex items-center gap-1.5">
+        <svg class="w-4 h-4 text-[#2DC6FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+        <span>Vault</span>
+      </a>
+
+      <a href="#streamproof" class="px-3.5 py-2 rounded-xl hover:bg-white/10 text-xs font-semibold text-white transition flex items-center gap-1.5">
+        <svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+        <span>Streamproof</span>
+      </a>
+
+      <button onclick="openCheckout('Instant Key Access', '$29.99')" class="px-4 py-2 rounded-xl bg-[#2DC6FF] text-black font-display font-bold text-xs hover:bg-cyan-300 transition shadow-[0_0_15px_rgba(45,198,255,0.4)]">
+        Get Key
+      </button>
+    </div>
+  </div>
+
+  <!-- Fast Checkout Modal -->
+  <div id="checkoutModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4" onclick="if(event.target===this) closeCheckout()">
+    <div class="bg-[#0D121D] border border-white/10 rounded-3xl w-full max-w-md p-6 sm:p-8 shadow-2xl relative">
+      <button onclick="closeCheckout()" class="absolute top-5 right-5 text-neutral-400 hover:text-white transition">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <div class="text-center mb-6">
+        <span class="px-3 py-1 rounded-full bg-cyan-500/10 text-[#2DC6FF] text-xs font-mono-code font-bold uppercase">INSTANT DISPATCH</span>
+        <h3 class="font-display text-2xl font-bold text-white mt-2" id="modalPlanTitle">Combat Master Monthly</h3>
+        <p class="text-xs text-neutral-400 mt-1" id="modalPlanPrice">$29.99</p>
+      </div>
+
+      <div class="space-y-4">
+        <div>
+          <label class="block text-xs font-medium text-neutral-400 mb-1">Email Address</label>
+          <input type="email" placeholder="gamer@example.com" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:border-[#2DC6FF] outline-none">
+        </div>
+
+        <div>
+          <label class="block text-xs font-medium text-neutral-400 mb-1">Payment Method</label>
+          <div class="grid grid-cols-2 gap-2">
+            <button class="py-2.5 px-3 rounded-xl bg-white/10 border border-[#2DC6FF] text-xs font-bold text-white flex items-center justify-center gap-1.5">
+              <span>Card / Apple Pay</span>
+            </button>
+            <button class="py-2.5 px-3 rounded-xl bg-white/5 border border-white/10 text-xs font-medium text-neutral-400 hover:text-white flex items-center justify-center gap-1.5">
+              <span>Crypto (BTC/LTC)</span>
+            </button>
+          </div>
+        </div>
+
+        <button onclick="alert('Demo Mode: Key generation simulated. Instant loader unlocked!')" class="w-full py-4 rounded-xl bg-[#2DC6FF] text-black font-display font-bold text-xs hover:bg-cyan-300 transition shadow-[0_0_20px_rgba(45,198,255,0.4)] mt-4">
+          Complete Instant Purchase
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts: Nav Pill Tracker, TOC Observer, Cursor & Split Slider -->
+  <script>
+    // Nav Pill Sliding Animation
+    function movePill(el) {
+      const pill = document.getElementById('navPill');
+      pill.style.left = `${el.offsetLeft}px`;
+      pill.style.width = `${el.offsetWidth}px`;
+    }
+
+    // Custom Cursor
+    const dot = document.getElementById('nanoCursorDot');
+    const ring = document.getElementById('nanoCursorRing');
+    window.addEventListener('mousemove', (e) => {
+      dot.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+      ring.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+    });
+
+    // Bento Card Cursor Follow
+    document.querySelectorAll('.framer-bento-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+        card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+      });
+    });
+
+    // Split Slider Drag
+    const slider = document.getElementById('splitSlider');
+    const overlay = document.getElementById('sliderOverlay');
+    const handle = document.getElementById('sliderHandle');
+    let isDragging = false;
+
+    function updateSlider(x) {
+      const rect = slider.getBoundingClientRect();
+      let pos = (x - rect.left) / rect.width;
+      if (pos < 0.05) pos = 0.05;
+      if (pos > 0.95) pos = 0.95;
+      overlay.style.width = `${pos * 100}%`;
+      handle.style.left = `${pos * 100}%`;
+    }
+
+    slider.addEventListener('mousedown', (e) => { isDragging = true; updateSlider(e.clientX); });
+    window.addEventListener('mouseup', () => { isDragging = false; });
+    window.addEventListener('mousemove', (e) => { if (isDragging) updateSlider(e.clientX); });
+    slider.addEventListener('touchstart', (e) => { isDragging = true; updateSlider(e.touches[0].clientX); });
+    window.addEventListener('touchend', () => { isDragging = false; });
+    window.addEventListener('touchmove', (e) => { if (isDragging) updateSlider(e.touches[0].clientX); });
+
+    // Checkout Modal
+    function openCheckout(title, price) {
+      document.getElementById('modalPlanTitle').textContent = title;
+      document.getElementById('modalPlanPrice').textContent = price;
+      const m = document.getElementById('checkoutModal');
+      m.classList.remove('hidden');
+      m.classList.add('flex');
+    }
+
+    function closeCheckout() {
+      const m = document.getElementById('checkoutModal');
+      m.classList.add('hidden');
+      m.classList.remove('flex');
+    }
+
+    // TOC Observer
+    const sections = ['hero', 'vault', 'architecture', 'streamproof', 'pricing'];
+    window.addEventListener('scroll', () => {
+      let current = 'hero';
+      sections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && window.scrollY >= el.offsetTop - 200) current = id;
+      });
+      document.querySelectorAll('.framer-toc-line').forEach(line => line.classList.remove('active'));
+      const activeLine = document.getElementById(`toc-${current}`);
+      if (activeLine) activeLine.classList.add('active');
+    });
+
+    // Background Canvas
+    const canvas = document.getElementById('nanoCanvas');
+    const ctx = canvas.getContext('2d');
+    let w, h;
+    function resize() { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }
+    resize();
+    window.addEventListener('resize', resize);
+
+    const particles = Array.from({ length: 45 }, () => ({
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
+      len: Math.random() * 80 + 40,
+      speed: Math.random() * 2 + 1,
+      opacity: Math.random() * 0.4 + 0.1
+    }));
+
+    function anim() {
+      ctx.clearRect(0, 0, w, h);
+      ctx.strokeStyle = '#2DC6FF';
+      ctx.lineWidth = 1;
+      particles.forEach(p => {
+        ctx.globalAlpha = p.opacity;
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(p.x, p.y + p.len);
+        ctx.stroke();
+        p.y += p.speed;
+        if (p.y > h) { p.y = -p.len; p.x = Math.random() * w; }
+      });
+      requestAnimationFrame(anim);
+    }
+    anim();
+  </script>
+</body>
+</html>

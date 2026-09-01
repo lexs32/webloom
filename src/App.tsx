@@ -44,6 +44,28 @@ interface FAQItem {
 // 1. Projects
 const PROJECTS: Project[] = [
   {
+    id: 'synapse',
+    title: 'SYNAPSE™ Autonomous AI Platform',
+    category: 'Framer SaaS / Monochrome Luxury Design',
+    tool: 'Framer / Rollup Runtime / Minimalist B&W',
+    year: '2026',
+    image: '/assets/synapse_thumb.jpg',
+    link: '/synapse.html',
+    rotate: 'rotate-[-1deg]',
+    description: 'Black & white SaaS platform built directly from Framer template and component architecture featuring real-time interactive telemetry dashboards, animated metric rings, and zero badge clutter.'
+  },
+  {
+    id: 'auracheats',
+    title: 'AURA™ Streamproof Gaming Vault',
+    category: 'Framer Component Architecture / E-Commerce',
+    tool: 'Framer / Tailwind / GSAP / MercuryOS',
+    year: '2026',
+    image: '/assets/auracheats_thumb.jpg',
+    link: '/auracheats.html',
+    rotate: 'rotate-[1deg]',
+    description: 'Ultra-modern gaming marketplace built with Framer Component Library architecture: Liquid Glass Pill Navigation, MercuryOS Dock, Line Menu TOC, Velocity Game Marquee, and Streamproof Split Slider.'
+  },
+  {
     id: 'essentia',
     title: 'Essentia™ Luxury Skincare',
     category: 'Framer 3D Product & Kinetic Scroll',
