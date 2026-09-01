@@ -44,6 +44,17 @@ interface FAQItem {
 // 1. Projects
 const PROJECTS: Project[] = [
   {
+    id: 'studypro',
+    title: 'Study Pro 3D Educational Store',
+    category: 'E-Commerce / 3D Books & Flashcards',
+    tool: '3D CSS / Tailwind / WhatsApp API',
+    year: '2026',
+    image: '/assets/project_studypro.png',
+    link: '/studypro.html',
+    rotate: 'rotate-[1.5deg]',
+    description: 'High-converting educational bookstore for 179K+ Moroccan students with 3D interactive book physics, flip flashcards, and 1-click WhatsApp cash-on-delivery checkout.'
+  },
+  {
     id: 'salix',
     title: 'Salix AI Sales & ROI Platform',
     category: 'Framer SaaS Landing & Interactive UI',
