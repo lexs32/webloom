@@ -16,7 +16,7 @@ window.STORE_CONFIG = {
     logoImage: "assets/optic_banner_logo.png",
     logoIcon: "assets/optic_icon.png",
     favicon: "assets/optic_icon.png",
-    supportEmail: "support@opticcheats.com",
+    supportEmail: "support@opticcheats.xyz",
     discordUrl: "https://discord.gg/nanocheats",
     telegramUrl: "https://t.me/opticcheats",
     youtubeUrl: "https://youtube.com/@opticcheats",
