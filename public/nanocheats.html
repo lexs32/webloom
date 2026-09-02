@@ -263,6 +263,36 @@
 
   </style>
   <script src="config.js"></script>
+
+  <style>
+    /* Visuals.gg Style High-Tech Grid & Lighting */
+    .visuals-grid-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-color: #040608;
+      background-image: 
+        radial-gradient(ellipse 90% 60% at 50% 0%, rgba(113, 130, 255, 0.22) 0%, rgba(11, 99, 229, 0.06) 50%, transparent 75%),
+        radial-gradient(circle 500px at 50% 30%, rgba(93, 110, 255, 0.12), transparent 70%),
+        linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+    }
+    .visuals-glow-orb {
+      position: absolute;
+      top: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(113, 130, 255, 0.18) 0%, rgba(93, 110, 255, 0.04) 50%, transparent 70%);
+      filter: blur(60px);
+      pointer-events: none;
+      z-index: 1;
+    }
+  </style>
+
 </head>
 <body class="min-h-screen flex flex-col antialiased select-none">
 
@@ -275,7 +305,7 @@
   <!-- Clean Division-Style Navbar -->
   <header class="sticky top-0 z-50 nav-glass py-4 px-6 md:px-12 flex items-center justify-between border-b border-white/5 select-none">
     <div class="flex items-center gap-8 lg:gap-12">
-      <a href="nanocheats.html" class="flex items-center group">
+      <a href="index.html" class="flex items-center group">
         <img src="assets/optic_banner_logo.png" alt="Optic Cheats" class="h-6 sm:h-7 md:h-7.5 w-auto object-contain group-hover:scale-105 transition duration-150">
       </a>
 
@@ -311,9 +341,12 @@
     <div class="hero-characters-bg"></div>
 
     <div class="relative z-10 w-full flex flex-col items-center">
-      <!-- 3D Interactive Spinning Optic Eye -->
-      <div class="w-full max-w-[440px] h-[220px] sm:h-[260px] relative -mb-2 flex items-center justify-center cursor-grab active:cursor-grabbing select-none" id="optic3dContainer">
-        <canvas id="optic3dCanvas" class="w-full h-full block"></canvas>
+      <!-- Visuals.gg Style Hero Logo & Verified Status Pill -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-slate-300 text-xs font-semibold mb-6 backdrop-blur-md shadow-inner shadow-white/5 hover:border-[#7182FF]/40 transition">
+        <span class="size-2 rounded-full bg-[#7182FF] animate-ping"></span>
+        <span class="text-white font-bold tracking-wide">OPTIC CHEATS</span>
+        <span class="text-slate-500">•</span>
+        <span class="text-[#09ca8d] flex items-center gap-1"><i class="fa fa-shield-check"></i> Undetected 2026</span>
       </div>
       <div class="flex items-center justify-center my-3 max-w-xl sm:max-w-2xl px-4">
         <img src="assets/optic_hero_wordmark.png" alt="Optic Cheats" class="h-12 sm:h-16 md:h-20 w-auto object-contain drop-shadow-[0_0_35px_rgba(113,130,255,0.35)]">
