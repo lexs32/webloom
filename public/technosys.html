@@ -1125,4 +1125,70 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+
+<style>
+/* CSS Overlay to force TechnoSys logo over duality */
+.technosys-custom-brand-logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #000;
+  z-index: 9999;
+  text-decoration: none;
+  padding-right: 15px;
+}
+</style>
+<script>
+(function() {
+  function forceBrand() {
+    // Replace SVG duality logo
+    document.querySelectorAll('svg[id*="svg1152587939"], svg[id*="2196"]').forEach(svg => {
+      svg.style.display = 'none';
+      if (!svg.nextElementSibling || !svg.nextElementSibling.classList.contains('technosys-custom-brand-logo')) {
+        const div = document.createElement('div');
+        div.className = 'technosys-custom-brand-logo';
+        div.innerHTML = `
+          <div style="width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg, #F59E0B, #D97706);color:#000;font-weight:900;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 0 12px rgba(245,158,11,0.5);font-family:sans-serif;">T</div>
+          <div style="font-family:sans-serif;font-weight:800;font-size:17px;color:#fff;letter-spacing:-0.5px;">Techno<span style="color:#F59E0B;">Sys</span></div>
+        `;
+        svg.parentNode.style.position = 'relative';
+        svg.parentNode.appendChild(div);
+      }
+    });
+
+    // Also replace Lowfi Inc
+    document.querySelectorAll('*').forEach(el => {
+      if (el.childNodes.length === 1 && el.childNodes[0].nodeType === 3) {
+        if (el.innerText.includes('Lowfi Inc')) el.innerText = 'TechnoSys Cloud #01';
+        if (el.innerText.includes('Andrea M.')) el.innerText = 'Cluster Proxmox HA';
+      }
+    });
+  }
+
+  setInterval(forceBrand, 200);
+})();
+</script>
+
+
+<script>
+function replaceLogoAndDashboard() {
+  const logoWrap = document.querySelector('div[data-framer-name="Duality_Logo_Wrap"], div.framer-15cwi2l a');
+  if (logoWrap && !logoWrap.dataset.technosys) {
+    logoWrap.dataset.technosys = "true";
+    logoWrap.innerHTML = `
+      <div style="display:flex;align-items:center;gap:10px;text-decoration:none;cursor:pointer;">
+        <div style="width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg, #F59E0B, #D97706);color:#000;font-weight:900;display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 0 15px rgba(245,158,11,0.5);font-family:sans-serif;">T</div>
+        <div style="font-family:sans-serif;font-weight:800;font-size:19px;color:#ffffff;letter-spacing:-0.5px;line-height:1.1;">Techno<span style="color:#F59E0B;">Sys</span><span style="font-size:9px;font-family:monospace;color:#94a3b8;display:block;letter-spacing:1px;font-weight:600;">SOLUTIONS</span></div>
+      </div>
+    `;
+  }
+}
+
+setInterval(replaceLogoAndDashboard, 100);
+</script>
+
 </body></html>
