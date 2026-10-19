@@ -1,6 +1,6 @@
 # Webloom portfolio
 
-Navy and white redesign based on https://ywy.framer.website/, with the requested white cloud hero, four cheat storefront projects, and Discord contact.
+Navy and white redesign based on https://ywy.framer.website/, with the requested white cloud hero, two cheat storefront projects, and Discord contact.
 
 ## Active app
 
@@ -16,7 +16,7 @@ Run `npm run dev -- --host 127.0.0.1 --port 5177` or `npm run build`.
 
 ## Content and behavior
 
-RiftCheats, HiddenCheats, MadCheats, and NanoCheats are featured. NanoCheats links to the supplied demo, currently branded Optic Cheats. Vogue IDE is removed from project data.
+RiftCheats and MadCheats are featured. HiddenCheats, NanoCheats, and Vogue IDE are removed from project data.
 
 Discord: `.yvko`. Email: `lexsinfo@gmail.com`. Discord buttons copy the username when clipboard permissions allow, otherwise open Contact. Contact form opens the visitor's email app with a draft; it does not claim to send server-side messages.
 
