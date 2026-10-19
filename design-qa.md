@@ -5,7 +5,7 @@ Implementation: http://127.0.0.1:5177/
 
 ## Scope and intentional differences
 
-This is a branded adaptation, not an unchanged copy. Requested differences: navy/white palette, white clouds, Webloom/LexS identity, four cheat-store websites, removal of Vogue IDE, Discord social contact. Source photos, product renders, unrelated personal identity, rates, and testimonials are replaced. Project screenshots use contain sizing to preserve the full website composition. Homepage heading wraps differently because the copy is specific to Webloom.
+This is a branded adaptation, not an unchanged copy. Requested differences: navy/white palette, white clouds, Webloom/LexS identity, RiftCheats and MadCheats storefronts plus the Ma3loMate education platform, removal of HiddenCheats, NanoCheats, and Vogue IDE, Discord social contact. Source photos, product renders, unrelated personal identity, rates, and testimonials are replaced. Project cards use captured full-page previews that scroll on hover; screenshots are cropped to the viewport frame for a clean preview. Homepage heading wraps differently because the copy is specific to Webloom.
 
 ## Evidence and comparison
 
@@ -25,7 +25,7 @@ CSS viewports: 1280 x 720 desktop and 390 x 844 mobile. Browser screenshot outpu
 - Typography: local Geist files match the source family. Oversized compact hero, muted lead phrase, small pill labels, regular body hierarchy preserved. Content-specific wrapping intentional.
 - Spacing/layout: desktop split hero and stacked previews; mobile single column with menu, intro, CTAs, tags, then projects. Service grid, rounded cards, centered section introductions, wide contact split preserved.
 - Colors: source's light/black system intentionally changed to requested navy/white. Hero tags have dark backing to retain contrast over clouds. Blue contact accent and muted blue secondary text consistent.
-- Images: real existing project screenshots, full aspect ratio visible. Generated white cloud asset is local WebP. Discord uses actual brand icon. No source portrait is represented as LexS.
+- Images: real captured website previews, with full-page images animated inside the project card frames. Generated white cloud asset is local WebP. Discord uses actual brand icon. No source portrait is represented as LexS.
 - Copy: actual agency, name, contacts and projects. Review cards are explicitly samples. No source designer's statements are represented as Webloom endorsements.
 
 ## Comparison history and fixes
@@ -52,3 +52,9 @@ Clipboard copy is browser-permission-dependent; this in-app browser did not conf
 No actionable P0/P1/P2 visual findings remain within the requested adaptation. No production deployment performed.
 
 final result: passed
+
+## Selected project previews
+
+- RiftCheats, MadCheats, and Ma3loMate are shown in the homepage project grid.
+- Hover or keyboard-focus a card to scroll through its full-page capture; leaving the card resets it to the top. Motion respects the operating-system reduced-motion preference.
+- Project details use each website’s opening-screen capture.

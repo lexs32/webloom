@@ -1,6 +1,6 @@
 # Webloom portfolio
 
-Navy and white redesign based on https://ywy.framer.website/, with the requested white cloud hero, two cheat storefront projects, and Discord contact.
+Navy and white redesign based on https://ywy.framer.website/, with the requested white cloud hero, three selected projects: RiftCheats, MadCheats, and Ma3loMate, and Discord contact.
 
 ## Active app
 
@@ -16,7 +16,7 @@ Run `npm run dev -- --host 127.0.0.1 --port 5177` or `npm run build`.
 
 ## Content and behavior
 
-RiftCheats and MadCheats are featured. HiddenCheats, NanoCheats, and Vogue IDE are removed from project data.
+RiftCheats, MadCheats, and Ma3loMate are featured. HiddenCheats, NanoCheats, and Vogue IDE are removed from project data. Project cards scroll through captured full-page previews on hover and return to the top when the pointer leaves.
 
 Discord: `.yvko`. Email: `lexsinfo@gmail.com`. Discord buttons copy the username when clipboard permissions allow, otherwise open Contact. Contact form opens the visitor's email app with a draft; it does not claim to send server-side messages.
 
@@ -30,6 +30,6 @@ Hash routes keep navigation working on static hosting. Social metadata stays tex
 - Prompt: “Create a high-resolution website background asset only, no text, no interface. Landscape 3:2. Deep midnight navy sky (#080f24) with luminous soft WHITE cumulus clouds sweeping across the lower half and left edge. Dreamy realistic photographic cloud volume, bright white sunlit cloud edges, soft cool blue shadows, elegant editorial mood. Upper center and upper right mostly open deep navy negative space for white website typography. No stars, no moon, no mountains, no objects. The clouds must be white, not blue smoke. This will fill the left half of a split-layout Webloom web designer portfolio hero.”
 - Geist regular and medium font files downloaded from the reference's observed Google Fonts URLs.
 - Discord icon from Simple Icons (`https://cdn.simpleicons.org/discord/ffffff`).
-- Existing local screenshots of the four supplied websites.
+- Captured opening and full-page screenshots for RiftCheats, MadCheats, and Ma3loMate.
 
-See `design-qa.md` for visual verification. This revision is a local preview; no commit, push, or production deployment was performed.
+See `design-qa.md` for visual verification. Production deployment is managed through Vercel.

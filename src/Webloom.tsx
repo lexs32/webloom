@@ -97,10 +97,24 @@ export default function App() {
   }
 
   function ProjectCard({ project, index }: { project: typeof projects[number]; index: number }) {
-    return <Reveal className={`project-wrap project-${index}`}><a href={`#/work/${project.id}`} className="project-card" aria-label={`View ${project.name} project`}>
-      <div className="project-image"><img src={project.image} alt={`${project.name} website design by Webloom`} loading={index ? 'lazy' : 'eager'} width="1280" height="720" /></div>
+    const [previewing, setPreviewing] = useState(false);
+    const [previewDistance, setPreviewDistance] = useState(0);
+    const previewRef = useRef<HTMLImageElement>(null);
+    const reducedMotion = useReducedMotion();
+    function measurePreview() {
+      const image = previewRef.current;
+      const frame = image?.parentElement;
+      if (image && frame) setPreviewDistance(Math.max(0, image.getBoundingClientRect().height - frame.getBoundingClientRect().height));
+    }
+    function startPreview() {
+      if (!project.scrollImage) return;
+      measurePreview();
+      setPreviewing(true);
+    }
+    return <Reveal className={`project-wrap project-${index}`}><a href={`#/work/${project.id}`} className="project-card" aria-label={`View ${project.name} project`} onPointerEnter={startPreview} onPointerLeave={()=>setPreviewing(false)} onFocus={startPreview} onBlur={()=>setPreviewing(false)}>
+      <div className="project-image"><motion.img ref={previewRef} className={project.scrollImage ? 'project-scroll-shot' : ''} src={project.scrollImage || project.image} alt={`${project.name} website design by Webloom`} loading="eager" width="1280" height="720" onLoad={measurePreview} animate={{ y: previewing ? -previewDistance : 0 }} transition={{ y: { duration: reducedMotion ? 0 : previewing ? 13 : .45, ease: previewing ? 'linear' : 'easeOut' } }} /></div>
       <div className="project-caption"><div><span className="eyebrow">{project.category}</span><h2>{project.name}</h2><div className="tags">{project.tags.map(tag=><span key={tag}>{tag}</span>)}</div></div><span className="project-arrow"><ArrowUpRight size={24}/></span></div>
-      <span className="project-number">0{index+1} / SELECTED WORK</span>
+      <span className="project-number">0{index+1} <span className="project-hover-hint">/ HOVER TO SCROLL</span></span>
     </a></Reveal>;
   }
 
@@ -128,7 +142,7 @@ export default function App() {
         </div>{Footer()}
       </> : selectedProject ? <div className="inner-page project-page">
         <a className="back-link" href="#/"><ArrowLeft size={16}/> Back to selected work</a>
-        <Reveal className="project-intro"><div><div className="tags">{selectedProject.tags.map(tag=><span key={tag}>{tag}</span>)}</div><h1>{selectedProject.name}</h1><p>{selectedProject.description}</p><a className="button" href={selectedProject.url} target="_blank" rel="noreferrer">View Live Project<ArrowUpRight size={17}/></a></div><dl><div><dt>Industry</dt><dd>Gaming</dd></div><div><dt>Studio</dt><dd>Webloom</dd></div><div><dt>Focus</dt><dd>{selectedProject.category}</dd></div></dl></Reveal>
+        <Reveal className="project-intro"><div><div className="tags">{selectedProject.tags.map(tag=><span key={tag}>{tag}</span>)}</div><h1>{selectedProject.name}</h1><p>{selectedProject.description}</p><a className="button" href={selectedProject.url} target="_blank" rel="noreferrer">View Live Project<ArrowUpRight size={17}/></a></div><dl><div><dt>Industry</dt><dd>{selectedProject.id === 'ma3lomate' ? 'Education' : 'Gaming'}</dd></div><div><dt>Studio</dt><dd>Webloom</dd></div><div><dt>Focus</dt><dd>{selectedProject.category}</dd></div></dl></Reveal>
         <Reveal className="detail-image"><img src={selectedProject.image} alt={`${selectedProject.name} homepage`} width="1280" height="720"/></Reveal>
         <Reveal className="project-story"><span className="eyebrow">THE EXPERIENCE</span><div><h2>Built around the product.</h2><p>{selectedProject.description}</p><p>Clear hierarchy, a focused browsing experience, and a consistent visual identity across desktop and mobile.</p></div></Reveal>
         <div className="project-next"><a href={`#/work/${projects[(projects.indexOf(selectedProject)+projects.length-1)%projects.length].id}`}><ArrowLeft size={18}/>Previous project</a><a href={`#/work/${projects[(projects.indexOf(selectedProject)+1)%projects.length].id}`}>Next project<ArrowRight size={18}/></a></div>
