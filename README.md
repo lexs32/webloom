@@ -18,7 +18,7 @@ Run `npm run dev -- --host 127.0.0.1 --port 5177` or `npm run build`.
 
 RiftCheats, MadCheats, and Ma3loMate are featured. HiddenCheats, NanoCheats, and Vogue IDE are removed from project data. Project cards scroll through captured full-page previews on hover and return to the top when the pointer leaves.
 
-Discord: `.yvko`. Email: `lexsinfo@gmail.com`. Discord buttons copy the username when clipboard permissions allow, otherwise open Contact. Contact form opens the visitor's email app with a draft; it does not claim to send server-side messages.
+Discord links open the Webloom server. Members can run `/website-request` to fill out an intake form; completed briefs go to the configured private channel. Email: `lexsinfo@gmail.com`. The contact form opens the visitor's email app with a draft. Bot setup and required environment variables are documented in `bot/README.md`.
 
 Review cards demonstrate the reference's scrolling treatment with clearly marked original sample copy. Replace samples with genuine Webloom feedback before publishing. No prices, timelines, or source-template identities were copied as Webloom business claims.
 

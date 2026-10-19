@@ -5,6 +5,7 @@ export const PROFILE = {
   role: 'Web Designer & Developer',
   email: 'lexsinfo@gmail.com',
   discord: '.yvko',
+  discordInvite: 'https://discord.gg/bh5eRzpeRE',
   github: 'https://github.com/lexs32',
 };
 

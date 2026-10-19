@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from 'react';
 
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, Check, Copy, Menu, Plus, X } from 'lucide-react';
+import { ArrowDown, ArrowLeft, ArrowRight, ArrowUpRight, Menu, Plus, X } from 'lucide-react';
 import { PROFILE, PROJECTS, FAQS, SERVICES } from './portfolio-data';
 import './webloom.css';
 
@@ -27,10 +27,8 @@ export default function App() {
   const [menu, setMenu] = useState(false);
   const [faq, setFaq] = useState<number | null>(null);
   const [service, setService] = useState<number | null>(null);
-  const [copied, setCopied] = useState(false);
   const [draft, setDraft] = useState(false);
   const reduce = useReducedMotion();
-  const copyTimer = useRef<ReturnType<typeof setTimeout>>();
   const home = route === '/';
   const selectedProject = projects.find(project => route === `/work/${project.id}`);
 
@@ -52,22 +50,12 @@ export default function App() {
     document.title = `${selectedProject ? selectedProject.name : route === '/contact' ? 'Contact' : home ? 'Cheat Website Design & Development' : 'About & Services'} — Webloom`;
   }, [route, home, reduce, selectedProject]);
 
-  useEffect(() => () => clearTimeout(copyTimer.current), []);
   useEffect(() => {
     if (service === null) return;
     const onKey = (event: KeyboardEvent) => { if (event.key === 'Escape') setService(null); };
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
   }, [service]);
-
-  async function copyDiscord() {
-    try {
-      await navigator.clipboard.writeText(PROFILE.discord);
-      setCopied(true);
-      clearTimeout(copyTimer.current);
-      copyTimer.current = setTimeout(() => setCopied(false), 2400);
-    } catch { location.hash = '/contact'; }
-  }
 
   function contact(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -84,7 +72,7 @@ export default function App() {
         {[['Home', '/'], ['About', '/about'], ['Services', '/services'], ['FAQ', '/faq']].map(([label, href]) => <a key={href} href={`#${href}`} className={route === href ? 'active' : ''} aria-current={route === href ? 'page' : undefined}>{label}</a>)}
       </nav>
       <div className="header-actions">
-        <button className="social-discord" aria-label={copied ? 'Discord username copied' : 'Copy Discord username .yvko'} onClick={copyDiscord}>{copied ? <Check size={20} /> : <DiscordIcon />}</button>
+        <a className="social-discord" aria-label="Join Webloom's Discord server" href={PROFILE.discordInvite} target="_blank" rel="noreferrer"><DiscordIcon /></a>
         <a className="button button-small header-contact" href="#/contact">Get in Touch <ArrowUpRight size={14} /></a>
         <button className="menu-toggle" aria-expanded={menu} aria-controls="mobile-navigation" aria-label={menu ? 'Close menu' : 'Open menu'} onClick={() => setMenu(!menu)}>{menu ? <X /> : <Menu />}</button>
       </div>
@@ -93,7 +81,7 @@ export default function App() {
   }
 
   function Footer() {
-    return <footer><a className="footer-brand" href="#/">Webloom<span>®</span></a><p>Independent design. Built by LexS.</p><div><button onClick={copyDiscord}>{copied ? 'Copied!' : 'Discord .yvko'}<ArrowUpRight size={14}/></button><a href={`mailto:${PROFILE.email}`}>Email<ArrowUpRight size={14}/></a><span>© {new Date().getFullYear()}</span></div></footer>;
+    return <footer><a className="footer-brand" href="#/"><img src="/assets/webloom/webloom-mark.png" alt=""/>Webloom<span>®</span></a><p>Independent design. Built by LexS.</p><div><a href={PROFILE.discordInvite} target="_blank" rel="noreferrer">Discord server<ArrowUpRight size={14}/></a><a href={`mailto:${PROFILE.email}`}>Email<ArrowUpRight size={14}/></a><span>© {new Date().getFullYear()}</span></div></footer>;
   }
 
   function ProjectCard({ project, index }: { project: typeof projects[number]; index: number }) {
@@ -128,7 +116,7 @@ export default function App() {
             <div className="cloud-scene" aria-hidden="true"><img src="/assets/webloom/white-clouds.webp" alt=""/></div>
             <div className="hero-content">
               <motion.div className="availability" initial={{opacity:0}} animate={{opacity:1}} transition={{delay:reduce?0:0.15}}><i/>Available for select projects</motion.div>
-              <motion.div className="identity" initial={reduce?false:{opacity:0,y:15}} animate={{opacity:1,y:0}} transition={{delay:0.2,duration:0.6}}><a href="#/" className="wordmark">Webloom<span>®</span></a><div><span>LexS</span><a href={`mailto:${PROFILE.email}`}>{PROFILE.email}</a></div></motion.div>
+               <motion.div className="identity" initial={reduce?false:{opacity:0,y:15}} animate={{opacity:1,y:0}} transition={{delay:0.2,duration:0.6}}><a href="#/" className="wordmark"><img src="/assets/webloom/webloom-mark.png" alt=""/>Webloom<span>®</span></a><div><span>LexS</span><a href={`mailto:${PROFILE.email}`}>{PROFILE.email}</a></div></motion.div>
               <motion.div initial={reduce?false:{opacity:0,y:28}} animate={{opacity:1,y:0}} transition={{delay:0.3,duration:0.8,ease:[0.22,1,0.36,1]}}>
                 <h1 id="hero-heading"><span>Your next</span><br/>cheat website.</h1>
                 <p className="hero-description">Distinctive websites for cheat brands.<br className="desktop-break"/> I design and build storefronts that feel as good as they look — from the first click to checkout.</p>
@@ -148,9 +136,9 @@ export default function App() {
         <div className="project-next"><a href={`#/work/${projects[(projects.indexOf(selectedProject)+projects.length-1)%projects.length].id}`}><ArrowLeft size={18}/>Previous project</a><a href={`#/work/${projects[(projects.indexOf(selectedProject)+1)%projects.length].id}`}>Next project<ArrowRight size={18}/></a></div>
         <ContactCallout/>{Footer()}
       </div> : route === '/contact' ? <div className="inner-page contact-page">
-        <Reveal className="section-heading"><span className="section-pill">LET’S TALK</span><h1>Something in mind?</h1><p>A new store or a fresh start. Tell me what you’re thinking.</p></Reveal>
-        <div className="contact-grid"><Reveal className="contact-info"><div className="contact-cloud" aria-hidden="true"/><div><span className="eyebrow">YOUR NEXT CREATIVE PARTNER</span><h2>Let’s make it<br/>worth the click.</h2><p>Work directly with LexS.<br/>Design, development, and the details in between.</p><span className="contact-label">Email</span><a href={`mailto:${PROFILE.email}`}>{PROFILE.email}<ArrowUpRight size={18}/></a><span className="contact-label">Discord</span><button onClick={copyDiscord}>{PROFILE.discord}{copied?<Check size={18}/>:<Copy size={18}/>}</button><span className="copy-status" role="status">{copied?'Discord username copied':''}</span></div></Reveal>
-          <Reveal><form onSubmit={contact}><label htmlFor="name">Your name</label><input id="name" name="name" placeholder="Your name" autoComplete="name" required maxLength={100}/><label htmlFor="email">Email address</label><input id="email" type="email" name="email" placeholder="you@example.com" autoComplete="email" required/><label htmlFor="message">What are we building?</label><textarea id="message" name="message" placeholder="Your brand, the idea, a few references…" required maxLength={5000}/><button type="submit" className="button">Take the First Step<ArrowUpRight size={19}/></button><p className="form-note" role="status">{draft?'Your email draft is ready in your mail app. You can also email me directly.':'Opens a draft in your email app. Prefer Discord? Find me at .yvko.'}</p></form></Reveal>
+        <Reveal className="section-heading"><span className="section-pill">LET’S TALK</span><h1>Something in mind?</h1><p>Join Discord and run <code>/website-request</code> to get a private project channel, or send a brief by email.</p></Reveal>
+        <div className="contact-grid"><Reveal className="contact-info"><div className="contact-cloud" aria-hidden="true"/><div><span className="eyebrow">YOUR NEXT CREATIVE PARTNER</span><h2>Let’s make it<br/>worth the click.</h2><p>Work directly with LexS.<br/>Design, development, and the details in between.</p><span className="contact-label">Email</span><a href={`mailto:${PROFILE.email}`}>{PROFILE.email}<ArrowUpRight size={18}/></a><span className="contact-label">Discord</span><a href={PROFILE.discordInvite} target="_blank" rel="noreferrer">Join the Webloom server<ArrowUpRight size={18}/></a><span className="discord-hint">Use <code>/website-request</code> to start a private inquiry.</span></div></Reveal>
+          <Reveal><form onSubmit={contact}><label htmlFor="name">Your name</label><input id="name" name="name" placeholder="Your name" autoComplete="name" required maxLength={100}/><label htmlFor="email">Email address</label><input id="email" type="email" name="email" placeholder="you@example.com" autoComplete="email" required/><label htmlFor="message">What are we building?</label><textarea id="message" name="message" placeholder="Your brand, the idea, a few references…" required maxLength={5000}/><button type="submit" className="button">Take the First Step<ArrowUpRight size={19}/></button><p className="form-note" role="status">{draft?'Your email draft is ready in your mail app. You can also email me directly.':'Opens a draft in your email app, or start a private project request in Discord.'}</p></form></Reveal>
         </div>{Footer()}
       </div> : <div className="inner-page about-page">
         <section className="about-hero"><Reveal><span className="section-pill">ABOUT WEBLOOM</span><h1>Good design.<br/><span>Better experiences.</span></h1><p>I’m LexS, the designer and developer behind Webloom. I work with cheat brands to turn their ideas into distinctive, easy-to-use websites.</p><p>From a first impression to a connected storefront, I handle the visuals, the build, and the small details that make it all feel right.</p><a className="button" href="#/contact">Let’s Talk<ArrowUpRight size={17}/></a></Reveal><div className="floating-work" aria-hidden="true">{projects.slice(0,3).map((project,i)=><img key={project.id} src={project.image} alt="" className={`floating-shot shot-${i}`} loading="lazy"/>)}</div></section>
@@ -162,7 +150,6 @@ export default function App() {
       </motion.div></AnimatePresence>
     </main>
     <AnimatePresence>{service!==null&&<ServiceDialog item={SERVICES[service]} onClose={()=>setService(null)}/>}</AnimatePresence>
-    <span className="global-copy-status" role="status">{copied?'Discord .yvko copied':''}</span>
   </>;
 }
 

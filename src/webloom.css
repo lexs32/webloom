@@ -21,3 +21,5 @@ footer{padding:35px 40px;display:flex;align-items:center;gap:30px;border-top:1px
 .hero-bottom .text-link{background:#080e20c9;border:1px solid #ffffff30;border-radius:30px;padding:5px 9px;color:#f0f4ff}
 
 .project-image{display:block}.project-image .project-scroll-shot{display:block;position:absolute;top:0;left:0;width:100%;height:auto;max-width:none;object-fit:initial;object-position:top center;transition:none;will-change:transform}.project-number{opacity:1;transform:none}.project-hover-hint{color:#c5d3f3}.project-card:focus-visible{outline:2px solid #91aaff;outline-offset:4px}
+
+.wordmark,.footer-brand{display:inline-flex;align-items:center;gap:9px}.wordmark img{width:34px;height:34px;object-fit:cover;border-radius:10px}.footer-brand img{width:28px;height:28px;object-fit:cover;border-radius:8px}.discord-hint{display:block;max-width:280px;margin-top:9px;color:#9eacc8;font-size:12px;line-height:1.55}.discord-hint code,.contact-page .section-heading code{font:inherit;color:#dce6ff;background:#ffffff12;border:1px solid #ffffff18;border-radius:6px;padding:2px 5px}
