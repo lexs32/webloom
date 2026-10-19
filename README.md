@@ -1,25 +1,28 @@
-# ☁️ Webloom — Creative Digital Design & Invision Storefront Studio
+# Webloom portfolio
 
-> High-converting digital design, custom Invision & SellAuth storefronts, UI/UX systems, and brand identities that make people look twice.
+Webloom, the independent web design and development studio of LexS.
 
-## 🚀 Live Demo & Showcase
-- **Main Portfolio**: [Webloom Official](https://webloom.design)
-- **⚡ RiftCheats Storefront Demo**: `/demos/riftcheats.html`
-- **🐻 BearCheats Storefront Demo**: `/demos/bearcheats.html`
+## Local development
 
-## 🛠️ Tech Stack
-- Exact Full-Fidelity Framer Architecture
-- Custom Interactive 3D Client Controllers & Sliders
-- Responsive Modern CSS / Tailwind Grid System
-- High-Performance WebGL & Motion Physics
-- Fully Optimized SEO, OpenGraph & Schema.org JSON-LD
+npm install
+npm run dev
 
-## 📦 Deployment
-Deploy with Vercel:
-```bash
+## Production check
+
 npm run build
-vercel --prod
-```
+npm run preview
 
-## 📬 Contact
-- **Discord**: `webloom` / [discord.gg/webloom](https://discord.gg/webloom)
+## Content and design
+
+- `index.html`: locally owned homepage layout, preserving the existing Webloom/Framer export styling and artwork.
+- `src/portfolio-data.ts`: agency and profile, five project URLs, service details, and FAQ answers. Add websites here.
+- `src/personalize.ts`: project cards, native contact/FAQ dialogs, Discord copy, and dock navigation.
+- `src/personalize.css`: responsive portfolio refinements and interaction styles.
+- `public/assets/portfolio/`: actual screenshots of the five supplied websites.
+- `public/index.html`: copy of the homepage entry; keep synchronized if editing the exported markup.
+
+The homepage no longer loads the original remote Framer application, so remote hydration cannot replace personal content with template copy. Original React components and demo assets remain in the repository, but the active entry is `src/personalize.ts`.
+
+Contact: lexsinfo@gmail.com / Discord `.yvko`.
+
+The existing Vercel project configuration is preserved. Publishing is separate from local development.
