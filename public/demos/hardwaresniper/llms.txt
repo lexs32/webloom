@@ -1,0 +1,22 @@
+# HardwareSniper.xyz — Le Comparateur Hardware & PC Gamer au Maroc
+
+> HardwareSniper.xyz est le premier comparateur de prix de composants informatiques et configurateur PC optimisé pour le marché marocain (Maroc / MAD - Dirham marocain).
+
+## Objectifs & Fonctionnalités Clés
+- **Agrégation temps réel** : Analyse quotidienne de plus de 743 références et 786 offres de composants PC chez les plus grands revendeurs spécialisés au Maroc.
+- **Boutiques marocaines suivies** : UltraPC, SetupGame, MyOrdi, PC Gamer Morocco, Duga.ma, Africa Gaming, NextLevel, Workstation.ma, Electroplanet, Iris.ma, etc.
+- **Solveur PC Builder Multi-Boutiques** : Algorithme exact calculant la répartition optimale des pièces entre boutiques en tenant compte des frais de livraison spécifiques à chaque ville (Casablanca, Rabat, Marrakech, Tanger, Fès, Agadir) et des seuils de gratuité (Franco de port).
+- **Radar de Baisses de Prix & Alertes** : Suivi des remises immédiates jusqu'à -78% avec notification e-mail dès qu'un composant atteint le prix cible en Dirhams.
+
+## Catégories Suivies
+- **Cartes Graphiques (GPU)** : NVIDIA GeForce RTX 5090, RTX 5080, RTX 5070 Ti, RTX 5070, RTX 4060, AMD Radeon RX 7800 XT, RX 7600.
+- **Processeurs (CPU)** : AMD Ryzen 7 9800X3D, Ryzen 7 7800X3D, Ryzen 5 7600X, Intel Core Ultra 9 285K, Core i5 14600K.
+- **Cartes Mères (Motherboards)** : B650, X870E, Z890, B760, B550.
+- **Mémoire & Stockage** : RAM DDR5 6000MHz, DDR4 3200MHz, SSD NVMe PCIe 4.0/5.0 (Crucial, Kingston, Samsung, Lexar).
+- **Alimentations & Boîtiers** : Blocs 80+ Gold/Platinum ATX 3.0, Boîtiers Mesh flux d'air, Watercooling AIO 240/360mm.
+
+## Informations Géographiques & Monnaie
+- **Pays** : Maroc (MA)
+- **Villes principales** : Casablanca, Rabat, Marrakech, Tanger, Fès, Meknès, Agadir, Oujda.
+- **Monnaie** : MAD (Dirham Marocain / DH).
+- **Site officiel** : https://hardwaresniper.xyz

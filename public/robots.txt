@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://webloom.design/sitemap.xml
+Sitemap: https://portfolio-woad-three-61.vercel.app/sitemap.xml
